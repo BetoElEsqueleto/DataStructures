@@ -1,5 +1,15 @@
 #ifndef NODE_H
 #define NODE_H
+/*
+## Node class
+Atomic element of two basic data structures: lists and binary trees.
+Contains the following atributes:
+1. next      -> Next node in list
+2. prev      -> Previous node in list
+3. parent    -> Parent node in binary tree
+4. firstSon  -> Left side son node in binary tree
+5. secondSon -> Right side son node in binary tree
+*/
 
 template <class T>
 class node {
@@ -12,11 +22,17 @@ class node {
         node<T>* secondSon;
     public:
         node(T content) {
+            // Initializing node with null values.
             data = content;
             next = prev = parent = firstSon = secondSon = NULL;
         }
         virtual ~node();
+        
+        // Returning the actual content of the node.
         T data() { return data; }
+
+        // For every elemet of the node structure
+        // there is a method to set and get it.
         node<T>* next() { return next; }
         node<T>* prev() { return prev; }
         node<T>* parent() { return parent; }
