@@ -36,13 +36,9 @@ public:
         return size;
     }
     /* TODO:
-
-        bool has(T data);
-        node<T>* find(T data);
-        bool delete(node<T>* unwanted);
-        search data
         search position
         overload []
+        node<T>* find(T data);
     */
     void insertBack(T data) {
         node<T>* newNodeP;
@@ -94,7 +90,6 @@ public:
         else {
             node<T>* popped;
             popped = tail;
-            // TODO check for errors in memory asignment
             tail = tail->prev();
             tail->next(NULL);
             popped->prev(NULL);
@@ -111,11 +106,40 @@ public:
         else {
             node<T>* popped;
             popped = head;
-            // TODO check for errors in memory asignment
             head = head->next();
             head->prev(NULL);
             popped->next(NULL);
             return popped;
+        }
+    }
+    bool has(T data) {
+        if (isEmpty()) {
+            return false;
+        }
+        else {
+            node<T>* cur;
+            for(cur=head;cur;cur = cur->next()) {
+                if(cur->data == data) return true;
+            }
+            return false;
+        }
+    }
+    bool remove(T data) {
+        if (isEmpty()) {
+            return false;
+        }
+        else {
+            node<T>* cur;
+            for(cur=head;cur;cur = cur->next()) {
+                if(cur->data == data) {
+                    cur->prev->next = cur=>next;
+                    cur->next->prev = cir->prev;
+                    cur->next = cur->prev = NULL;
+                    delete cur;
+                    return true;
+                }
+            }
+            return false;
         }
     }
 
