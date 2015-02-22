@@ -103,36 +103,49 @@ public:
         }
     }
 
+    // Remove node by pointer: Used in pop functions
+    bool removeNode(node<T>* unwanted) {
+        unwanted->prev()->next(unwanted->next);
+        unwanted->next()->prev(unwanted->prev);
+        unwanted->next(NULL);
+        unwanted->prev(NULL);
+        delete cur;
+    }
+
     // To push and pop from front and back
     void push(T data) {
         insertBack(T data);
     }
-    node<T>* pop() {
+    data<T> pop() {
         if (isEmpty()) {
             return NULL;
         }
         else {
-            node<T>* popped;
-            popped = tail;
+            data<T> popped;
+            node<T>* unwanted;
+            unwanted = tail;
+            popped = unwanted->data();
             tail = tail->prev();
             tail->next(NULL);
-            popped->prev(NULL);
+            removeNode(unwanted);
             return popped;
         }
     }
     void pushHead(T data) {
         insertFront(T data);
     }
-    node<T>* popHead() {
+    data<T> popHead() {
         if (isEmpty()) {
             return NULL;
         }
         else {
-            node<T>* popped;
-            popped = head;
+            data<T> popped;
+            node<T>* unwanted;
+            popped = unwanted->data();
+            unwanted = head;
             head = head->next();
             head->prev(NULL);
-            popped->next(NULL);
+            removeNode(unwanted);
             return popped;
         }
     }
@@ -160,9 +173,10 @@ public:
             node<T>* cur;
             for(cur=head;cur;cur = cur->next()) {
                 if(cur->data == data) {
-                    cur->prev->next = cur=>next;
-                    cur->next->prev = cir->prev;
-                    cur->next = cur->prev = NULL;
+                    cur->prev()->next(cur->next);
+                    cur->next()->prev(cur->prev);
+                    cur->next(NULL);
+                    cur->prev(NULL);
                     delete cur;
                     return true;
                 }
