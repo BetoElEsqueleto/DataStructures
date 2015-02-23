@@ -7,7 +7,7 @@ With the actual structure of a doubly linked list.
 Contains the following atributes:
 1. head    -> Pointer to first or left-most node in list
 2. tail    -> Pointer to last or right-most node in list
-3. current -> Helper pointer to node being used in methods // TODO: currently unactive
+3. current -> Helper pointer to node being used in methods
 4. size    -> Integer value representing the number of nodes in the list structure
 */
 
@@ -55,11 +55,45 @@ public:
         size = len;
         return size;
     }
-    /* TODO:
-        search position
-        overload []
-        node<T>* find(T data);
-    */
+
+    // Returns pointer to first node with data
+    node<T>* search(T data) {
+        if (isEmpty()) {
+            return NULL;
+        }
+        else {
+            for(current=head;current;current = current->next()) {
+                if(current->data == data) {
+                    current = NULL;
+                    return current;
+                }
+            }
+            return NULL;
+        }
+    }
+
+    // Inserts data at specified place in list. Index starts at 0
+    bool insertAt(T data, int index) {
+        if (isEmpty()) {
+            return false;
+        }
+        else {
+            current = head; // current = 0
+            for(int i=1; i<index ; i++) {
+                current = current->next();
+            }
+            node<T>* aux;
+            aux = new node<T>(data);
+            // TODO check for errors in memory asignment
+            current->prev()->next(aux);
+            current->prev(aux);
+            aux->next(current);
+            aux->prev(current->prev());
+            current = NULL;
+            return true;
+        }
+    }
+
     void insertBack(T data) {
         node<T>* newNodeP;
         newNodeP = new node<T>(data);
@@ -109,7 +143,7 @@ public:
         unwanted->next()->prev(unwanted->prev);
         unwanted->next(NULL);
         unwanted->prev(NULL);
-        delete cur;
+        delete unwanted;
     }
 
     // To push and pop from front and back
@@ -156,9 +190,11 @@ public:
             return false;
         }
         else {
-            node<T>* cur;
-            for(cur=head;cur;cur = cur->next()) {
-                if(cur->data == data) return true;
+            for(current=head;current;current = current->next()) {
+                if(current->data == data) {
+                    current = NULL;
+                    return true;
+                }
             }
             return false;
         }
@@ -170,14 +206,14 @@ public:
             return false;
         }
         else {
-            node<T>* cur;
-            for(cur=head;cur;cur = cur->next()) {
-                if(cur->data == data) {
-                    cur->prev()->next(cur->next);
-                    cur->next()->prev(cur->prev);
-                    cur->next(NULL);
-                    cur->prev(NULL);
-                    delete cur;
+            for(current=head;current;current = current->next()) {
+                if(current->data == data) {
+                    current->prev()->next(current->next);
+                    current->next()->prev(current->prev);
+                    current->next(NULL);
+                    current->prev(NULL);
+                    delete current;
+                    current = NULL;
                     return true;
                 }
             }
@@ -185,5 +221,9 @@ public:
         }
     }
 
+    /*
+    TODO:
+        overload []
+    */
 };
 #endif
