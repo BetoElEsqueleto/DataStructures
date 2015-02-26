@@ -16,18 +16,18 @@ private:
 public:
     Student(int id, string name, int note1, int note2, int grade);
     ~Student();
-    
-    int id();
-    string name();
-    int note1();
-    int note2();
-    int grade();
 
-    void id(int);
-    void name(string);
-    void note1(int);
-    void note2(int);
-    void grade(int);
+    int getId();
+    string getName();
+    int getNote1();
+    int getNote2();
+    int getGrade();
+
+    void setId(int);
+    void setName(string);
+    void setNote1(int);
+    void setNote2(int);
+    void setGrade(int);
 
 };
 

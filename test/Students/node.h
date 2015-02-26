@@ -12,36 +12,37 @@ Contains the following atributes:
 */
 
 template <class T>
-class node {
+class Node {
     private:
         T data;
-        node<T>* next;
-        node<T>* prev;
-        node<T>* parent;
-        node<T>* firstSon;
-        node<T>* secondSon;
+        Node<T>* next;
+        Node<T>* prev;
+        Node<T>* parent;
+        Node<T>* firstSon;
+        Node<T>* secondSon;
+
     public:
-        node(T content) {
+        Node(T content) {
             // Initializing node with null values.
             data = content;
             next = prev = parent = firstSon = secondSon = NULL;
         }
-        virtual ~node();
-        
+        virtual ~Node();
+
         // Returning the actual content of the node.
-        T data() { return data; }
+        T getData() { return data; }
 
         // For every elemet of the node structure
         // there is a method to set and get it.
-        node<T>* next() { return next; }
-        node<T>* prev() { return prev; }
-        node<T>* parent() { return parent; }
-        node<T>* firstSon() { return firstSon; }
-        node<T>* secondSon() { return secondSon; }
-        void next(node<T>* ptr) { next = ptr; }
-        void prev(node<T>* ptr) { prev = ptr; }
-        void parent(node<T>* ptr) { parent = ptr; }
-        void firstSon(node<T>* ptr) { firstSon = ptr; }
-        void secondSon(node<T>* ptr) { secondSon = ptr; }
+        Node<T>* getNext() { return next; }
+        Node<T>* getPrev() { return prev; }
+        Node<T>* getParent() { return parent; }
+        Node<T>* getFirstSon() { return firstSon; }
+        Node<T>* getSecondSon() { return secondSon; }
+        void setNext(Node<T>* ptr) { next = ptr; }
+        void setPrev(Node<T>* ptr) { prev = ptr; }
+        void setParent(Node<T>* ptr) { parent = ptr; }
+        void setFirstSon(Node<T>* ptr) { firstSon = ptr; }
+        void setSecondSon(Node<T>* ptr) { secondSon = ptr; }
 };
 #endif // NODE_H

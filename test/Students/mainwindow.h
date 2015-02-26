@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "student.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +18,15 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    Student* curStudent;
+
+    int id;
+    string name;
+    int first;
+    int second;
+    int final;
+    int best;
+    int worst;
 };
 
 #endif // MAINWINDOW_H

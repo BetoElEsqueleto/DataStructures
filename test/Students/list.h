@@ -12,27 +12,27 @@ Contains the following atributes:
 */
 
 template <class T>
-class list {
+class List {
 private:
-    node<T> *head;
-    node<T> *tail;
-    node<T> *current;
+    Node<T> *head;
+    Node<T> *tail;
+    Node<T> *current;
     int size;
 public:
-    list () {
+    List () {
         // Initialize empty list
         size = 0;
         head = tail = current = NULL;
     }
-    list (T data) {
+    List (T data) {
         // Initialize list with one object
         size = 1;
-        head = new node<T>(data);
+        head = new Node<T>(data);
         tail = head;
-        newNodeP->prev(NULL);
-        newNodeP->next(NULL);
+        head->setPrev(NULL);
+        head->setNext(NULL);
     }
-    virtual ~list () {
+    virtual ~List () {
         // If list is not empty, pop it out.
         if(!isEmpty()) {
             while (head!=NULL) {
@@ -42,28 +42,28 @@ public:
     }
 
     // For every attribute in list, there is a getter function
-    node<T>* head() { return head; }
-    node<T>* tail() { return tail; }
-    node<T>* current() { return current; }
+    Node<T>* getHead() { return head; }
+    Node<T>* getTail() { return tail; }
+    Node<T>* getCurrent() { return current; }
 
-    bool isEmpty() { return (head==NULL) }
-    int size() {
+    bool isEmpty() { return (head==NULL); }
+    int getSize() {
         int len = 0;
         // TODO check if starting at 1 or 0
-        node<T>* aux;
-        for(aux=head;aux;aux = aux->next()) len++;
+        Node<T>* aux;
+        for(aux=head;aux;aux = aux->getNext()) len++;
         size = len;
         return size;
     }
 
     // Returns pointer to first node with data
-    node<T>* search(T data) {
+    Node<T>* search(T data) {
         if (isEmpty()) {
             return NULL;
         }
         else {
-            for(current=head;current;current = current->next()) {
-                if(current->data == data) {
+            for(current=head;current;current = current->getNext()) {
+                if(current->getData() == data) {
                     current = NULL;
                     return current;
                 }
@@ -80,105 +80,105 @@ public:
         else {
             current = head; // current = 0
             for(int i=1; i<index ; i++) {
-                current = current->next();
+                current = current->getNext();
             }
-            node<T>* aux;
-            aux = new node<T>(data);
+            Node<T>* aux;
+            aux = new Node<T>(data);
             // TODO check for errors in memory asignment
-            current->prev()->next(aux);
-            current->prev(aux);
-            aux->next(current);
-            aux->prev(current->prev());
+            current->getPrev()->setNext(aux);
+            current->setPrev(aux);
+            aux->setNext(current);
+            aux->setPrev(current->getPrev());
             current = NULL;
             return true;
         }
     }
 
     void insertBack(T data) {
-        node<T>* newNodeP;
-        newNodeP = new node<T>(data);
+        Node<T>* newNodeP;
+        newNodeP = new Node<T>(data);
         // TODO check for errors in memory asignment
         if (isEmpty()) {
             // If inserting first node:
             head = newNodeP;
             tail = newNodeP;
-            newNodeP->prev(NULL);
-            newNodeP->next(NULL);
+            newNodeP->setPrev(NULL);
+            newNodeP->setNext(NULL);
             size=1;
         }
         else {
             // All nodes after the first:
-            tail->next(newNodeP);
-            newNodeP->prev(tail);
-            newNodeP->next(NULL);
+            tail->setNext(newNodeP);
+            newNodeP->setPrev(tail);
+            newNodeP->setNext(NULL);
             tail = newNodeP;
             size++;
         }
     }
     void insertFront(T data) {
-        node<T>* newNodeP;
-        newNodeP = new node<T>(data);
+        Node<T>* newNodeP;
+        newNodeP = new Node<T>(data);
         // TODO check for errors in memory asignment
         if (head==NULL) {
             // If inserting first node:
             head = newNodeP;
             tail = newNodeP;
-            newNodeP->prev(NULL);
-            newNodeP->next(NULL);
+            newNodeP->setPrev(NULL);
+            newNodeP->setNext(NULL);
             size=1;
         }
         else {
             // All nodes after the first:
-            head->prev(newNodeP);
-            newNodeP->next(head);
-            newNodeP->prev(NULL);
+            head->setPrev(newNodeP);
+            newNodeP->setNext(head);
+            newNodeP->setPrev(NULL);
             head = newNodeP;
             size++;
         }
     }
 
     // Remove node by pointer: Used in pop functions
-    bool removeNode(node<T>* unwanted) {
-        unwanted->prev()->next(unwanted->next);
-        unwanted->next()->prev(unwanted->prev);
-        unwanted->next(NULL);
-        unwanted->prev(NULL);
+    bool removeNode(Node<T>* unwanted) {
+        unwanted->getPrev()->setNext(unwanted->getNext());
+        unwanted->getNext()->setPrev(unwanted->getPrev());
+        unwanted->setNext(NULL);
+        unwanted->setPrev(NULL);
         delete unwanted;
     }
 
     // To push and pop from front and back
     void push(T data) {
-        insertBack(T data);
+        insertBack(data);
     }
-    data<T> pop() {
+    T pop() {
         if (isEmpty()) {
             return NULL;
         }
         else {
-            data<T> popped;
-            node<T>* unwanted;
+            T popped;
+            Node<T>* unwanted;
             unwanted = tail;
-            popped = unwanted->data();
-            tail = tail->prev();
-            tail->next(NULL);
+            popped = unwanted->getData();
+            tail = tail->getPrev();
+            tail->setNext(NULL);
             removeNode(unwanted);
             return popped;
         }
     }
     void pushHead(T data) {
-        insertFront(T data);
+        insertFront(data);
     }
-    data<T> popHead() {
+    T popHead() {
         if (isEmpty()) {
             return NULL;
         }
         else {
-            data<T> popped;
-            node<T>* unwanted;
-            popped = unwanted->data();
+            T popped;
+            Node<T>* unwanted;
+            popped = unwanted->getData();
             unwanted = head;
-            head = head->next();
-            head->prev(NULL);
+            head = head->getNext();
+            head->setPrev(NULL);
             removeNode(unwanted);
             return popped;
         }
@@ -190,8 +190,8 @@ public:
             return false;
         }
         else {
-            for(current=head;current;current = current->next()) {
-                if(current->data == data) {
+            for(current=head;current;current = current->getNext()) {
+                if(current->getData() == data) {
                     current = NULL;
                     return true;
                 }
@@ -208,10 +208,10 @@ public:
         else {
             for(current=head;current;current = current->next()) {
                 if(current->data == data) {
-                    current->prev()->next(current->next);
-                    current->next()->prev(current->prev);
-                    current->next(NULL);
-                    current->prev(NULL);
+                    current->getPrev()->setNext(current->getNext());
+                    current->getNext()->setPrev(current->getPrev());
+                    current->setNext(NULL);
+                    current->setPrev(NULL);
                     delete current;
                     current = NULL;
                     return true;
