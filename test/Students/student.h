@@ -14,6 +14,7 @@ private:
     int note2;
     int grade;
 public:
+    Student();
     Student(int id, string name, int note1, int note2, int grade);
     ~Student();
 

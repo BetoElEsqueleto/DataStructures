@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTableView>
+#include <QHeaderView>
 #include "student.h"
 
 namespace Ui {

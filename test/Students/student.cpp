@@ -1,5 +1,8 @@
 #include "student.h"
 
+Student::Student()
+{
+}
 Student::Student(int id, string name, int note1, int note2, int grade)
 {
     this->id = id;
@@ -8,7 +11,9 @@ Student::Student(int id, string name, int note1, int note2, int grade)
     this->note2 = note2;
     this->grade = grade;
 }
-
+Student::~Student()
+{
+}
 int Student::getId(){ return this->id; }
 string Student::getName(){ return name; }
 int Student::getNote1(){ return note1; }
