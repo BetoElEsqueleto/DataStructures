@@ -138,13 +138,9 @@ public:
     }
 
     // Remove node by pointer: Used in pop functions
-    void removeNode(Node<T>* unwanted) {
-        unwanted->getPrev()->setNext(unwanted->getNext());
-        unwanted->getNext()->setPrev(unwanted->getPrev());
-        unwanted->setNext(NULL);
-        unwanted->setPrev(NULL);
-        // TODO: free memory maybe?
-        // delete unwanted;
+    void clearSides(Node<T>* dirty) {
+        if(dirty->getNext()) dirty->setNext(NULL);
+        if(dirty->getPrev()) dirty->setPrev(NULL);
     }
 
     // To push and pop from front and back
@@ -153,16 +149,14 @@ public:
     }
     Node<T>* pop() {
         if (isEmpty()) {
-             std::cerr << "ERROR: trying to pop an empty list. Don't go messing with me" << std::endl;
-             T err;
-             return err;
+             return NULL;
         }
         else {
             Node<T>* popped;
             popped = tail;
             tail = tail->getPrev();
             tail->setNext(NULL);
-            removeNode(popped);
+            clearSides(popped);
             return popped;
         }
     }
@@ -178,7 +172,7 @@ public:
             popped = head;
             head = head->getNext();
             head->setPrev(NULL);
-            removeNode(popped);
+            clearSides(popped);
             return popped;
         }
     }

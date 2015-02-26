@@ -27,8 +27,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_ID">
-          <property name="maxLength">
+         <widget class="QSpinBox" name="spinBox_id">
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
            <number>255</number>
           </property>
          </widget>

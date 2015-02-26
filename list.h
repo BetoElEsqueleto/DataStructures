@@ -138,48 +138,41 @@ public:
     }
 
     // Remove node by pointer: Used in pop functions
-    bool removeNode(Node<T>* unwanted) {
-        unwanted->getPrev()->setNext(unwanted->getNext());
-        unwanted->getNext()->setPrev(unwanted->getPrev());
-        unwanted->setNext(NULL);
-        unwanted->setPrev(NULL);
-        delete unwanted;
+    void clearSides(Node<T>* dirty) {
+        if(dirty->getNext()) dirty->setNext(NULL);
+        if(dirty->getPrev()) dirty->setPrev(NULL);
     }
 
     // To push and pop from front and back
     void push(T data) {
         insertBack(data);
     }
-    T pop() {
+    Node<T>* pop() {
         if (isEmpty()) {
-            return NULL;
+             return NULL;
         }
         else {
-            T popped;
-            Node<T>* unwanted;
-            unwanted = tail;
-            popped = unwanted->getData();
+            Node<T>* popped;
+            popped = tail;
             tail = tail->getPrev();
             tail->setNext(NULL);
-            removeNode(unwanted);
+            clearSides(popped);
             return popped;
         }
     }
     void pushHead(T data) {
         insertFront(data);
     }
-    T popHead() {
+    Node<T>* popHead() {
         if (isEmpty()) {
             return NULL;
         }
         else {
-            T popped;
-            Node<T>* unwanted;
-            popped = unwanted->getData();
-            unwanted = head;
+            Node<T>* popped;
+            popped = head;
             head = head->getNext();
             head->setPrev(NULL);
-            removeNode(unwanted);
+            clearSides(popped);
             return popped;
         }
     }

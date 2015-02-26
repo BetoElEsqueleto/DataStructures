@@ -1,6 +1,8 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 #include <iostream>
+#include <QString>
+
 #include "list.h"
 
 using namespace std;
@@ -9,26 +11,26 @@ class Student
 {
 private:
     int id;
-    string name;
-    int note1;
-    int note2;
-    int grade;
+    QString name;
+    double note1;
+    double note2;
+    double grade;
 public:
     Student();
-    Student(int id, string name, int note1, int note2, int grade);
+    Student(int id, QString name, double first, double second, double final);
     ~Student();
 
     int getId();
-    string getName();
-    int getNote1();
-    int getNote2();
-    int getGrade();
+    QString getName();
+    double getNote1();
+    double getNote2();
+    double getGrade();
 
     void setId(int);
-    void setName(string);
-    void setNote1(int);
-    void setNote2(int);
-    void setGrade(int);
+    void setName(QString);
+    void setNote1(double first);
+    void setNote2(double second);
+    void setGrade(double final);
 
 };
 

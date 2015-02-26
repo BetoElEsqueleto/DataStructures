@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QTableView>
 #include <QHeaderView>
+#include <QLineEdit>
+#include <QString>
+
 #include "student.h"
 
 namespace Ui {
@@ -18,15 +21,26 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void average();
+
+    void on_pushButton_Add_clicked();
+
+    void on_doubleSpinBox_First_editingFinished();
+
+    void on_doubleSpinBox_Second_editingFinished();
+
 private:
     Ui::MainWindow *ui;
     Student* curStudent;
 
+    List<Student> classroom;
+
     int id;
-    string name;
-    int first;
-    int second;
-    int final;
+    QString name;
+    double first;
+    double second;
+    double final;
     int best;
     int worst;
 };
