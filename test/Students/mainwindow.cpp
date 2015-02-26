@@ -39,7 +39,7 @@ void MainWindow::on_pushButton_Add_clicked()
         if(aStudent.getGrade() <= worst) worst = aStudent.getGrade();
         this->ui->lineEdit_Worst->setText(QString::number(worst));
     }
-    //Table view
+    // Table view
 
 }
 
