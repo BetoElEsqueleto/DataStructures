@@ -175,7 +175,6 @@ void Dijkstra::getShortest(string start,string end) {
     // Update costs until actual node is the end node
     do {
         currentNode = updateCostList(currentNode);
-        cout << "Entering in update loop " << endl;
 
     } while (currentNode != end);
     
@@ -187,7 +186,29 @@ void Dijkstra::getLeastHops(string start,string end) {
 }
 
 string Dijkstra::updateCostList(string current) {
-    // TODO beto aqui te quedastes puto!
+    List<tracker> newCostList;
+    tracker newTracker;
+    // Generate new costs list to replace current cost list
+    for (int i = 0; i < size; i++) {
+        int costOld = costs.at(i).cost;
+        int costNew = g[nodes.indexOf(current)][i];
+//        cout << "Current cost: " << costOld << endl;
+//        cout << "New cost: " << costNew << endl;
+        if (costNew < costOld && costNew != 0) {
+            newTracker.cost = costNew;
+            newTracker.index = costs.at(i).index;
+            newCostList.push(newTracker);
+        } else if (costNew == 0) {
+            newTracker.cost = costs.at(i).cost;
+            newTracker.index = costs.at(i).index;
+            newCostList.push(newTracker);
+        }
+        cout << "New List: name "<< newCostList.at(i).index << " , cost " << newCostList.at(i).cost << endl;
+    }
+    // Replace old cost list with new one
+    
+    // current = smallest from notVisited.
+    
     return current;
 }
 

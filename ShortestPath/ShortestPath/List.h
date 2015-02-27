@@ -267,6 +267,14 @@ public:
             return aux;
         }
     }
+    
+    void empty() {
+        if(!isEmpty()) {
+            while (head!=NULL) {
+                pop();
+            }
+        }
+    }
 
     /*
     TODO:
