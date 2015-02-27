@@ -13,7 +13,7 @@ Dijkstra::Dijkstra(int argc, const char * argv[]) {
     path = argv[1];
     size = 0;
 //    cerr << path << endl;
-    
+
     FILE * fp;
     // YES! open a file ;D
     fp = fopen (path,"r");
@@ -31,7 +31,7 @@ Dijkstra::Dijkstra(int argc, const char * argv[]) {
         }
         // Now we have the size of the graph, and can make some room in our RAM
         size =  index.getSize();
-        
+
         // Assign first dimension
         g = new int*[size];
         // Assign second dimension
@@ -42,9 +42,9 @@ Dijkstra::Dijkstra(int argc, const char * argv[]) {
                 g[i][j] = 0;
             }
         }
-        
+
         int i = 0 , j = 0;
-        
+
         rewind(fp);
         count = 0;
         while (fscanf(fp,"%s",buffer) != EOF) {
@@ -68,27 +68,19 @@ Dijkstra::Dijkstra(int argc, const char * argv[]) {
         }
         fclose (fp);
     }
-    if (size) {
-        for (int i = 0; i<size; i++) {
-            cout << endl;
-            for (int j = 0; j<size; j++) {
-                cout << g[i][j] << "\t";
-            }
-        }
-        cout << endl;
-    }
+//    print();
 }
 
 Dijkstra::~Dijkstra() {
     for(int i = 0; i < size; i++)
         delete(g[i]);
-    delete g;    
+    delete g;
 }
 
 void Dijkstra::addVertex() {
     string i,j;
     int w;
-    
+
     cout << "Enter the departure node: ";
     cin >> i;
     cout << endl;
@@ -99,7 +91,7 @@ void Dijkstra::addVertex() {
             cout << endl;
         }
     }
-    
+
     cout << "Enter the arrival node: ";
     cin >> j;
     cout << endl;
@@ -110,7 +102,7 @@ void Dijkstra::addVertex() {
             cout << endl;
         }
     }
-    
+
     cout << "Enter cost of the vertex: ";
     cin >> w;
     cout << endl;
@@ -125,7 +117,7 @@ void Dijkstra::addVertex() {
 void Dijkstra::updateVertex() {
     string i,j;
     int w;
-    
+
     cout << "Enter the departure node: ";
     cin >> i;
     cout << endl;
@@ -136,7 +128,7 @@ void Dijkstra::updateVertex() {
             cout << endl;
         }
     }
-    
+
     cout << "Enter the arrival node: ";
     cin >> j;
     cout << endl;
@@ -147,17 +139,29 @@ void Dijkstra::updateVertex() {
             cout << endl;
         }
     }
-    
+
     cout << "Enter cost of the vertex: ";
     cin >> w;
     cout << endl;
     g[index.indexOf(i)][index.indexOf(j)] = w;
 }
 
-void Dijkstra::getDistance() {
+void Dijkstra::getShortest(string start,string end) {
 
 }
 
-void Dijkstra::leastHops() {
+void Dijkstra::getLeastHops(string start,string end) {
 
+}
+
+void Dijkstra::print() {
+    if (size) {
+        for (int i = 0; i<size; i++) {
+            cout << endl;
+            for (int j = 0; j<size; j++) {
+                cout << g[i][j] << "\t";
+            }
+        }
+        cout << endl;
+    }
 }

@@ -14,19 +14,28 @@
 #include "List.h"
 
 using namespace std;
+
+typedef struct {
+    int cost;
+    int index;
+}tracker;
+
 class Dijkstra {
 private:
     int          size;  // number of nodes in graph
     List<string> index; // node index
     int**        g;     // graph matrix
+    tracker      t;
+    tracker**    costMatrix;
 
 public:
          Dijkstra(int argc, const char * argv[]);
          ~Dijkstra();
     void addVertex();
     void updateVertex();
-    void getDistance();
-    void leastHops();
+    void getShortest(string start,string end);
+    void getLeastHops(string start,string end);
+    void print();
 };
 
 #endif
