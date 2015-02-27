@@ -9,6 +9,7 @@
 #ifndef ShortestPath_Dijkstra_h
 #define ShortestPath_Dijkstra_h
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 class Dijkstra {

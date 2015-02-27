@@ -13,7 +13,7 @@
 
 int main(int argc, const char * argv[]) {
     if (argc != 2) { // Check the value of argc. If not enough parameters have been passed, inform user and exit.
-        std::cout << "Usage: ShortestPath <infile>"; // Inform the user of how to use the program
+        std::cout << "Usage: ShortestPath <infile>" << std::endl; // Inform the user of how to use the program
         exit(0);
     } else { // if we got enough parameters...
         Dijkstra graph(argc, argv);

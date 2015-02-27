@@ -11,17 +11,18 @@
 Dijkstra::Dijkstra(int argc, const char * argv[]) {
     const char* path;
     path = argv[1];
-    cout << path << endl;
-//    ifstream fp(path, ifstream::in);
-//    if(fp.is_open()) {
-//        string buffer;
-//        while( getline(fp,buffer) ) {
-//            cout << buffer << std::endl;
-//            }
-//        fp.close();
-//    } else {
-//        cerr << "Unable to open file" << endl;
-//    }
+//    cerr << path << endl;
+    ifstream fp(path);
+    if(fp.is_open()) {
+        string buffer;
+        while( getline(fp,buffer) ) {
+            
+            cerr << buffer << std::endl;
+            }
+        fp.close();
+    } else {
+        cerr << "Unable to open file" << endl;
+    }
     // Read File 1:
     // get graph size
     // Read file 2:
