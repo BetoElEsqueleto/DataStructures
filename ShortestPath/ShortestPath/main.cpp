@@ -14,7 +14,7 @@
 int main(int argc, const char * argv[]) {
     if (argc != 2) { // Check the value of argc. If not enough parameters have been passed, inform user and exit.
         std::cout << "Usage: ShortestPath <infile>" << std::endl;
-        std::cout << "       Bro, do you even Bash?" << std::endl; 
+        std::cout << "       Bro, do you even Bash?" << std::endl;
         exit(0);
     } else { // if we got enough parameters...
 
@@ -23,6 +23,7 @@ int main(int argc, const char * argv[]) {
         string start, end;
         while (!opc) {
             // TODo a little dance... I mean menu...
+            cout << "=============================================" << endl;
             cout << "What are you expecting to find here? go away!" << endl;
             cout << "I bet you don't even know what you want:" << endl;
             cout << "" << endl;
@@ -32,6 +33,7 @@ int main(int argc, const char * argv[]) {
             cout << "4) A little surprise." << endl;
             cout << "5) Print that mofo!" << endl;
             cout << "6) Get outta here!" << endl;
+            cout << "" << endl;
             cin >> opc;
 
             switch (opc) {
@@ -85,7 +87,7 @@ int main(int argc, const char * argv[]) {
                 case 6:
                 {
                     cout << "Bah! I knew you didn't have it in'cha, you little whimp" << endl;
-                    cout << "          _     _                 \n__      _| |__ (_)_ __ ___  _ __  \n\\ \\ /\\ / / '_ \\| | '_ ` _ \\| '_ \\ \n \\ V  V /| | | | | | | | | | |_) |\n  \\_/\\_/ |_| |_|_|_| |_| |_| .__/ \n                 |_|              \n" << endl;
+                    cout << "          _     _                 \n__      _| |__ (_)_ __ ___  _ __  \n\\ \\ /\\ / / '_ \\| | '_ ` _ \\| '_ \\ \n \\ V  V /| | | | | | | | | | |_) |\n  \\_/\\_/ |_| |_|_|_| |_| |_| .__/ \n                           |_|         \n" << endl;
                     return(0);
                     break;
 

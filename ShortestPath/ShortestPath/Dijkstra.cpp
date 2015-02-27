@@ -147,6 +147,7 @@ void Dijkstra::updateVertex() {
 }
 
 void Dijkstra::getShortest(string start,string end) {
+    // Let's do some magic! right after my nap.
 
 }
 
