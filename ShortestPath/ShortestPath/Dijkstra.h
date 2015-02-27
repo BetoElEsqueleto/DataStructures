@@ -25,7 +25,7 @@ class Dijkstra {
 private:
     int          size;    // number of nodes in graph
     List<string> nodes;   // node index
-    List<string> visited; // Nodes that have been visited during Dijkstra's algorithm
+    List<string> notVisited; // Nodes that have been visited during Dijkstra's algorithm
     int**        g;       // graph matrix
     tracker      t;
     List<tracker>    costs;
@@ -37,6 +37,7 @@ public:
     void updateVertex();
     void getShortest(string start,string end);
     void getLeastHops(string start,string end);
+    string updateCostList(string current);
     void print();
     void printCosts();
 };

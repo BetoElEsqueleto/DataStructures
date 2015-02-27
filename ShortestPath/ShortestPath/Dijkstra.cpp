@@ -147,15 +147,18 @@ void Dijkstra::updateVertex() {
 }
 
 void Dijkstra::getShortest(string start,string end) {
-    tracker aux;
+    
+    // Verify start and end node exist
     
     
     // Fill costs with 0 for starting node and
     // INT32_MAX (infinite) for the rest
     string buffer;
+    tracker aux;
     for (int i = 0; i<size; i++) {
         buffer = nodes.at(i);
         aux.index = buffer;
+        notVisited.push(buffer);
         if (buffer == start) {
             aux.cost = 0;
         } else {
@@ -166,11 +169,26 @@ void Dijkstra::getShortest(string start,string end) {
     }
     // printCosts();
     
+    string currentNode = start;
+    
+    
+    // Update costs until actual node is the end node
+    do {
+        currentNode = updateCostList(currentNode);
+        cout << "Entering in update loop " << endl;
+
+    } while (currentNode != end);
+    
     
 }
 
 void Dijkstra::getLeastHops(string start,string end) {
 
+}
+
+string Dijkstra::updateCostList(string current) {
+    // TODO beto aqui te quedastes puto!
+    return current;
 }
 
 void Dijkstra::print() {
