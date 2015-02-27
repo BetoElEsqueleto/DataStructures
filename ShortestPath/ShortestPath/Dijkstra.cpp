@@ -11,9 +11,11 @@
 Dijkstra::Dijkstra(int argc, const char * argv[]) {
     const char* path;
     path = argv[1];
+    size = 0;
 //    cerr << path << endl;
-    FILE * fp;
     
+    FILE * fp;
+    // YES! open a file ;D
     fp = fopen (path,"r");
     if (fp!=NULL) {
         char buffer [255];
@@ -21,36 +23,66 @@ Dijkstra::Dijkstra(int argc, const char * argv[]) {
         while (fscanf(fp,"%s",buffer) != EOF) {
             count ++;
             if(!index.has(buffer) && (count%3)){
-                cerr << buffer << std::endl;
+                // Just push everything to the index of nodes
+//                cerr << buffer << std::endl;
                 index.push(buffer);
             }
 
         }
+        // Now we have the size of the graph, and can make some room in our RAM
+        size =  index.getSize();
+        
+        // Assign first dimension
+        g = new int*[size];
+        // Assign second dimension
+        for(int i = 0; i < size; i++)
+            g[i] = new int[size];
+        for (int i = 0; i<size; i++) {
+            for (int j = 0; j<size; j++) {
+                g[i][j] = 0;
+            }
+        }
+        
+        int i = 0 , j = 0;
+        
+        rewind(fp);
+        count = 0;
+        while (fscanf(fp,"%s",buffer) != EOF) {
+            count ++;
+            switch (count%3) {
+                case 1:
+//                    cerr << "i node: " << buffer << std::endl;
+                    i = index.indexOf(buffer);
+                    break;
+                case 2:
+//                    cerr << "j node: " << buffer << std::endl;
+                    j = index.indexOf(buffer);
+                    break;
+                case 0:
+//                    cerr << "vertex weight: " << buffer << std::endl;
+                    g[i][j] = atoi(buffer);
+                    break;
+                default:
+                    break;
+            }
+        }
         fclose (fp);
     }
-    
-//    ifstream fp(path);
-//    if(fp.is_open()) {
-//        string buffer;
-//        fscanf(fp, "%s", buffer);
-//        while( getline(fp,buffer) ) {
-//            
-//            cerr << buffer << std::endl;
-//            }
-//        fp.close();
-//    } else {
-//        cerr << "Unable to open file" << endl;
-//    }
-    
-    
-    // Read File 1:
-    // get graph size
-    // Read file 2:
-    // fill graph matrix
+    if (size) {
+        for (int i = 0; i<size; i++) {
+            cout << endl;
+            for (int j = 0; j<size; j++) {
+                cout << g[i][j] << "\t";
+            }
+        }
+        cout << endl;
+    }
 }
 
 Dijkstra::~Dijkstra() {
-
+    for(int i = 0; i < size; i++)
+        delete(g[i]);
+    delete g;    
 }
 
 void Dijkstra::addNode() {

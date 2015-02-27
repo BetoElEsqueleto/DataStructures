@@ -219,8 +219,8 @@ public:
             return false;
         }
         else {
-            for(current=head;current;current = current->next()) {
-                if(current->data == data) {
+            for(current=head;current;current = current->getNext()) {
+                if(current->getData() == data) {
                     current->getPrev()->setNext(current->getNext());
                     current->getNext()->setPrev(current->getPrev());
                     current->setNext(NULL);
@@ -231,6 +231,22 @@ public:
                 }
             }
             return false;
+        }
+    }
+    
+    int indexOf(T data) {
+        if (isEmpty()) {
+            return -1;
+        }
+        else {
+            int index = 0;
+            for(current=head;current;current = current->getNext()) {
+                if(current->getData() == data) {
+                    return index;
+                }
+                index++;
+            }
+            return -1;
         }
     }
 
