@@ -23,7 +23,8 @@ private:
 public:
          Dijkstra(int argc, const char * argv[]);
          ~Dijkstra();
-    void addNode();
+    void addVertex();
+    void updateVertex();
     void getDistance();
     void leastHops();
 };

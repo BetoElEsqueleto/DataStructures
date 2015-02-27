@@ -14,7 +14,8 @@ Basic data structures include:
 - Hashes
 - Graphs
 
+### Dijkstra algorithm
+The folder ShortestPath contains an implementation of the [Dijkstra algorithm](http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm), used to find the shortest path in a graph.
+
 > #### NOTE:
 This is a semestral work in progress, so there will be some movement for the next months.
-
-Feel free to use it for your own purposes.

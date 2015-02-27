@@ -85,8 +85,73 @@ Dijkstra::~Dijkstra() {
     delete g;    
 }
 
-void Dijkstra::addNode() {
+void Dijkstra::addVertex() {
+    string i,j;
+    int w;
+    
+    cout << "Enter the departure node: ";
+    cin >> i;
+    cout << endl;
+    if (!index.has(i)) {
+        while (!index.has(i)) {
+            cout << "ERROR: node not in graph! Check your input file.\nEnter the departure node: ";
+            cin >> i;
+            cout << endl;
+        }
+    }
+    
+    cout << "Enter the arrival node: ";
+    cin >> j;
+    cout << endl;
+    if (!index.has(j)) {
+        while (!index.has(j)) {
+            cout << "ERROR: node not in graph! Check your input file.\nEnter the departure node: ";
+            cin >> j;
+            cout << endl;
+        }
+    }
+    
+    cout << "Enter cost of the vertex: ";
+    cin >> w;
+    cout << endl;
+    if(g[index.indexOf(i)][index.indexOf(j)]==0) {
+        g[index.indexOf(i)][index.indexOf(j)] = w;
+    } else {
+        cout << "Vertex exists already. Use updateVertex()" << endl;
+    }
 
+}
+
+void Dijkstra::updateVertex() {
+    string i,j;
+    int w;
+    
+    cout << "Enter the departure node: ";
+    cin >> i;
+    cout << endl;
+    if (!index.has(i)) {
+        while (!index.has(i)) {
+            cout << "ERROR: node not in graph! Check your input file.\nEnter the departure node: ";
+            cin >> i;
+            cout << endl;
+        }
+    }
+    
+    cout << "Enter the arrival node: ";
+    cin >> j;
+    cout << endl;
+    if (!index.has(j)) {
+        while (!index.has(j)) {
+            cout << "ERROR: node not in graph! Check your input file.\nEnter the departure node: ";
+            cin >> j;
+            cout << endl;
+        }
+    }
+    
+    cout << "Enter cost of the vertex: ";
+    cin >> w;
+    cout << endl;
+    g[index.indexOf(i)][index.indexOf(j)] = w;
 }
 
 void Dijkstra::getDistance() {
