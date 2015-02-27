@@ -79,3 +79,4 @@
 **/*.moved-aside
 **/DerivedData
 **/*.xcuserstate
+**/*.xcodeproj
