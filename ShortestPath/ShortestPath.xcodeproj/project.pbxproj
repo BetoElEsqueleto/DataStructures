@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		35F9DA011AA00C9D00419F4A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35F9DA001AA00C9D00419F4A /* main.cpp */; };
+		35F9DA091AA00D9400419F4A /* Dijkstra.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35F9DA081AA00D9400419F4A /* Dijkstra.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		35F9D9FD1AA00C9C00419F4A /* ShortestPath */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ShortestPath; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F9DA001AA00C9D00419F4A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		35F9DA071AA00D8800419F4A /* Dijkstra.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dijkstra.h; sourceTree = "<group>"; };
+		35F9DA081AA00D9400419F4A /* Dijkstra.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dijkstra.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,8 @@
 		35F9D9FF1AA00C9C00419F4A /* ShortestPath */ = {
 			isa = PBXGroup;
 			children = (
+				35F9DA071AA00D8800419F4A /* Dijkstra.h */,
+				35F9DA081AA00D9400419F4A /* Dijkstra.cpp */,
 				35F9DA001AA00C9D00419F4A /* main.cpp */,
 			);
 			path = ShortestPath;
@@ -119,6 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35F9DA011AA00C9D00419F4A /* main.cpp in Sources */,
+				35F9DA091AA00D9400419F4A /* Dijkstra.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
