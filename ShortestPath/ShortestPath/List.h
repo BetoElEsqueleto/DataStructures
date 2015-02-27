@@ -249,6 +249,24 @@ public:
             return -1;
         }
     }
+    // ERROR: should return by reference; since it's a template we do not know what the return value should be in case there isn't any.
+    T at(int index) {
+        if (isEmpty()) {
+            T aux;
+            return aux;
+        }
+        else {
+            int i = 0;
+            for(current=head;current;current = current->getNext()) {
+                if(i == index) {
+                    return current->getData();
+                }
+                i++;
+            }
+            T aux;
+            return aux;
+        }
+    }
 
     /*
     TODO:

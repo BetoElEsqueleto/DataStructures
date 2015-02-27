@@ -10,6 +10,7 @@
 #define ShortestPath_Dijkstra_h
 #include <iostream>
 #include <cstdio>
+#include <climits>
 
 #include "List.h"
 
@@ -17,16 +18,17 @@ using namespace std;
 
 typedef struct {
     int cost;
-    int index;
+    string index;
 }tracker;
 
 class Dijkstra {
 private:
-    int          size;  // number of nodes in graph
-    List<string> index; // node index
-    int**        g;     // graph matrix
+    int          size;    // number of nodes in graph
+    List<string> nodes;   // node index
+    List<string> visited; // Nodes that have been visited during Dijkstra's algorithm
+    int**        g;       // graph matrix
     tracker      t;
-    tracker**    costMatrix;
+    List<tracker>    costs;
 
 public:
          Dijkstra(int argc, const char * argv[]);
@@ -36,6 +38,7 @@ public:
     void getShortest(string start,string end);
     void getLeastHops(string start,string end);
     void print();
+    void printCosts();
 };
 
 #endif

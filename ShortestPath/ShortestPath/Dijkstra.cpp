@@ -22,15 +22,15 @@ Dijkstra::Dijkstra(int argc, const char * argv[]) {
         int count = 0;
         while (fscanf(fp,"%s",buffer) != EOF) {
             count ++;
-            if(!index.has(buffer) && (count%3)){
+            if(!nodes.has(buffer) && (count%3)){
                 // Just push everything to the index of nodes
 //                cerr << buffer << std::endl;
-                index.push(buffer);
+                nodes.push(buffer);
             }
 
         }
         // Now we have the size of the graph, and can make some room in our RAM
-        size =  index.getSize();
+        size =  nodes.getSize();
 
         // Assign first dimension
         g = new int*[size];
@@ -52,11 +52,11 @@ Dijkstra::Dijkstra(int argc, const char * argv[]) {
             switch (count%3) {
                 case 1:
 //                    cerr << "i node: " << buffer << std::endl;
-                    i = index.indexOf(buffer);
+                    i = nodes.indexOf(buffer);
                     break;
                 case 2:
 //                    cerr << "j node: " << buffer << std::endl;
-                    j = index.indexOf(buffer);
+                    j = nodes.indexOf(buffer);
                     break;
                 case 0:
 //                    cerr << "vertex weight: " << buffer << std::endl;
@@ -84,8 +84,8 @@ void Dijkstra::addVertex() {
     cout << "Enter the departure node: ";
     cin >> i;
     cout << endl;
-    if (!index.has(i)) {
-        while (!index.has(i)) {
+    if (!nodes.has(i)) {
+        while (!nodes.has(i)) {
             cout << "ERROR: node not in graph! Check your input file.\nEnter the departure node: ";
             cin >> i;
             cout << endl;
@@ -95,8 +95,8 @@ void Dijkstra::addVertex() {
     cout << "Enter the arrival node: ";
     cin >> j;
     cout << endl;
-    if (!index.has(j)) {
-        while (!index.has(j)) {
+    if (!nodes.has(j)) {
+        while (!nodes.has(j)) {
             cout << "ERROR: node not in graph! Check your input file.\nEnter the departure node: ";
             cin >> j;
             cout << endl;
@@ -106,8 +106,8 @@ void Dijkstra::addVertex() {
     cout << "Enter cost of the vertex: ";
     cin >> w;
     cout << endl;
-    if(g[index.indexOf(i)][index.indexOf(j)]==0) {
-        g[index.indexOf(i)][index.indexOf(j)] = w;
+    if(g[nodes.indexOf(i)][nodes.indexOf(j)]==0) {
+        g[nodes.indexOf(i)][nodes.indexOf(j)] = w;
     } else {
         cout << "Vertex exists already. Use updateVertex()" << endl;
     }
@@ -121,8 +121,8 @@ void Dijkstra::updateVertex() {
     cout << "Enter the departure node: ";
     cin >> i;
     cout << endl;
-    if (!index.has(i)) {
-        while (!index.has(i)) {
+    if (!nodes.has(i)) {
+        while (!nodes.has(i)) {
             cout << "ERROR: node not in graph! Check your input file.\nEnter the departure node: ";
             cin >> i;
             cout << endl;
@@ -132,8 +132,8 @@ void Dijkstra::updateVertex() {
     cout << "Enter the arrival node: ";
     cin >> j;
     cout << endl;
-    if (!index.has(j)) {
-        while (!index.has(j)) {
+    if (!nodes.has(j)) {
+        while (!nodes.has(j)) {
             cout << "ERROR: node not in graph! Check your input file.\nEnter the departure node: ";
             cin >> j;
             cout << endl;
@@ -143,12 +143,30 @@ void Dijkstra::updateVertex() {
     cout << "Enter cost of the vertex: ";
     cin >> w;
     cout << endl;
-    g[index.indexOf(i)][index.indexOf(j)] = w;
+    g[nodes.indexOf(i)][nodes.indexOf(j)] = w;
 }
 
 void Dijkstra::getShortest(string start,string end) {
-    // Let's do some magic! right after my nap.
-
+    tracker aux;
+    
+    
+    // Fill costs with 0 for starting node and
+    // INT32_MAX (infinite) for the rest
+    string buffer;
+    for (int i = 0; i<size; i++) {
+        buffer = nodes.at(i);
+        aux.index = buffer;
+        if (buffer == start) {
+            aux.cost = 0;
+        } else {
+            aux.cost = INT32_MAX;
+        }
+        costs.push(aux);
+//        cout << aux.index << " : " << aux.cost << endl;
+    }
+    // printCosts();
+    
+    
 }
 
 void Dijkstra::getLeastHops(string start,string end) {
@@ -166,3 +184,11 @@ void Dijkstra::print() {
         cout << endl;
     }
 }
+
+void Dijkstra::printCosts() {
+    for (int i = 0; i<size; i++) {
+        
+        cout << costs.at(i).index << " : " << costs.at(i).cost << endl;
+    }
+}
+
