@@ -9,14 +9,16 @@
 #ifndef ShortestPath_Dijkstra_h
 #define ShortestPath_Dijkstra_h
 #include <iostream>
-#include <fstream>
+#include <cstdio>
+
+#include "List.h"
 
 using namespace std;
 class Dijkstra {
 private:
-    int          size; // number of nodes in graph
-    string*      index; // node index
-    int**        g; // graph matrix
+    int          size;  // number of nodes in graph
+    List<string> index; // node index
+    int**        g;     // graph matrix
 
 public:
          Dijkstra(int argc, const char * argv[]);

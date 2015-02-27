@@ -24,6 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		356917481AA042E600B85417 /* List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
+		356917491AA042E600B85417 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		35F9D9FD1AA00C9C00419F4A /* ShortestPath */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ShortestPath; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F9DA001AA00C9D00419F4A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		35F9DA071AA00D8800419F4A /* Dijkstra.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dijkstra.h; sourceTree = "<group>"; };
@@ -60,6 +62,8 @@
 		35F9D9FF1AA00C9C00419F4A /* ShortestPath */ = {
 			isa = PBXGroup;
 			children = (
+				356917481AA042E600B85417 /* List.h */,
+				356917491AA042E600B85417 /* Node.h */,
 				35F9DA071AA00D8800419F4A /* Dijkstra.h */,
 				35F9DA081AA00D9400419F4A /* Dijkstra.cpp */,
 				35F9DA001AA00C9D00419F4A /* main.cpp */,
@@ -238,6 +242,7 @@
 				35F9DA061AA00C9D00419F4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
