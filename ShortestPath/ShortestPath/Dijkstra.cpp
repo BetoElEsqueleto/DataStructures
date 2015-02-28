@@ -167,17 +167,45 @@ void Dijkstra::getShortest(string start,string end) {
         costs.push(aux);
 //        cout << aux.index << " : " << aux.cost << endl;
     }
-    // printCosts();
     
-    string currentNode = start;
+    // We start the algorithm in the first node
+    current = start;
+    // Update costs for first node
+    updateCostList();
+//    printCosts();
     
-    
-    // Update costs until actual node is the end node
-    do {
-        currentNode = updateCostList(currentNode);
+    // Remove start from visited
+    notVisited.remove(start);
 
-    } while (currentNode != end);
+    // GET current node
+    tracker min, firstAux;
+    min.cost = INT32_MAX;
+    for (int i = 0; i < size; i++) {
+        firstAux.index = nodes.at(i);
+        firstAux.cost = g[nodes.indexOf(start)][i];
+        if (firstAux.cost < min.cost && firstAux.cost!=0) {
+            min.index = firstAux.index;
+            min.cost = firstAux.cost;
+        }
+    }
     
+    string currentNode = min.index;
+    int count =0;
+    
+    
+    // Update costs until all network is revised, or there is no more nodes to go to.
+    do {
+        updateCostList();
+        if (currentNode.empty()) break;
+        printCosts();
+        count++;
+
+//    } while (currentNode != end && count < size);
+    } while (count < size);
+    
+    int mincost = costs.at(nodes.indexOf(end)).cost;
+    
+    cout << "MINIMAL COST: " << mincost << endl;
     
 }
 
@@ -185,31 +213,55 @@ void Dijkstra::getLeastHops(string start,string end) {
 
 }
 
-string Dijkstra::updateCostList(string current) {
+void Dijkstra::updateCostList(void) {
     List<tracker> newCostList;
     tracker newTracker;
+    int costOld = INT32_MAX;
+    int costNew = 0;
     // Generate new costs list to replace current cost list
     for (int i = 0; i < size; i++) {
-        int costOld = costs.at(i).cost;
-        int costNew = g[nodes.indexOf(current)][i];
+        costOld = costs.at(i).cost;
+        costNew = g[nodes.indexOf(current)][i];
 //        cout << "Current cost: " << costOld << endl;
 //        cout << "New cost: " << costNew << endl;
         if (costNew < costOld && costNew != 0) {
             newTracker.cost = costNew;
             newTracker.index = costs.at(i).index;
             newCostList.push(newTracker);
-        } else if (costNew == 0) {
+        } else {
             newTracker.cost = costs.at(i).cost;
             newTracker.index = costs.at(i).index;
             newCostList.push(newTracker);
         }
-        cout << "New List: name "<< newCostList.at(i).index << " , cost " << newCostList.at(i).cost << endl;
+//        cout << "New List: name "<< newCostList.at(i).index << " , cost " << newCostList.at(i).cost << endl;
     }
+    
     // Replace old cost list with new one
+    tracker aux;
+    costs.empty();
+    for (int i = 0; i < size; i++) {
+        costs.push(newCostList.popHead()->getData());
+    }
     
-    // current = smallest from notVisited.
+}
+
+void Dijkstra::hop() {
     
-    return current;
+    // TODO
+    // Select the next node
+    notVisited.remove(current);
+    for (int i = 0; i < size; i++) {
+        if (notVisited.has(costs.at(i).index) ) {
+            
+            // current = smallest from notVisited.
+            current = costs.at(i).index;
+        }
+    }
+    
+    if ( !notVisited.has(current) ) {
+        string s;
+        current = s;
+    }
 }
 
 void Dijkstra::print() {
@@ -225,9 +277,11 @@ void Dijkstra::print() {
 }
 
 void Dijkstra::printCosts() {
+    cout << endl;
     for (int i = 0; i<size; i++) {
         
         cout << costs.at(i).index << " : " << costs.at(i).cost << endl;
     }
+//    cout << endl;
 }
 

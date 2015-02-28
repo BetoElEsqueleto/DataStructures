@@ -140,8 +140,10 @@ public:
 
     // Remove node by pointer: Used in pop functions
     void clearSides(Node<T>* dirty) {
+        if(dirty) {
         if(dirty->getNext()) dirty->setNext(NULL);
         if(dirty->getPrev()) dirty->setPrev(NULL);
+        }
     }
 
     // To push and pop from front and back
@@ -164,8 +166,8 @@ public:
         else {
             Node<T>* popped;
             popped = tail;
-            tail = tail->getPrev();
-            tail->setNext(NULL);
+            if(tail) tail = tail->getPrev();
+            if(tail) tail->setNext(NULL);
             clearSides(popped);
             size--;
             return popped;
@@ -217,16 +219,24 @@ public:
     bool remove(T data) {
         if (isEmpty()) {
             return false;
-        }
-        else {
+        } else if (getSize() == 1) {
+            pop();
+            return true;
+        } else {
             for(current=head;current;current = current->getNext()) {
                 if(current->getData() == data) {
-                    current->getPrev()->setNext(current->getNext());
-                    current->getNext()->setPrev(current->getPrev());
-                    current->setNext(NULL);
-                    current->setPrev(NULL);
+                    if (current == head) {
+                        current->getNext()->setPrev(current->getPrev());
+                    } else if (current == tail) {
+                        current->getPrev()->setNext(current->getNext());
+                    } else {
+                        current->getPrev()->setNext(current->getNext());
+                        current->getNext()->setPrev(current->getPrev());
+                    }
+                    clearSides(current);
                     delete current;
                     current = NULL;
+                    size--;
                     return true;
                 }
             }

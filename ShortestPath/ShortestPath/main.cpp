@@ -23,7 +23,7 @@ int main(int argc, const char * argv[]) {
         string start, end;
         
         // DEBUG:
-        graph.getShortest("Mexico","Francia");
+        graph.getShortest("Francia","Suiza");
         
 //        while (!opc) {
 //            // MENU

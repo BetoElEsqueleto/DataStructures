@@ -29,6 +29,7 @@ private:
     int**        g;       // graph matrix
     tracker      t;
     List<tracker>    costs;
+    string current;
 
 public:
          Dijkstra(int argc, const char * argv[]);
@@ -37,7 +38,8 @@ public:
     void updateVertex();
     void getShortest(string start,string end);
     void getLeastHops(string start,string end);
-    string updateCostList(string current);
+    void updateCostList(void);
+    void hop();
     void print();
     void printCosts();
 };

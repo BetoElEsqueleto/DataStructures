@@ -27,7 +27,7 @@ class Node {
             data = content;
             next = prev = parent = firstSon = secondSon = NULL;
         }
-        ~Node();
+        ~Node() {};
 
         // Returning the actual content of the node.
         T getData() { return data; }
