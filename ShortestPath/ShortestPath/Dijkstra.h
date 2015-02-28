@@ -23,10 +23,10 @@ typedef struct {
 
 class Dijkstra {
 private:
-    int          size;    // number of nodes in graph
-    List<string> nodes;   // node index
-    List<string> notVisited; // Nodes that have been visited during Dijkstra's algorithm
-    int**        g;       // graph matrix
+    int          size;          // number of nodes in graph
+    List<string> nodes;         // node index
+    List<string> notVisited;    // Nodes that have been visited during Dijkstra's algorithm
+    int**        g;             // graph matrix
     tracker      t;
     List<tracker>    costs;
     string current;

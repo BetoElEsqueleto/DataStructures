@@ -156,6 +156,7 @@ void Dijkstra::getShortest(string start,string end) {
         buffer = nodes.at(i);
         aux.index = buffer;
         notVisited.push(buffer);
+        cerr << "INFO: pushed  " << buffer << " to notVisited" << endl;
         if (buffer == start) {
             aux.cost = 0;
         } else {
@@ -170,6 +171,7 @@ void Dijkstra::getShortest(string start,string end) {
     updateCostList();
     // first hop
     hop();
+    printCosts();
 
 
 //    // Remove start from visited
@@ -194,10 +196,13 @@ void Dijkstra::getShortest(string start,string end) {
     // Update costs until all network is revised, or there is no more nodes to go to.
     // TODO: come on... this loop can be better... try some other conditions...
     do {
-        updateCostList();
-        hop();
-        if (current.empty()) break;
-        printCosts();
+        // Just keep moving if we're at a node
+        if (!current.empty()) {
+            updateCostList();
+            hop();
+        }
+        
+//        printCosts();
         count++;
 
 //    } while (currentNode != end && count < size);
@@ -245,14 +250,19 @@ void Dijkstra::updateCostList(void) {
 }
 
 void Dijkstra::hop() {
-
-    // TODO
     // Select the next node
-    notVisited.remove(current);
+    if (notVisited.remove(current) ) cerr << "ERROR! NODE NOT REMOVED" << endl;
     for (int i = 0; i < size; i++) {
-        if (notVisited.has(costs.at(i).index) ) {
-
+        string aux = costs.at(i).index;
+        cout << aux << endl;
+        cout << notVisited.has(aux) << endl;
+        if ( notVisited.has(aux) ) {
+            cout << "Index of current: " << nodes.indexOf(current) << endl;
+            
+            cout << costs.at(i).cost << " " << costs.at(nodes.indexOf(current)).cost << endl;
+            
             // current = smallest from notVisited.
+            if ( costs.at(i).cost < costs.at(nodes.indexOf(current)).cost && costs.at(nodes.indexOf(current)).cost != 0)
             current = costs.at(i).index;
         }
     }
