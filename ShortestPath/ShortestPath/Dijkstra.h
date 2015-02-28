@@ -30,6 +30,7 @@ private:
     tracker      t;
     List<tracker>    costs;
     string current;
+    string start;
 
 public:
          Dijkstra(int argc, const char * argv[]);

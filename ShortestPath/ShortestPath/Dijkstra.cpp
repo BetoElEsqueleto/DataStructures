@@ -152,11 +152,12 @@ void Dijkstra::getShortest(string start,string end) {
     // INT32_MAX (infinite) for the rest
     string buffer;
     tracker aux;
+    this->start = start;
     for (int i = 0; i<size; i++) {
         buffer = nodes.at(i);
         aux.index = buffer;
         notVisited.push(buffer);
-        cerr << "INFO: pushed  " << buffer << " to notVisited" << endl;
+        // cerr << "INFO: pushed  " << buffer << " to notVisited" << endl;
         if (buffer == start) {
             aux.cost = 0;
         } else {
@@ -190,8 +191,8 @@ void Dijkstra::getShortest(string start,string end) {
 //    }
 //
 //    string currentNode = min.index;
-    
-    
+
+
     int count =0;
     // Update costs until all network is revised, or there is no more nodes to go to.
     // TODO: come on... this loop can be better... try some other conditions...
@@ -201,7 +202,7 @@ void Dijkstra::getShortest(string start,string end) {
             updateCostList();
             hop();
         }
-        
+
 //        printCosts();
         count++;
 
@@ -229,9 +230,10 @@ void Dijkstra::updateCostList(void) {
         // NEW COST: it must be the actual new cost of the node, plus the cost of the current node!!
         costNew = g[nodes.indexOf(current)][i];
         costNew += costs.at(nodes.indexOf(current)).cost;
+        
         if (costNew < costOld && costNew != 0) {
             newTracker.cost = costNew;
-            newTracker.index = costs.at(i).index;
+            newTracker.index = current;
             newCostList.push(newTracker);
         } else {
             newTracker.cost = costs.at(i).cost;
@@ -251,19 +253,26 @@ void Dijkstra::updateCostList(void) {
 
 void Dijkstra::hop() {
     // Select the next node
-    if (notVisited.remove(current) ) cerr << "FATAL! NODE NOT REMOVED" << endl;
+//    if (notVisited.remove(current) ) cerr << "FATAL! NODE NOT REMOVED" << endl;
+    notVisited.remove(current);
     for (int i = 0; i < size; i++) {
-        string aux = costs.at(i).index;
+        string aux = nodes.at(i);
         cout << aux << endl;
         cout << notVisited.has(aux) << endl;
+        if (aux == start) continue;
         if ( notVisited.has(aux) ) {
             cout << "Index of current: " << nodes.indexOf(current) << endl;
-            
-            cout << costs.at(i).cost << " " << costs.at(nodes.indexOf(current)).cost << endl;
+            cout << "Cost of current: " << costs.at(nodes.indexOf(current)).cost << endl;
+
+            cout << costs.at(i).cost << " < " << costs.at(nodes.indexOf(current)).cost << endl;
+
+            // TODO: loop gets stuck at initial node, since it's cost is 0...
+            // how to remove that node from calculations?
             
             // current = smallest from notVisited.
-            if ( costs.at(i).cost < costs.at(nodes.indexOf(current)).cost && costs.at(nodes.indexOf(current)).cost != 0)
-            current = costs.at(i).index;
+            if ( costs.at(i).cost < costs.at(nodes.indexOf(current)).cost && costs.at(i).cost != 0 && costs.at(nodes.indexOf(current)).index != start) {
+                current = costs.at(i).index;
+            }
         }
     }
 
