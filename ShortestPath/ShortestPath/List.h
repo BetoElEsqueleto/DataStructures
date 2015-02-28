@@ -227,8 +227,10 @@ public:
                 if(current->getData() == data) {
                     if (current == head) {
                         current->getNext()->setPrev(current->getPrev());
+                        head = current->getNext();
                     } else if (current == tail) {
                         current->getPrev()->setNext(current->getNext());
+                        tail = current->getPrev();
                     } else {
                         current->getPrev()->setNext(current->getNext());
                         current->getNext()->setPrev(current->getPrev());

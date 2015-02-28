@@ -251,7 +251,7 @@ void Dijkstra::updateCostList(void) {
 
 void Dijkstra::hop() {
     // Select the next node
-    if (notVisited.remove(current) ) cerr << "ERROR! NODE NOT REMOVED" << endl;
+    if (notVisited.remove(current) ) cerr << "FATAL! NODE NOT REMOVED" << endl;
     for (int i = 0; i < size; i++) {
         string aux = costs.at(i).index;
         cout << aux << endl;
