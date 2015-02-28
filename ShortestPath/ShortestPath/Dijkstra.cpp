@@ -173,7 +173,7 @@ void Dijkstra::getShortest(string start,string end) {
         updateCostList();
         // first hop
         hop();
-        printCosts();
+//        printCosts();
 
         int count =0;
         // Update costs until all network is revised, or there is no more nodes to go to.
@@ -248,7 +248,7 @@ void Dijkstra::getLeastHops(string start, string end) {
         updateHopsList();
         // first hop
         hop();
-        printCosts();
+//        printCosts();
 
         int count =0;
         // Update costs until all network is revised, or there is no more nodes to go to.
