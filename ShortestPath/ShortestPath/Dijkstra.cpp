@@ -146,57 +146,189 @@ void Dijkstra::updateVertex() {
 void Dijkstra::getShortest(string start,string end) {
 
     // Verify start and end node exist
+    if (!nodes.has(start) || !nodes.has(end)) {
+        cerr << "ERROR: The nodes you gave don't exist. Check your input file" << endl;
+    } else {
+        // Fill costs with 0 for starting node and
+        // INT32_MAX (infinite) for the rest
+        string buffer;
+        tracker aux;
+        this->start = start;
+        for (int i = 0; i<size; i++) {
+            buffer = nodes.at(i);
+            aux.index = " ";
+            notVisited.push(buffer);
+            // cerr << "INFO: pushed  " << buffer << " to notVisited" << endl;
+            if (buffer == start) {
+                aux.cost = 0;
+            } else {
+                aux.cost = INT32_MAX;
+            }
+            costs.push(aux);
+        }
 
+        // We start the algorithm in the first node
+        current = start;
+        // Update costs for first node
+        updateCostList();
+        // first hop
+        hop();
+        printCosts();
 
-    // Fill costs with 0 for starting node and
-    // INT32_MAX (infinite) for the rest
-    string buffer;
-    tracker aux;
-    this->start = start;
-    for (int i = 0; i<size; i++) {
-        buffer = nodes.at(i);
-        aux.index = " ";
-        notVisited.push(buffer);
-        // cerr << "INFO: pushed  " << buffer << " to notVisited" << endl;
-        if (buffer == start) {
-            aux.cost = 0;
+        int count =0;
+        // Update costs until all network is revised, or there is no more nodes to go to.
+        // TODO: come on... this loop can be better... try some other conditions...
+        do {
+            // Just keep moving if we're at a node
+            if (!current.empty()) {
+                updateCostList();
+                hop();
+            }
+
+            //        printCosts();
+            count++;
+
+            //    } while (currentNode != end && count < size);
+        } while (count < size);
+
+        int minCost = costs.at(nodes.indexOf(end)).cost;
+        if (minCost == INT32_MAX) {
+            cout << "Unfortunatelly there is no route to get to that node" << endl;
         } else {
-            aux.cost = INT32_MAX;
+            cout << "The shortest route is: " << endl;
+
+            // Make a list for the route, since it'll come out from back to front
+            List<string> route;
+            int routeSize = 2;
+            route.push(end);
+            string backtracker = end;
+            while (costs.at(nodes.indexOf(backtracker)).index != start) {
+                route.push(costs.at(nodes.indexOf(backtracker)).index);
+                backtracker = costs.at(nodes.indexOf(backtracker)).index;
+                routeSize++;
+            }
+            route.push(start);
+            for( int i =0 ; i< routeSize ; i++){
+                cout << route.pop()->getData() << ", ";
+            }
+            cout << endl;
+
+            cout << "And the minimal cost is: " << minCost << endl;
         }
-        costs.push(aux);
+
     }
-
-    // We start the algorithm in the first node
-    current = start;
-    // Update costs for first node
-    updateCostList();
-    // first hop
-    hop();
-    printCosts();
-
-    int count =0;
-    // Update costs until all network is revised, or there is no more nodes to go to.
-    // TODO: come on... this loop can be better... try some other conditions...
-    do {
-        // Just keep moving if we're at a node
-        if (!current.empty()) {
-            updateCostList();
-            hop();
-        }
-
-//        printCosts();
-        count++;
-
-//    } while (currentNode != end && count < size);
-    } while (count < size);
-
-    int mincost = costs.at(nodes.indexOf(end)).cost;
-
-    cout << "MINIMAL COST: " << mincost << endl;
-
 }
 
-void Dijkstra::getLeastHops(string start,string end) {
+void Dijkstra::getLeastHops(string start, string end) {
+
+    // Verify start and end node exist
+    if (!nodes.has(start) || !nodes.has(end)) {
+        cerr << "ERROR: The nodes you gave don't exist. Check your input file" << endl;
+    } else {
+        // Fill costs with 0 for starting node and
+        // INT32_MAX (infinite) for the rest
+        string buffer;
+        tracker aux;
+        this->start = start;
+        for (int i = 0; i<size; i++) {
+            buffer = nodes.at(i);
+            aux.index = " ";
+            notVisited.push(buffer);
+            if (buffer == start) {
+                aux.cost = 0;
+            } else {
+                aux.cost = INT32_MAX;
+            }
+            costs.push(aux);
+        }
+
+        // We start the algorithm in the first node
+        current = start;
+        // Update costs for first node
+        updateHopsList();
+        // first hop
+        hop();
+        printCosts();
+
+        int count =0;
+        // Update costs until all network is revised, or there is no more nodes to go to.
+        // TODO: come on... this loop can be better... try some other conditions...
+        do {
+            // Just keep moving if we're at a node
+            if (!current.empty()) {
+                updateHopsList();
+                hop();
+            }
+
+            //        printCosts();
+            count++;
+
+            //    } while (currentNode != end && count < size);
+        } while (count < size);
+
+        int minCost = costs.at(nodes.indexOf(end)).cost;
+        if (minCost == INT32_MAX) {
+            cout << "Unfortunatelly there is no route to get to that node" << endl;
+        } else {
+            cout << "The shortest route is: " << endl;
+
+            // Make a list for the route, since it'll come out from back to front
+            List<string> route;
+            int routeSize = 2;
+            route.push(end);
+            string backtracker = end;
+            while (costs.at(nodes.indexOf(backtracker)).index != start) {
+                route.push(costs.at(nodes.indexOf(backtracker)).index);
+                backtracker = costs.at(nodes.indexOf(backtracker)).index;
+                routeSize++;
+            }
+            route.push(start);
+            for( int i =0 ; i< routeSize ; i++){
+                cout << route.pop()->getData() << ", ";
+            }
+            cout << endl;
+
+            cout << "And the minimal hops are: " << minCost << endl;
+        }
+
+    }
+}
+
+void Dijkstra::updateHopsList() {
+    List<tracker> newHopsList;
+    tracker newTracker;
+    int costOld = INT32_MAX;
+    int hopNew = 0;
+    // Generate new costs list to replace current cost list
+    for (int i = 0; i < size; i++) {
+        costOld = costs.at(i).cost;
+        // NEW COST: it must be the actual new cost of the node, plus the cost of the current node!!
+        if (g[nodes.indexOf(current)][i]) {
+            hopNew = 1;
+        }
+        if(hopNew != 0) hopNew += costs.at(nodes.indexOf(current)).cost;
+
+        if (hopNew < costOld && hopNew != 0) { // if new cost is less than the old one and not zero
+            newTracker.cost = hopNew;
+            newTracker.index = current;
+            newHopsList.push(newTracker);
+        } else if(hopNew == INT32_MAX) {        // if new cost = infinite
+            newTracker.cost = costs.at(i).cost;
+            newTracker.index = "";
+        } else {                                 // if ne cost is bigger, or zero, take the old one
+            newTracker.cost = costs.at(i).cost;
+            newTracker.index = costs.at(i).index;
+            newHopsList.push(newTracker);
+        }
+    }
+
+    // Replace old cost list with new one
+    tracker aux;
+    costs.empty();
+    for (int i = 0; i < size; i++) {
+        costs.push(newHopsList.popHead()->getData());
+    }
+
 
 }
 
@@ -211,7 +343,7 @@ void Dijkstra::updateCostList(void) {
         // NEW COST: it must be the actual new cost of the node, plus the cost of the current node!!
         costNew = g[nodes.indexOf(current)][i];
         if(costNew != 0) costNew += costs.at(nodes.indexOf(current)).cost;
-        
+
         if (costNew < costOld && costNew != 0) { // if new cost is less than the old one and not zero
             newTracker.cost = costNew;
             newTracker.index = current;
@@ -237,21 +369,13 @@ void Dijkstra::updateCostList(void) {
 
 void Dijkstra::hop() {
     // Select the next node
-//    if (notVisited.remove(current) ) cerr << "FATAL! NODE NOT REMOVED" << endl;
     notVisited.remove(current);
     for (int i = 0; i < size; i++) {
         string aux = nodes.at(i);
         if (aux == start) continue;
-        
+
         if ( notVisited.has(aux) ) {
-//            cout << "Aux: " << aux << endl;
-//            cout << "Index of aux: " << nodes.indexOf(aux) << endl;
-//            cout << "Cost of aux: " << costs.at(nodes.indexOf(aux)).cost << endl;
-            
-            // loop gets stuck at initial node, since it's cost is the lowest: 0
-            // how to remove that node from calculations?
-        
-            
+
             // If the node has been visited, change current to a random son of it.
             if (!notVisited.has(current)) {
                 for (int i = 0; i < size ; i++) {
@@ -262,7 +386,7 @@ void Dijkstra::hop() {
                     }
                 }
             }
-            
+
             // current = smallest from notVisited.
             bool first  = costs.at(i).cost != 0;
             bool second = notVisited.has(current);
@@ -278,11 +402,7 @@ void Dijkstra::hop() {
             }
         }
     }
-    printCosts();
-//    if ( !notVisited.has(current) ) {
-//        string s;
-//        current = s;
-//    }
+//    printCosts();
 }
 
 void Dijkstra::print() {
@@ -304,8 +424,7 @@ void Dijkstra::printCosts() {
     }
     cout << endl;
     for (int i = 0; i<size; i++) {
-        // cout << costs.at(i).index << " : " << costs.at(i).cost << endl;
-        // cout << costs.at(i).index << " : " << costs.at(i).cost;
+
         if (costs.at(i).cost == INT32_MAX) {
             cout << "Inf\t";
         } else {
@@ -317,5 +436,4 @@ void Dijkstra::printCosts() {
         cout << costs.at(i).index << " ";
     }
     cout << endl;
-//    cout << endl;
 }

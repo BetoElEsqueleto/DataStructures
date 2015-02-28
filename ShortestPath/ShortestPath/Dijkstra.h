@@ -40,6 +40,7 @@ public:
     void getShortest(string start,string end);
     void getLeastHops(string start,string end);
     void updateCostList(void);
+    void updateHopsList(void);
     void hop();
     void print();
     void printCosts();
