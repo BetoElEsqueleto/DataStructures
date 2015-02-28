@@ -155,7 +155,7 @@ void Dijkstra::getShortest(string start,string end) {
     this->start = start;
     for (int i = 0; i<size; i++) {
         buffer = nodes.at(i);
-        aux.index = buffer;
+        aux.index = " ";
         notVisited.push(buffer);
         // cerr << "INFO: pushed  " << buffer << " to notVisited" << endl;
         if (buffer == start) {
@@ -229,13 +229,16 @@ void Dijkstra::updateCostList(void) {
         costOld = costs.at(i).cost;
         // NEW COST: it must be the actual new cost of the node, plus the cost of the current node!!
         costNew = g[nodes.indexOf(current)][i];
-        costNew += costs.at(nodes.indexOf(current)).cost;
+        if(costNew != 0) costNew += costs.at(nodes.indexOf(current)).cost;
         
-        if (costNew < costOld && costNew != 0) {
+        if (costNew < costOld && costNew != 0) { // if new cost is less than the old one and not zero
             newTracker.cost = costNew;
             newTracker.index = current;
             newCostList.push(newTracker);
-        } else {
+        } else if(costNew == INT32_MAX) {        // if new cost = infinite
+            newTracker.cost = costs.at(i).cost;
+            newTracker.index = "";
+        } else {                                 // if ne cost is bigger, or zero, take the old one
             newTracker.cost = costs.at(i).cost;
             newTracker.index = costs.at(i).index;
             newCostList.push(newTracker);
@@ -257,29 +260,36 @@ void Dijkstra::hop() {
     notVisited.remove(current);
     for (int i = 0; i < size; i++) {
         string aux = nodes.at(i);
-        cout << aux << endl;
-        cout << notVisited.has(aux) << endl;
         if (aux == start) continue;
+        
         if ( notVisited.has(aux) ) {
-            cout << "Index of current: " << nodes.indexOf(current) << endl;
-            cout << "Cost of current: " << costs.at(nodes.indexOf(current)).cost << endl;
-
-            cout << costs.at(i).cost << " < " << costs.at(nodes.indexOf(current)).cost << endl;
-
-            // TODO: loop gets stuck at initial node, since it's cost is 0...
-            // how to remove that node from calculations?
+//            cout << "Aux: " << aux << endl;
+//            cout << "Index of aux: " << nodes.indexOf(aux) << endl;
+//            cout << "Cost of aux: " << costs.at(nodes.indexOf(aux)).cost << endl;
             
+            // loop gets stuck at initial node, since it's cost is the lowest: 0
+            // how to remove that node from calculations?
+
+
             // current = smallest from notVisited.
-            if ( costs.at(i).cost < costs.at(nodes.indexOf(current)).cost && costs.at(i).cost != 0 && costs.at(nodes.indexOf(current)).index != start) {
-                current = costs.at(i).index;
+            bool first = costs.at(nodes.indexOf(current)).cost == 0;
+            bool second = costs.at(i).cost != 0;
+            if (first && second){
+                for (int j = 0 ; j < size; j++) {
+                    bool third = costs.at(i).cost < costs.at(j).cost;
+                    if (third) {
+                        current = nodes.at(i);
+                    }
+                }
+
             }
         }
     }
-
-    if ( !notVisited.has(current) ) {
-        string s;
-        current = s;
-    }
+    printCosts();
+//    if ( !notVisited.has(current) ) {
+//        string s;
+//        current = s;
+//    }
 }
 
 void Dijkstra::print() {
@@ -296,9 +306,22 @@ void Dijkstra::print() {
 
 void Dijkstra::printCosts() {
     cout << endl;
+//    for (int i = 0; i<size; i++) {
+//        cout << nodes.at(i) << " ";
+//    }
     for (int i = 0; i<size; i++) {
-        cout << costs.at(i).index << " : " << costs.at(i).cost << endl;
+        // cout << costs.at(i).index << " : " << costs.at(i).cost << endl;
         // cout << costs.at(i).index << " : " << costs.at(i).cost;
+        if (costs.at(i).cost == INT32_MAX) {
+            cout << "Inf\t";
+        } else {
+            cout << costs.at(i).cost << "\t\t";
+        }
     }
+//    cout << endl;
+//    for (int i = 0; i<size; i++) {
+//        cout << costs.at(i).index << " ";
+//    }
+    cout << endl;
 //    cout << endl;
 }
