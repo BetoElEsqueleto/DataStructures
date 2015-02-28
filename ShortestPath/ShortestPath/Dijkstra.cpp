@@ -174,25 +174,6 @@ void Dijkstra::getShortest(string start,string end) {
     hop();
     printCosts();
 
-
-//    // Remove start from visited
-//    notVisited.remove(start);
-//
-//    // GET current node
-//    tracker min, firstAux;
-//    min.cost = INT32_MAX;
-//    for (int i = 0; i < size; i++) {
-//        firstAux.index = nodes.at(i);
-//        firstAux.cost = g[nodes.indexOf(start)][i];
-//        if (firstAux.cost < min.cost && firstAux.cost!=0) {
-//            min.index = firstAux.index;
-//            min.cost = firstAux.cost;
-//        }
-//    }
-//
-//    string currentNode = min.index;
-
-
     int count =0;
     // Update costs until all network is revised, or there is no more nodes to go to.
     // TODO: come on... this loop can be better... try some other conditions...
@@ -269,15 +250,27 @@ void Dijkstra::hop() {
             
             // loop gets stuck at initial node, since it's cost is the lowest: 0
             // how to remove that node from calculations?
-
-
+        
+            
+            // If the node has been visited, change current to a random son of it.
+            if (!notVisited.has(current)) {
+                for (int i = 0; i < size ; i++) {
+                    int aux = g[nodes.indexOf(current)][i];
+                    if (aux!=0 && notVisited.has(nodes.at(i))) {
+                        current = nodes.at(i);
+                        break;
+                    }
+                }
+            }
+            
             // current = smallest from notVisited.
-            bool first = costs.at(nodes.indexOf(current)).cost == 0;
-            bool second = costs.at(i).cost != 0;
+            bool first  = costs.at(i).cost != 0;
+            bool second = notVisited.has(current);
             if (first && second){
                 for (int j = 0 ; j < size; j++) {
                     bool third = costs.at(i).cost < costs.at(j).cost;
-                    if (third) {
+                    bool fourth = costs.at(i).cost != 0;
+                    if (third && fourth) {
                         current = nodes.at(i);
                     }
                 }
@@ -306,9 +299,10 @@ void Dijkstra::print() {
 
 void Dijkstra::printCosts() {
     cout << endl;
-//    for (int i = 0; i<size; i++) {
-//        cout << nodes.at(i) << " ";
-//    }
+    for (int i = 0; i<size; i++) {
+        cout << nodes.at(i) << " ";
+    }
+    cout << endl;
     for (int i = 0; i<size; i++) {
         // cout << costs.at(i).index << " : " << costs.at(i).cost << endl;
         // cout << costs.at(i).index << " : " << costs.at(i).cost;
@@ -318,10 +312,10 @@ void Dijkstra::printCosts() {
             cout << costs.at(i).cost << "\t\t";
         }
     }
-//    cout << endl;
-//    for (int i = 0; i<size; i++) {
-//        cout << costs.at(i).index << " ";
-//    }
+    cout << endl;
+    for (int i = 0; i<size; i++) {
+        cout << costs.at(i).index << " ";
+    }
     cout << endl;
 //    cout << endl;
 }
