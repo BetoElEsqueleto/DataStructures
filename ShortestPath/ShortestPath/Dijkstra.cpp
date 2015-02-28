@@ -12,7 +12,6 @@ Dijkstra::Dijkstra(int argc, const char * argv[]) {
     const char* path;
     path = argv[1];
     size = 0;
-//    cerr << path << endl;
 
     FILE * fp;
     // YES! open a file ;D
@@ -24,7 +23,6 @@ Dijkstra::Dijkstra(int argc, const char * argv[]) {
             count ++;
             if(!nodes.has(buffer) && (count%3)){
                 // Just push everything to the index of nodes
-//                cerr << buffer << std::endl;
                 nodes.push(buffer);
             }
 
@@ -51,15 +49,15 @@ Dijkstra::Dijkstra(int argc, const char * argv[]) {
             count ++;
             switch (count%3) {
                 case 1:
-//                    cerr << "i node: " << buffer << std::endl;
+                    // cerr << "i node: " << buffer << std::endl;
                     i = nodes.indexOf(buffer);
                     break;
                 case 2:
-//                    cerr << "j node: " << buffer << std::endl;
+                    // cerr << "j node: " << buffer << std::endl;
                     j = nodes.indexOf(buffer);
                     break;
                 case 0:
-//                    cerr << "vertex weight: " << buffer << std::endl;
+                    // cerr << "vertex weight: " << buffer << std::endl;
                     g[i][j] = atoi(buffer);
                     break;
                 default:
@@ -68,7 +66,6 @@ Dijkstra::Dijkstra(int argc, const char * argv[]) {
         }
         fclose (fp);
     }
-//    print();
 }
 
 Dijkstra::~Dijkstra() {
@@ -147,10 +144,10 @@ void Dijkstra::updateVertex() {
 }
 
 void Dijkstra::getShortest(string start,string end) {
-    
+
     // Verify start and end node exist
-    
-    
+
+
     // Fill costs with 0 for starting node and
     // INT32_MAX (infinite) for the rest
     string buffer;
@@ -165,15 +162,13 @@ void Dijkstra::getShortest(string start,string end) {
             aux.cost = INT32_MAX;
         }
         costs.push(aux);
-//        cout << aux.index << " : " << aux.cost << endl;
     }
-    
+
     // We start the algorithm in the first node
     current = start;
     // Update costs for first node
     updateCostList();
-//    printCosts();
-    
+
     // Remove start from visited
     notVisited.remove(start);
 
@@ -188,11 +183,11 @@ void Dijkstra::getShortest(string start,string end) {
             min.cost = firstAux.cost;
         }
     }
-    
+
     string currentNode = min.index;
     int count =0;
-    
-    
+
+
     // Update costs until all network is revised, or there is no more nodes to go to.
     do {
         updateCostList();
@@ -202,11 +197,11 @@ void Dijkstra::getShortest(string start,string end) {
 
 //    } while (currentNode != end && count < size);
     } while (count < size);
-    
+
     int mincost = costs.at(nodes.indexOf(end)).cost;
-    
+
     cout << "MINIMAL COST: " << mincost << endl;
-    
+
 }
 
 void Dijkstra::getLeastHops(string start,string end) {
@@ -221,9 +216,9 @@ void Dijkstra::updateCostList(void) {
     // Generate new costs list to replace current cost list
     for (int i = 0; i < size; i++) {
         costOld = costs.at(i).cost;
+        // NEW COST: it must be the actual new cost of the node, plus the cost of the current node!!
         costNew = g[nodes.indexOf(current)][i];
-//        cout << "Current cost: " << costOld << endl;
-//        cout << "New cost: " << costNew << endl;
+        costNew += costs.at(nodes.indexOf(current)).cost;
         if (costNew < costOld && costNew != 0) {
             newTracker.cost = costNew;
             newTracker.index = costs.at(i).index;
@@ -233,31 +228,30 @@ void Dijkstra::updateCostList(void) {
             newTracker.index = costs.at(i).index;
             newCostList.push(newTracker);
         }
-//        cout << "New List: name "<< newCostList.at(i).index << " , cost " << newCostList.at(i).cost << endl;
     }
-    
+
     // Replace old cost list with new one
     tracker aux;
     costs.empty();
     for (int i = 0; i < size; i++) {
         costs.push(newCostList.popHead()->getData());
     }
-    
+
 }
 
 void Dijkstra::hop() {
-    
+
     // TODO
     // Select the next node
     notVisited.remove(current);
     for (int i = 0; i < size; i++) {
         if (notVisited.has(costs.at(i).index) ) {
-            
+
             // current = smallest from notVisited.
             current = costs.at(i).index;
         }
     }
-    
+
     if ( !notVisited.has(current) ) {
         string s;
         current = s;
@@ -279,9 +273,8 @@ void Dijkstra::print() {
 void Dijkstra::printCosts() {
     cout << endl;
     for (int i = 0; i<size; i++) {
-        
         cout << costs.at(i).index << " : " << costs.at(i).cost << endl;
+        // cout << costs.at(i).index << " : " << costs.at(i).cost;
     }
 //    cout << endl;
 }
-
