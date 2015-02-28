@@ -168,30 +168,35 @@ void Dijkstra::getShortest(string start,string end) {
     current = start;
     // Update costs for first node
     updateCostList();
+    // first hop
+    hop();
 
-    // Remove start from visited
-    notVisited.remove(start);
 
-    // GET current node
-    tracker min, firstAux;
-    min.cost = INT32_MAX;
-    for (int i = 0; i < size; i++) {
-        firstAux.index = nodes.at(i);
-        firstAux.cost = g[nodes.indexOf(start)][i];
-        if (firstAux.cost < min.cost && firstAux.cost!=0) {
-            min.index = firstAux.index;
-            min.cost = firstAux.cost;
-        }
-    }
-
-    string currentNode = min.index;
+//    // Remove start from visited
+//    notVisited.remove(start);
+//
+//    // GET current node
+//    tracker min, firstAux;
+//    min.cost = INT32_MAX;
+//    for (int i = 0; i < size; i++) {
+//        firstAux.index = nodes.at(i);
+//        firstAux.cost = g[nodes.indexOf(start)][i];
+//        if (firstAux.cost < min.cost && firstAux.cost!=0) {
+//            min.index = firstAux.index;
+//            min.cost = firstAux.cost;
+//        }
+//    }
+//
+//    string currentNode = min.index;
+    
+    
     int count =0;
-
-
     // Update costs until all network is revised, or there is no more nodes to go to.
+    // TODO: come on... this loop can be better... try some other conditions...
     do {
         updateCostList();
-        if (currentNode.empty()) break;
+        hop();
+        if (current.empty()) break;
         printCosts();
         count++;
 

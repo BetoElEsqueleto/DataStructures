@@ -1,6 +1,6 @@
 #ifndef LIST_H
 #define LIST_H
-#include <node.h>
+#include "Node.h"
 /*
 ## List class
 With the actual structure of a doubly linked list.
@@ -32,7 +32,7 @@ public:
         head->setPrev(NULL);
         head->setNext(NULL);
     }
-    virtual ~List () {
+    ~List () {
         // If list is not empty, pop it out.
         if(!isEmpty()) {
             while (head!=NULL) {
@@ -98,6 +98,7 @@ public:
         Node<T>* newNodeP;
         newNodeP = new Node<T>(data);
         // TODO check for errors in memory asignment
+        if (newNodeP == NULL) std::cerr << "Error creating new node"<< std::endl;
         if (isEmpty()) {
             // If inserting first node:
             head = newNodeP;
@@ -139,8 +140,10 @@ public:
 
     // Remove node by pointer: Used in pop functions
     void clearSides(Node<T>* dirty) {
+        if(dirty) {
         if(dirty->getNext()) dirty->setNext(NULL);
         if(dirty->getPrev()) dirty->setPrev(NULL);
+        }
     }
 
     // To push and pop from front and back
@@ -151,12 +154,22 @@ public:
         if (isEmpty()) {
              return NULL;
         }
+        else if (getSize() == 1) {
+            Node<T>* popped;
+            popped = tail;
+            clearSides(tail);
+            clearSides(popped);
+            size--;
+            head = tail = NULL;
+            return popped;
+        }
         else {
             Node<T>* popped;
             popped = tail;
-            tail = tail->getPrev();
-            tail->setNext(NULL);
+            if(tail) tail = tail->getPrev();
+            if(tail) tail->setNext(NULL);
             clearSides(popped);
+            size--;
             return popped;
         }
     }
@@ -166,6 +179,14 @@ public:
     Node<T>* popHead() {
         if (isEmpty()) {
             return NULL;
+        } else if (getSize() == 1) {
+            Node<T>* popped;
+            popped = head;
+            clearSides(head);
+            clearSides(popped);
+            size--;
+            head = tail = NULL;
+            return popped;
         }
         else {
             Node<T>* popped;
@@ -173,6 +194,7 @@ public:
             head = head->getNext();
             head->setPrev(NULL);
             clearSides(popped);
+            size--;
             return popped;
         }
     }
@@ -197,20 +219,70 @@ public:
     bool remove(T data) {
         if (isEmpty()) {
             return false;
-        }
-        else {
-            for(current=head;current;current = current->next()) {
-                if(current->data == data) {
-                    current->getPrev()->setNext(current->getNext());
-                    current->getNext()->setPrev(current->getPrev());
-                    current->setNext(NULL);
-                    current->setPrev(NULL);
+        } else if (getSize() == 1) {
+            pop();
+            return true;
+        } else {
+            for(current=head;current;current = current->getNext()) {
+                if(current->getData() == data) {
+                    if (current == head) {
+                        current->getNext()->setPrev(current->getPrev());
+                    } else if (current == tail) {
+                        current->getPrev()->setNext(current->getNext());
+                    } else {
+                        current->getPrev()->setNext(current->getNext());
+                        current->getNext()->setPrev(current->getPrev());
+                    }
+                    clearSides(current);
                     delete current;
                     current = NULL;
+                    size--;
                     return true;
                 }
             }
             return false;
+        }
+    }
+    
+    int indexOf(T data) {
+        if (isEmpty()) {
+            return -1;
+        }
+        else {
+            int index = 0;
+            for(current=head;current;current = current->getNext()) {
+                if(current->getData() == data) {
+                    return index;
+                }
+                index++;
+            }
+            return -1;
+        }
+    }
+    // ERROR: should return by reference; since it's a template we do not know what the return value should be in case there isn't any.
+    T at(int index) {
+        if (isEmpty()) {
+            T aux;
+            return aux;
+        }
+        else {
+            int i = 0;
+            for(current=head;current;current = current->getNext()) {
+                if(i == index) {
+                    return current->getData();
+                }
+                i++;
+            }
+            T aux;
+            return aux;
+        }
+    }
+    
+    void empty() {
+        if(!isEmpty()) {
+            while (head!=NULL) {
+                pop();
+            }
         }
     }
 
