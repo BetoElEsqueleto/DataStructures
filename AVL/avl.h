@@ -23,15 +23,15 @@ public:
     ~AVL();
 
     // TODO: this next section has to be modified
-    void put(T data);
-    void put(Node<T>* newNode);
-    Node<T>* get(); // WHAT?
-    void remove();
-    void seek();
+    // These are the basic functions for a BBT
+    void insert(T data);
+    Node<T>* get(T data); // WHAT?
+    void remove(T data);
+    void seek(T data);
     void sweep();
 
     // getter functions:
-    Node<T>* getRoot(); // { return root; }
+    Node<T>* getRoot();
     int getLeft();
     int getRight();
     int getBalance();
@@ -42,6 +42,6 @@ public:
     void setRight(int newRight);
     void setBalance(int newBalance);
 
-    bool isEmpty(); // { return (root==NULL); }
+    bool isEmpty();
 };
 #endif
