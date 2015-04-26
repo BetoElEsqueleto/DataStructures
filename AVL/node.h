@@ -3,9 +3,10 @@
 /*
 ## Node class for AVL trees
 Contains the following atributes:
-1. left      -> Next node in list
-2. right      -> Previous node in list
-3. parent    -> Parent node in binary tree
+1. left      -> Pointer to Left side son.
+2. right     -> Pointer to Right side son.
+3. parent    -> Pointer to Parent node in binary tree.
+4. data      -> Data saved in tree.
 */
 
 template <class T>
