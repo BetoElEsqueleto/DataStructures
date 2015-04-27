@@ -29,6 +29,7 @@ public:
     Node<int>* seek(int data, Node<int>* startingNode);
     void sweep();
     int countNodes(Node<int>* a);
+    bool isLeaf(Node<int>* a);
 
     // getter functions:
     Node<int>* getRoot();

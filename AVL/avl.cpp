@@ -45,6 +45,10 @@ int AVL::countNodes(Node<int>* a) {
         return countNodes(a->right) + countNodes(a->left) + 1;
     }
 }
+bool AVL::isLeaf(Node<int>* a) {
+    if(a->left == NULL && a->right == NULL) return true;
+    return false;
+}
 
 // getter functions:
 Node<int>* AVL::getRoot() {
