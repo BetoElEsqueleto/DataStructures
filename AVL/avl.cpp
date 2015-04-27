@@ -1,24 +1,30 @@
 #include "avl.h"
 
 AVL::AVL() {
-
+    // Initializing tree with null values.
+    root = NULL;
+    left = right = 0;
+    balance = 0;
 }
 AVL::~AVL() {
-
+    while (!isEmpty()) {
+        remove();
+    }
+    root = NULL;
 }
 
 // These are the basic functions for a BBT
-void AVL::insert(T data) {
+void AVL::insert(int data) {
 
 }
 // TODO: change this function
-Node<T>* AVL::get(T data) {
+Node<int>* AVL::get(int data) {
 
 }
-void AVL::remove(T data) {
+void AVL::remove(int data) {
 
 }
-void AVL::seek(T data) {
+void AVL::seek(int data) {
 
 }
 void AVL::sweep() {
@@ -26,7 +32,7 @@ void AVL::sweep() {
 }
 
 // getter functions:
-Node<T>* AVL::getRoot() {
+Node<int>* AVL::getRoot() {
     return root;
 }
 int AVL::getLeft() {
@@ -40,7 +46,7 @@ int AVL::getBalance() {
 }
 
 // setter functions:
-void AVL::setRoot(Node<T>* newRoot) {
+void AVL::setRoot(Node<int>* newRoot) {
 
 }
 void AVL::setLeft(int newLeft) {

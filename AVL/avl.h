@@ -11,10 +11,9 @@ Contains the following atributes:
 4. balance -> Difference between left and right side height.
 */
 
-template <class T>
 class List {
 private:
-    Node<T> *root;
+    Node<int> *root;
     int left;
     int right;
     int balance;
@@ -24,20 +23,20 @@ public:
 
     // TODO: this next section has to be modified
     // These are the basic functions for a BBT
-    void insert(T data);
-    Node<T>* get(T data); // WHAT?
-    void remove(T data);
-    void seek(T data);
+    void insert(int data);
+    Node<int>* get(int data); // WHAT?
+    void remove(int data);
+    void seek(int data);
     void sweep();
 
     // getter functions:
-    Node<T>* getRoot();
+    Node<int>* getRoot();
     int getLeft();
     int getRight();
     int getBalance();
 
     // setter functions:
-    void setRoot(Node<T>* newRoot);
+    void setRoot(Node<int>* newRoot);
     void setLeft(int newLeft);
     void setRight(int newRight);
     void setBalance(int newBalance);
