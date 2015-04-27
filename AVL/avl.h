@@ -28,6 +28,7 @@ public:
     void remove(int data);
     Node<int>* seek(int data, Node<int>* startingNode);
     void sweep();
+    int countNodes(Node<int>* a);
 
     // getter functions:
     Node<int>* getRoot();

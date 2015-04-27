@@ -35,9 +35,15 @@ Node<int>* AVL::seek(int data, Node<int>* startingNode) {
     return NULL;
 }
 void AVL::sweep(Node<int>* a) {
-    if (a == NULL) return;
-    sweep(a->left);
-    sweep(a->right);
+    if (a != NULL) {
+        sweep(a->left);
+        sweep(a->right);
+    }
+}
+int AVL::countNodes(Node<int>* a) {
+    if (a == NULL) {
+        return countNodes(a->right) + countNodes(a->left) + 1;
+    }
 }
 
 // getter functions:
