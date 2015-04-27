@@ -3,12 +3,12 @@
 AVL::AVL() {
     // Initializing tree with null values.
     root = NULL;
-    left = right = 0;
+    leftWeight = rightWeight = 0;
     balance = 0;
 }
 AVL::~AVL() {
     while (!isEmpty()) {
-        remove();
+        // TODO: delete all
     }
     root = NULL;
 }
@@ -17,28 +17,37 @@ AVL::~AVL() {
 void AVL::insert(int data) {
 
 }
-// TODO: change this function
-Node<int>* AVL::get(int data) {
-
+bool AVL::has(int data, Node<int>* startingNode) {
+    if (isEmpty) return false;
+    if (startingNode->data == data) return true;
+    if (startingNode->left != NULL) has(data, startingNode->left);
+    if (startingNode->right != NULL) has(data, startingNode->right);
+    return false;
 }
 void AVL::remove(int data) {
 
 }
-void AVL::seek(int data) {
-
+Node<int>* AVL::seek(int data, Node<int>* startingNode) {
+    if (isEmpty) return NULL;
+    if (startingNode->data == data) return startingNode;
+    has(data, startingNode->left);
+    has(data, startingNode->right);
+    return NULL;
 }
-void AVL::sweep() {
-
+void AVL::sweep(Node<int>* a) {
+    if (a == NULL) return;
+    sweep(a->left);
+    sweep(a->right);
 }
 
 // getter functions:
 Node<int>* AVL::getRoot() {
     return root;
 }
-int AVL::getLeft() {
+int AVL::getLeftWeight() {
 
 }
-int AVL::getRight() {
+int AVL::getRightWeight() {
 
 }
 int AVL::getBalance() {
@@ -49,10 +58,10 @@ int AVL::getBalance() {
 void AVL::setRoot(Node<int>* newRoot) {
 
 }
-void AVL::setLeft(int newLeft) {
+void AVL::setLeftWeight(int newLeftWeight) {
 
 }
-void AVL::setRight(int newRight) {
+void AVL::setRightWeight(int newRightWeight) {
 
 }
 void AVL::setBalance(int newBalance) {
@@ -62,3 +71,6 @@ void AVL::setBalance(int newBalance) {
 bool AVL::isEmpty(); {
     return (root==NULL);
 }
+
+
+// height = max(leftWeight, rightWeight)+1;
