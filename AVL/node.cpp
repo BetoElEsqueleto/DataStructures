@@ -5,6 +5,7 @@ Node::Node(T content, Node<T>* init) {
     data = content;
     left = right = NULL;
     parent = init;
+    height = -1;
 }
 
 Node::~Node() {

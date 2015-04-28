@@ -1,6 +1,6 @@
 #include "avl.h"
 
-// TODO: insert, remove, setRoot, setBalance
+// TODO: insert, remove, setRoot
 
 AVL::AVL() {
     // Initializing tree with null values.
@@ -62,12 +62,14 @@ int AVL::getBalance() {
     return balance;
 }
 int AVL::getHeight(Node<int>* a) {
-    return max(getHeight(a->left), getHeight(a->right)) + 1;
+    if (a->getHeight == -1) a->setHeight(max(getHeight(a->left), getHeight(a->right)) + 1);
+    return a->getHeight();
 }
 
 // setter functions:
 void AVL::setBalance() {
     balance = getHeight(root->right) - getHeight(root->left);
+    // if (balance > 1 || balance < -1) rebalanceTree();
 }
 void AVL::setTreeHeight() {
     height = getHeight(root);
