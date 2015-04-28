@@ -1,7 +1,7 @@
 #include "avl.h"
 
-// TODO: insert, remove, setRoot, generalBalance
-// rotations simple and double
+// TODO: insert, remove, setRoot for double rotations
+// double rotations
 
 AVL::AVL() {
     // Initializing tree with null values.
