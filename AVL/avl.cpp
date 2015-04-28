@@ -123,3 +123,8 @@ void AVL::setTreeBalance() {
 void AVL::setTreeHeight() {
     height = getHeight(root);
 }
+
+// output
+void AVL::print() {
+    
+}

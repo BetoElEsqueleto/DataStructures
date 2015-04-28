@@ -1,11 +1,17 @@
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>
 #include "avl.h"
 
 int main(int argc, char const *argv[]) {
     AVL myTree();
-    myTree.insert(5);
-    myTree.insert(4);
-    myTree.insert(6);
-    myTree.insert(2);
-    
+
+    srand(time(NULL));
+    int s = 0;
+    for (size_t i = 0; i < 20; i++) {
+        s = rand()%1000;
+        myTree.insert(s);
+        std::cout << "Inserting: " << s << std::endl;
+    }
+    myTree.print();
     return 0;
 }

@@ -49,5 +49,7 @@ public:
     void       setTreeHeight();
     void       setLocalBalance(Node<int>* a);
 
+    // output
+    void       print();
 };
 #endif
