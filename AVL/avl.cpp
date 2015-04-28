@@ -83,19 +83,40 @@ int AVL::getLocalBalance(Node<int>* a) {
 void AVL::simpleRightRotation(Node<int>* a) {
     Node<int>* P = a;
     Node<int>* Q = a->getRight();
-// // Step 1
-//     Q->getRight()->setParent(P);
-//     P->setLeft(Q->getRight());
-// // Step 2
-//     Q->setRight(P);
-//     Q->setParent(P->getParent); // For Step 3
-//     P->setParent(Q);
-// // Step 3
-
-
+// Step 1
+    Q->getRight()->setParent(P);
+    P->setLeft(Q->getRight());
+// Step 2
+    Q->setRight(P);
+    Q->setParent(P->getParent); // For Step 3
+    P->setParent(Q);
+// Step 3
+    if (Q->getParent() == NULL){
+        root = Q;
+    } else if (Q->getParent()->getRight() == P) {
+        Q->getParent()->setRight(Q);
+    } else (Q->getParent()->getLeft() == P) {
+        Q->getParent()->setLeft(Q);
+    }
 }
 void AVL::simpleLeftRotation(Node<int>* a) {
-
+    Node<int>* P = a;
+    Node<int>* Q = a->getLeft();
+    // Step 1
+    Q->getLeft()->setParent(P);
+    P->setRight(Q->getLeft());
+    // Step 2
+    Q->setLeft(P);
+    Q->setParent(P->getParent); // For Step 3
+    P->setParent(Q);
+    // Step 3
+    if (Q->getParent() == NULL){
+        root = Q;
+    } else if (Q->getParent()->getRight() == P) {
+        Q->getParent()->setRight(Q);
+    } else (Q->getParent()->getLeft() == P) {
+        Q->getParent()->setLeft(Q);
+    }
 }
 void AVL::doubleRightRotation(Node<int>* a) {
 
@@ -126,5 +147,5 @@ void AVL::setTreeHeight() {
 
 // output
 void AVL::print() {
-    
+
 }
