@@ -62,10 +62,20 @@ void AVL::setLocalBalance(Node<int>* a) {
     // Maybe would be better to send it to every node like the height
     int localBalance = getLocalBalance(a);
     // TODO: missing conditionals for double rotations
-    if (localBalance < -1 && ) simpleRightRotation(a);
-    if (localBalance >  1) simpleLeftRotation(a);
-    if (localBalance < -1 && ) doubleRightRotation(a);
-    if (localBalance >  1) doubleLeftRotation(a);
+    if (localBalance < -1){
+        if (getLocalBalance(a->left) == -1) {
+            simpleRightRotation(a);
+        } else if (getLocalBalance(a->left) == 1) {
+            doubleRightRotation(a);
+        }
+    }
+    if (localBalance >  1) {
+        if (getLocalBalance(a->right) == 1) {
+            simpleLeftRotation(a);
+        } else if (getLocalBalance(a->right) == -1) {
+            doubleLeftRotation(a);
+        }
+    }
 }
 int AVL::getLocalBalance(Node<int>* a) {
     return getHeight(a->right) - getHeight(a->left);
