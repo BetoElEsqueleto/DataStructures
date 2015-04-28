@@ -17,6 +17,7 @@ private:
     int leftWeight;
     int rightWeight;
     int balance;
+    int height;
 public:
     AVL();
     ~AVL();
@@ -36,12 +37,14 @@ public:
     int getLeftWeight();
     int getRightWeight();
     int getBalance();
+    int getHeight();
 
     // setter functions:
     void setRoot(Node<int>* newRoot);
     void setLeftWeight(int newLeftWeight);
     void setRightWeight(int newRightWeight);
     void setBalance(int newBalance);
+    void setHeight();
 
     bool isEmpty();
 };

@@ -63,6 +63,10 @@ int AVL::getRightWeight() {
 int AVL::getBalance() {
 
 }
+int AVL::getHeight(Node<int>* a) {
+    setHeight(a);
+    return height;
+}
 
 // setter functions:
 void AVL::setRoot(Node<int>* newRoot) {
@@ -77,10 +81,10 @@ void AVL::setRightWeight(int newRightWeight) {
 void AVL::setBalance(int newBalance) {
 
 }
+void AVL::setHeight(Node<int>* a) {
+    height = max(getHeight(a->left), getHeight(a->right)) + 1;
+}
 
 bool AVL::isEmpty(); {
     return (root==NULL);
 }
-
-
-// height = max(leftWeight, rightWeight)+1;
