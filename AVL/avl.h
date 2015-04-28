@@ -22,8 +22,8 @@ public:
 
     // These are the basic functions for a BBT
     void       insert(int data);
-    bool       has(int data, Node<int>* startingNode);
     void       remove(int data);
+    bool       has(int data, Node<int>* startingNode);
     Node<int>* seek(int data, Node<int>* startingNode);
     void       sweep();
     int        countNodes(Node<int>* a);

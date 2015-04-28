@@ -2,6 +2,7 @@
 
 // TODO: insert, remove, setRoot for double rotations
 // double rotations
+// Optimize has function
 
 AVL::AVL() {
     // Initializing tree with null values.
@@ -20,21 +21,39 @@ AVL::~AVL() {
 void AVL::insert(int data) {
 
 }
+void AVL::remove(int data) {
+
+}
 bool AVL::has(int data, Node<int>* startingNode) {
     if (isEmpty) return false;
     if (startingNode->getData() == data) return true;
-    if (startingNode->getLeft() != NULL) has(data, startingNode->getLeft());
-    if (startingNode->getRight() != NULL) has(data, startingNode->getRight());
-    return false;
-}
-void AVL::remove(int data) {
+    if (startingNode->getLeft()) { // if the actual node has a left child, verify if it is less than the data
+        if (data < startingNode->getData()) {
+            has(data, startingNode->getLeft());
+        } else { return false; } // if the left node of the actual node isn't  TODO
 
+    }
+    if (startingNode->getRight()) {
+        if (data > startingNode->getData()) {
+            has(data, startingNode->getRight());
+        } else { return false; }
+    }
+    return false;
 }
 Node<int>* AVL::seek(int data, Node<int>* startingNode) {
     if (isEmpty) return NULL;
     if (startingNode->getData() == data) return startingNode;
-    has(data, startingNode->getLeft());
-    has(data, startingNode->getRight());
+    if (startingNode->getLeft()) { // if the actual node has a left child, verify if it is less than the data
+        if (data < startingNode->getData()) {
+            seek(data, startingNode->getLeft());
+        } else { return NULL; } // if the left node of the actual node isn't  TODO
+
+    }
+    if (startingNode->getRight()) {
+        if (data > startingNode->getData()) {
+            seek(data, startingNode->getRight());
+        } else { return NULL; }
+    }
     return NULL;
 }
 void AVL::sweep(Node<int>* a) {
