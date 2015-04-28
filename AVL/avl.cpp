@@ -51,38 +51,25 @@ bool AVL::isLeaf(Node<int>* a) {
 }
 
 // getter functions:
+// TODO: if root shifts
 Node<int>* AVL::getRoot() {
     return root;
 }
-int AVL::getLeftWeight() {
-
-}
-int AVL::getRightWeight() {
-
-}
 int AVL::getBalance() {
+    // setBalance();
+    return balance;
 
 }
 int AVL::getHeight(Node<int>* a) {
-    setHeight(a);
-    return height;
+    return max(getHeight(a->left), getHeight(a->right)) + 1;
 }
 
 // setter functions:
-void AVL::setRoot(Node<int>* newRoot) {
-
-}
-void AVL::setLeftWeight(int newLeftWeight) {
-
-}
-void AVL::setRightWeight(int newRightWeight) {
-
-}
 void AVL::setBalance(int newBalance) {
 
 }
-void AVL::setHeight(Node<int>* a) {
-    height = max(getHeight(a->left), getHeight(a->right)) + 1;
+void AVL::setTreeHeight() {
+    height = getHeight(root);
 }
 
 bool AVL::isEmpty(); {

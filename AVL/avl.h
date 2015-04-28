@@ -14,8 +14,6 @@ Contains the following atributes:
 class List {
 private:
     Node<int> *root;
-    int leftWeight;
-    int rightWeight;
     int balance;
     int height;
 public:
@@ -34,17 +32,12 @@ public:
 
     // getter functions:
     Node<int>* getRoot();
-    int getLeftWeight();
-    int getRightWeight();
     int getBalance();
     int getHeight();
 
     // setter functions:
-    void setRoot(Node<int>* newRoot);
-    void setLeftWeight(int newLeftWeight);
-    void setRightWeight(int newRightWeight);
     void setBalance(int newBalance);
-    void setHeight();
+    void setTreeHeight();
 
     bool isEmpty();
 };

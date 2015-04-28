@@ -16,6 +16,7 @@ class Node {
         Node<T>* left;
         Node<T>* right;
         Node<T>* parent;
+        int height;
 
     public:
         Node(T content, Node<T>* init);
@@ -31,10 +32,12 @@ class Node {
         Node<T>* getParent();
         Node<T>* getFirstSon();
         Node<T>* getSecondSon();
+        int getHeight();
         void setNext(Node<T>* ptr);
         void setPrev(Node<T>* ptr);
         void setParent(Node<T>* ptr);
         void setFirstSon(Node<T>* ptr);
         void setSecondSon(Node<T>* ptr);
+        void setHeight(int h);
 };
 #endif // NODE_H
