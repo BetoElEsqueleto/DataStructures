@@ -32,12 +32,17 @@ public:
 
 
     // Balance methods
-
+    void       setLocalBalance(Node<int>* a);
+    int        getLocalBalance(Node<int>* a);
+    void       simpleRightRotation(Node<int>* a);
+    void       simpleLeftRotation(Node<int>* a);
+    void       doubleRightRotation(Node<int>* a);
+    void       doubleLeftRotation(Node<int>* a);
 
     // getter functions:
     Node<int>* getRoot();
-    int        getBalance();
-    int        getHeight();
+    int        getTreeBalance();
+    int        getHeight(Node<int>* a);
 
     // setter functions:
     void       setTreeBalance();

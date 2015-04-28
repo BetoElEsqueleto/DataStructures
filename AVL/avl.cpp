@@ -1,6 +1,7 @@
 #include "avl.h"
 
-// TODO: insert, remove, setRoot
+// TODO: insert, remove, setRoot, generalBalance
+// rotations simple and double
 
 AVL::AVL() {
     // Initializing tree with null values.
@@ -57,21 +58,37 @@ bool AVL::isEmpty(); {
 }
 
 // Balance methods
-void AVL::setLocalBalance() {
+void AVL::setLocalBalance(Node<int>* a) {
     // Maybe would be better to send it to every node like the height
-    balance = getHeight(root->right) - getHeight(root->left);
-    // if (balance > 1 || balance < -1) setLocalBalance(root);
-    // TODO: Balance must be [-1,0,1]
+    int localBalance = getLocalBalance(a);
+    // TODO: missing conditionals for double rotations
+    if (localBalance < -1 && ) simpleRightRotation(a);
+    if (localBalance >  1) simpleLeftRotation(a);
+    if (localBalance < -1 && ) doubleRightRotation(a);
+    if (localBalance >  1) doubleLeftRotation(a);
+}
+int AVL::getLocalBalance(Node<int>* a) {
+    return getHeight(a->right) - getHeight(a->left);
+}
+void AVL::simpleRightRotation(Node<int>* a) {
+
+}
+void AVL::simpleLeftRotation(Node<int>* a) {
+
+}
+void AVL::doubleRightRotation(Node<int>* a) {
+
+}
+void AVL::doubleLeftRotation(Node<int>* a) {
+
 }
 
 // getter functions:
-// TODO: set root if root shifts
 Node<int>* AVL::getRoot() {
     return root;
 }
-int AVL::getBalance() {
-    setTreeBalance();
-    return balance;
+int AVL::getTreeBalance() {
+    return setTreeBalance();
 }
 int AVL::getHeight(Node<int>* a) {
     if (a->getHeight == -1) a->setHeight(max(getHeight(a->left), getHeight(a->right)) + 1);
@@ -80,7 +97,7 @@ int AVL::getHeight(Node<int>* a) {
 
 // setter functions:
 void AVL::setTreeBalance() {
-    balance = getHeight(root->right) - getHeight(root->left);
+    balance = getLocalBalance(root);
 }
 void AVL::setTreeHeight() {
     height = getHeight(root);
