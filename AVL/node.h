@@ -27,17 +27,14 @@ class Node {
 
         // For every elemet of the node structure
         // there is a method to set and get it.
-        Node<T>* getNext();
-        Node<T>* getPrev();
+        Node<T>* getLeft();
+        Node<T>* getRight();
         Node<T>* getParent();
-        Node<T>* getFirstSon();
-        Node<T>* getSecondSon();
         int getHeight();
-        void setNext(Node<T>* ptr);
-        void setPrev(Node<T>* ptr);
+        
+        void setLeft(Node<T>* ptr);
+        void setRight(Node<T>* ptr);
         void setParent(Node<T>* ptr);
-        void setFirstSon(Node<T>* ptr);
-        void setSecondSon(Node<T>* ptr);
         void setHeight(int h);
 };
 #endif // NODE_H

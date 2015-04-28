@@ -22,9 +22,9 @@ void AVL::insert(int data) {
 }
 bool AVL::has(int data, Node<int>* startingNode) {
     if (isEmpty) return false;
-    if (startingNode->data == data) return true;
-    if (startingNode->left != NULL) has(data, startingNode->left);
-    if (startingNode->right != NULL) has(data, startingNode->right);
+    if (startingNode->getData() == data) return true;
+    if (startingNode->getLeft() != NULL) has(data, startingNode->getLeft());
+    if (startingNode->getRight() != NULL) has(data, startingNode->getRight());
     return false;
 }
 void AVL::remove(int data) {
@@ -32,25 +32,25 @@ void AVL::remove(int data) {
 }
 Node<int>* AVL::seek(int data, Node<int>* startingNode) {
     if (isEmpty) return NULL;
-    if (startingNode->data == data) return startingNode;
-    has(data, startingNode->left);
-    has(data, startingNode->right);
+    if (startingNode->getData() == data) return startingNode;
+    has(data, startingNode->getLeft());
+    has(data, startingNode->getRight());
     return NULL;
 }
 void AVL::sweep(Node<int>* a) {
     if (a != NULL) {
-        sweep(a->left);
-        sweep(a->right);
+        sweep(a->getLeft());
+        sweep(a->getRight());
     }
 }
 int AVL::countNodes(Node<int>* a) {
     if (a != NULL) {
-        return countNodes(a->right) + countNodes(a->left) + 1;
+        return countNodes(a->getRight()) + countNodes(a->getLeft()) + 1;
     }
     return 0;
 }
 bool AVL::isLeaf(Node<int>* a) {
-    if(a->left == NULL && a->right == NULL) return true;
+    if(a->getLeft() == NULL && a->getRight() == NULL) return true;
     return false;
 }
 bool AVL::isEmpty(); {
@@ -63,24 +63,35 @@ void AVL::setLocalBalance(Node<int>* a) {
     int localBalance = getLocalBalance(a);
     // TODO: missing conditionals for double rotations
     if (localBalance < -1){
-        if (getLocalBalance(a->left) == -1) {
+        if (getLocalBalance(a->getLeft()) == -1) {
             simpleRightRotation(a);
-        } else if (getLocalBalance(a->left) == 1) {
+        } else if (getLocalBalance(a->getLeft()) == 1) {
             doubleRightRotation(a);
         }
     }
     if (localBalance >  1) {
-        if (getLocalBalance(a->right) == 1) {
+        if (getLocalBalance(a->getRight()) == 1) {
             simpleLeftRotation(a);
-        } else if (getLocalBalance(a->right) == -1) {
+        } else if (getLocalBalance(a->getRight()) == -1) {
             doubleLeftRotation(a);
         }
     }
 }
 int AVL::getLocalBalance(Node<int>* a) {
-    return getHeight(a->right) - getHeight(a->left);
+    return getHeight(a->getRight()) - getHeight(a->getLeft());
 }
 void AVL::simpleRightRotation(Node<int>* a) {
+    Node<int>* P = a;
+    Node<int>* Q = a->getRight();
+// // Step 1
+//     Q->getRight()->setParent(P);
+//     P->setLeft(Q->getRight());
+// // Step 2
+//     Q->setRight(P);
+//     Q->setParent(P->getParent); // For Step 3
+//     P->setParent(Q);
+// // Step 3
+
 
 }
 void AVL::simpleLeftRotation(Node<int>* a) {
@@ -101,7 +112,7 @@ int AVL::getTreeBalance() {
     return setTreeBalance();
 }
 int AVL::getHeight(Node<int>* a) {
-    if (a->getHeight == -1) a->setHeight(max(getHeight(a->left), getHeight(a->right)) + 1);
+    if (a->getHeight == -1) a->setHeight(max(getHeight(a->getLeft()), getHeight(a->getRight())) + 1);
     return a->getHeight();
 }
 

@@ -12,7 +12,7 @@ Node::~Node() {
     parent = left = right = NULL;
 }
 
-T Node::getDate() { return data; }
+T Node::getData() { return data; }
 
 Node<T>* Node::getLeft() { return left; }
 Node<T>* Node::getRight() { return right; }
