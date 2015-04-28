@@ -1,5 +1,7 @@
 #include "avl.h"
 
+// TODO: insert, remove, setRoot, setBalance
+
 AVL::AVL() {
     // Initializing tree with null values.
     root = NULL;
@@ -51,22 +53,21 @@ bool AVL::isLeaf(Node<int>* a) {
 }
 
 // getter functions:
-// TODO: if root shifts
+// TODO: set root if root shifts
 Node<int>* AVL::getRoot() {
     return root;
 }
 int AVL::getBalance() {
     // setBalance();
     return balance;
-
 }
 int AVL::getHeight(Node<int>* a) {
     return max(getHeight(a->left), getHeight(a->right)) + 1;
 }
 
 // setter functions:
-void AVL::setBalance(int newBalance) {
-
+void AVL::setBalance() {
+    balance = getHeight(root->right) - getHeight(root->left);
 }
 void AVL::setTreeHeight() {
     height = getHeight(root);
@@ -75,3 +76,4 @@ void AVL::setTreeHeight() {
 bool AVL::isEmpty(); {
     return (root==NULL);
 }
+// BALANCE must be [-1,0,1]

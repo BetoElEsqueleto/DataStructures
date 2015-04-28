@@ -36,7 +36,7 @@ public:
     int getHeight();
 
     // setter functions:
-    void setBalance(int newBalance);
+    void setBalance();
     void setTreeHeight();
 
     bool isEmpty();
