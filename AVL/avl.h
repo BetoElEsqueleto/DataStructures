@@ -20,25 +20,29 @@ public:
     AVL();
     ~AVL();
 
-    // TODO: this next section has to be modified
     // These are the basic functions for a BBT
-    void insert(int data);
-    bool has(int data, Node<int>* startingNode);
-    void remove(int data);
+    void       insert(int data);
+    bool       has(int data, Node<int>* startingNode);
+    void       remove(int data);
     Node<int>* seek(int data, Node<int>* startingNode);
-    void sweep();
-    int countNodes(Node<int>* a);
-    bool isLeaf(Node<int>* a);
+    void       sweep();
+    int        countNodes(Node<int>* a);
+    bool       isLeaf(Node<int>* a);
+    bool       isEmpty();
+
+
+    // Balance methods
+
 
     // getter functions:
     Node<int>* getRoot();
-    int getBalance();
-    int getHeight();
+    int        getBalance();
+    int        getHeight();
 
     // setter functions:
-    void setBalance();
-    void setTreeHeight();
+    void       setTreeBalance();
+    void       setTreeHeight();
+    void       setLocalBalance(Node<int>* a);
 
-    bool isEmpty();
 };
 #endif

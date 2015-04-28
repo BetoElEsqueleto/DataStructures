@@ -43,13 +43,25 @@ void AVL::sweep(Node<int>* a) {
     }
 }
 int AVL::countNodes(Node<int>* a) {
-    if (a == NULL) {
+    if (a != NULL) {
         return countNodes(a->right) + countNodes(a->left) + 1;
     }
+    return 0;
 }
 bool AVL::isLeaf(Node<int>* a) {
     if(a->left == NULL && a->right == NULL) return true;
     return false;
+}
+bool AVL::isEmpty(); {
+    return (root==NULL);
+}
+
+// Balance methods
+void AVL::setLocalBalance() {
+    // Maybe would be better to send it to every node like the height
+    balance = getHeight(root->right) - getHeight(root->left);
+    // if (balance > 1 || balance < -1) setLocalBalance(root);
+    // TODO: Balance must be [-1,0,1]
 }
 
 // getter functions:
@@ -58,7 +70,7 @@ Node<int>* AVL::getRoot() {
     return root;
 }
 int AVL::getBalance() {
-    // setBalance();
+    setTreeBalance();
     return balance;
 }
 int AVL::getHeight(Node<int>* a) {
@@ -67,15 +79,9 @@ int AVL::getHeight(Node<int>* a) {
 }
 
 // setter functions:
-void AVL::setBalance() {
+void AVL::setTreeBalance() {
     balance = getHeight(root->right) - getHeight(root->left);
-    // if (balance > 1 || balance < -1) rebalanceTree();
 }
 void AVL::setTreeHeight() {
     height = getHeight(root);
 }
-
-bool AVL::isEmpty(); {
-    return (root==NULL);
-}
-// BALANCE must be [-1,0,1]
