@@ -1,5 +1,6 @@
 #ifndef NODE_H
 #define NODE_H
+#include <iostream>
 /*
 ## Node class for AVL trees
 Contains the following atributes:
@@ -18,48 +19,31 @@ class Node {
         int height;
 
     public:
-        Node(T content, Node<T>* init);
-        ~Node();
+        Node(T content, Node<T>* init) {
+            // Initializing node with null values.
+            data = content;
+            left = right = NULL;
+            parent = init;
+            height = -1;
+        }
+        ~Node() {
+            parent = left = right = NULL;
+        }
 
         // Returning the actual content of the node.
-        T getData();
+        T        getData() { return data; }
 
         // For every elemet of the node structure
         // there is a method to set and get it.
-        Node<T>* getLeft();
-        Node<T>* getRight();
-        Node<T>* getParent();
-        int getHeight();
+        Node<T>* getLeft() { return left; }
+        Node<T>* getRight() { return right; }
+        Node<T>* getParent() { return parent; }
+        int      getHeight() { return height; }
 
-        void setLeft(Node<T>* ptr);
-        void setRight(Node<T>* ptr);
-        void setParent(Node<T>* ptr);
-        void setHeight(int h);
+        void     setLeft(Node<T>* ptr) { left = ptr; }
+        void     setRight(Node<T>* ptr) { right = ptr; }
+        void     setParent(Node<T>* ptr) { parent = ptr; }
+        void     setHeight(int h) { height = h; }
+
 };
 #endif // NODE_H
-
-
-Node::Node(T content, Node<T>* init) {
-    // Initializing node with null values.
-    data = content;
-    left = right = NULL;
-    parent = init;
-    height = -1;
-}
-
-Node::~Node() {
-    parent = left = right = NULL;
-}
-
-T        Node::getData() { return data; }
-
-Node<T>* Node::getLeft() { return left; }
-Node<T>* Node::getRight() { return right; }
-Node<T>* Node::getParent() { return parent; }
-int      Node::getHeight() { return height }
-
-
-void     Node::setLeft(Node<T>* ptr) { left = ptr; }
-void     Node::setRight(Node<T>* ptr) { right = ptr; }
-void     Node::setParent(Node<T>* ptr) { parent = ptr; }
-void     Node::setHeight(int h) { height = h }

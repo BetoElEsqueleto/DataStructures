@@ -81,3 +81,4 @@
 **/*.xcuserstate
 **/*.xcodeproj
 test/build*
+**/*.dSYM
