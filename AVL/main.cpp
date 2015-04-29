@@ -3,7 +3,7 @@
 #include "avl.h"
 
 int main(int argc, char const *argv[]) {
-    AVL myTree();
+    AVL myTree;
 
     srand(time(NULL));
     int s = 0;

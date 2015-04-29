@@ -12,7 +12,7 @@ Contains the following atributes:
 4. balance -> Difference between left and right side height.
 */
 
-class List {
+class AVL {
 private:
     Node<int> *root;
     int balance;
@@ -48,7 +48,6 @@ public:
     // setter functions:
     void       setTreeBalance();
     void       setTreeHeight();
-    void       setLocalBalance(Node<int>* a);
 
     // output
     void       print();
