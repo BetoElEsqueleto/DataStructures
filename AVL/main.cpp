@@ -12,6 +12,7 @@ int main(int argc, char const *argv[]) {
         myTree.insert(s);
         std::cout << "Inserting: " << s << std::endl;
     }
-    myTree.print();
+    std::cout << "Printing: " << std::endl;
+    myTree.print(myTree.getRoot());
     return 0;
 }

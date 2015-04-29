@@ -26,7 +26,7 @@ public:
     void       remove(int data);
     bool       has(int data, Node<int>* startingNode);
     Node<int>* seek(int data, Node<int>* startingNode);
-    void       sweep();
+    void       sweep(Node<int>* a);
     int        countNodes(Node<int>* a);
     bool       isLeaf(Node<int>* a);
     bool       isEmpty();
@@ -50,6 +50,6 @@ public:
     void       setTreeHeight();
 
     // output
-    void       print();
+    void       print(Node<int>* a);
 };
 #endif

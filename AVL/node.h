@@ -8,7 +8,6 @@ Contains the following atributes:
 3. parent    -> Pointer to Parent node in binary tree.
 4. data      -> Data saved in tree.
 */
-
 template <class T>
 class Node {
     private:
@@ -31,7 +30,7 @@ class Node {
         Node<T>* getRight();
         Node<T>* getParent();
         int getHeight();
-        
+
         void setLeft(Node<T>* ptr);
         void setRight(Node<T>* ptr);
         void setParent(Node<T>* ptr);

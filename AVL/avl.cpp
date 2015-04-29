@@ -6,7 +6,6 @@
 AVL::AVL() {
     // Initializing tree with null values.
     root = NULL;
-    leftWeight = rightWeight = 0;
     balance = 0;
 }
 AVL::~AVL() {
@@ -18,14 +17,14 @@ AVL::~AVL() {
 
 // These are the basic functions for a BBT
 void AVL::insert(int data) {
-    if(!has(data)){
+    if(!has(data, root)){
         // sweep down the tree until finding the right spot
         // insert as son
         // rebalance
     }
 }
 void AVL::remove(int data) {
-    Node<int>* r = seek(data);
+    Node<int>* r = seek(data, root);
     if (r) {
         // chek which son is bigger than father
         // that son takes it's place
@@ -36,7 +35,7 @@ bool AVL::has(int data, Node<int>* startingNode) {
     return seek(data, startingNode) != NULL;
 }
 Node<int>* AVL::seek(int data, Node<int>* startingNode) {
-    if (isEmpty) return NULL;
+    if (isEmpty()) return NULL;
     if (startingNode->getData() == data) return startingNode;
     if (data < startingNode->getData()) {
         if (startingNode->getLeft()) seek(data, startingNode->getLeft());
@@ -62,7 +61,7 @@ bool AVL::isLeaf(Node<int>* a) {
     if(a->getLeft() == NULL && a->getRight() == NULL) return true;
     return false;
 }
-bool AVL::isEmpty(); {
+bool AVL::isEmpty() {
     return (root==NULL);
 }
 
@@ -97,14 +96,14 @@ void AVL::simpleRightRotation(Node<int>* a) {
     P->setLeft(Q->getRight());
 // Step 2
     Q->setRight(P);
-    Q->setParent(P->getParent); // For Step 3
+    Q->setParent(P->getParent()); // For Step 3
     P->setParent(Q);
 // Step 3
     if (Q->getParent() == NULL){
         root = Q;
     } else if (Q->getParent()->getRight() == P) {
         Q->getParent()->setRight(Q);
-    } else (Q->getParent()->getLeft() == P) {
+    } else {
         Q->getParent()->setLeft(Q);
     }
 }
@@ -116,14 +115,14 @@ void AVL::simpleLeftRotation(Node<int>* a) {
     P->setRight(Q->getLeft());
     // Step 2
     Q->setLeft(P);
-    Q->setParent(P->getParent); // For Step 3
+    Q->setParent(P->getParent()); // For Step 3
     P->setParent(Q);
     // Step 3
     if (Q->getParent() == NULL){
         root = Q;
     } else if (Q->getParent()->getRight() == P) {
         Q->getParent()->setRight(Q);
-    } else (Q->getParent()->getLeft() == P) {
+    } else {
         Q->getParent()->setLeft(Q);
     }
 }
@@ -139,10 +138,10 @@ Node<int>* AVL::getRoot() {
     return root;
 }
 int AVL::getTreeBalance() {
-    return setTreeBalance();
+    return balance;
 }
 int AVL::getHeight(Node<int>* a) {
-    if (a->getHeight == -1) a->setHeight(max(getHeight(a->getLeft()), getHeight(a->getRight())) + 1);
+    if (a->getHeight() == -1) a->setHeight(std::max(getHeight(a->getLeft()), getHeight(a->getRight())) + 1);
     return a->getHeight();
 }
 
@@ -155,10 +154,10 @@ void AVL::setTreeHeight() {
 }
 
 // output
-void AVL::print() {
+void AVL::print(Node<int>* a) {
     if (a != NULL) {
         std::cout << "" << a->getData() << "" << std::endl;
-        sweep(a->getLeft());
-        sweep(a->getRight());
+        print(a->getLeft());
+        print(a->getRight());
     }
 }

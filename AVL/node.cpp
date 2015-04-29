@@ -1,4 +1,4 @@
-#include "node.h"
+#include "Node.h"
 
 Node::Node(T content, Node<T>* init) {
     // Initializing node with null values.
