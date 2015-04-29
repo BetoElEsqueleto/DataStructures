@@ -1,6 +1,8 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>
 #include "avl.h"
+#include "Node.h"
+
 
 int main(int argc, char const *argv[]) {
     AVL myTree;

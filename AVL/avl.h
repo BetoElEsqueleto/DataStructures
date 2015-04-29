@@ -1,6 +1,6 @@
 #ifndef LIST_H
 #define LIST_H
-#include "node.h"
+#include "Node.h"
 #include <iostream>
 /*
 ## AVL class
@@ -11,7 +11,6 @@ Contains the following atributes:
 3. rightWeight   -> Height of right side sub-tree.
 4. balance -> Difference between left and right side height.
 */
-
 class AVL {
 private:
     Node<int> *root;
