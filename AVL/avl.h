@@ -1,8 +1,9 @@
 #ifndef LIST_H
 #define LIST_H
 #include "node.h"
+#include <iostream>
 /*
-## AVL clas
+## AVL class
 Adelson-Velskii & Landis Tree
 Contains the following atributes:
 1. root    -> Pointer to root node.

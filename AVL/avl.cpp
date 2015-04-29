@@ -2,7 +2,6 @@
 
 // TODO: insert, remove, setRoot for double rotations
 // double rotations
-// Optimize has function
 
 AVL::AVL() {
     // Initializing tree with null values.
@@ -19,40 +18,31 @@ AVL::~AVL() {
 
 // These are the basic functions for a BBT
 void AVL::insert(int data) {
-
+    if(!has(data)){
+        // sweep down the tree until finding the right spot
+        // insert as son
+        // rebalance
+    }
 }
 void AVL::remove(int data) {
+    Node<int>* r = seek(data);
+    if (r) {
+        // chek which son is bigger than father
+        // that son takes it's place
+    }
 
 }
 bool AVL::has(int data, Node<int>* startingNode) {
-    if (isEmpty) return false;
-    if (startingNode->getData() == data) return true;
-    if (startingNode->getLeft()) { // if the actual node has a left child, verify if it is less than the data
-        if (data < startingNode->getData()) {
-            has(data, startingNode->getLeft());
-        } else { return false; } // if the left node of the actual node isn't  TODO
-
-    }
-    if (startingNode->getRight()) {
-        if (data > startingNode->getData()) {
-            has(data, startingNode->getRight());
-        } else { return false; }
-    }
-    return false;
+    return seek(data, startingNode) != NULL;
 }
 Node<int>* AVL::seek(int data, Node<int>* startingNode) {
     if (isEmpty) return NULL;
     if (startingNode->getData() == data) return startingNode;
-    if (startingNode->getLeft()) { // if the actual node has a left child, verify if it is less than the data
-        if (data < startingNode->getData()) {
-            seek(data, startingNode->getLeft());
-        } else { return NULL; } // if the left node of the actual node isn't  TODO
-
+    if (data < startingNode->getData()) {
+        if (startingNode->getLeft()) seek(data, startingNode->getLeft());
     }
-    if (startingNode->getRight()) {
-        if (data > startingNode->getData()) {
-            seek(data, startingNode->getRight());
-        } else { return NULL; }
+    else {
+        if (startingNode->getRight()) seek(data, startingNode->getRight());
     }
     return NULL;
 }
@@ -166,5 +156,9 @@ void AVL::setTreeHeight() {
 
 // output
 void AVL::print() {
-
+    if (a != NULL) {
+        std::cout << "" << a->getData() << "" << std::endl;
+        sweep(a->getLeft());
+        sweep(a->getRight());
+    }
 }
