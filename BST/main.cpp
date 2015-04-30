@@ -1,11 +1,13 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>
-#include "avl.h"
+// #include "avl.h"
+#include "rbt.h"
 #include "Node.h"
 
 
 int main(int argc, char const *argv[]) {
-    AVL myTree;
+    // AVL myTree;
+    RBT myTree;
 
     srand(time(NULL));
     int s = 0;

@@ -74,6 +74,10 @@ int RBT::getHeight(Node<int>* a) {
     if (a->getHeight() == -1) a->setHeight(std::max(getHeight(a->getLeft()), getHeight(a->getRight())) + 1);
     return a->getHeight();
 }
+int RBT::getTreeHeight(Node<int>* a) {
+    height = getHeight(root);
+    return height;
+}
 
 // output
 void RBT::print(Node<int>* a) {
