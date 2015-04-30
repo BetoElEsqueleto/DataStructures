@@ -63,92 +63,17 @@ bool BST::isEmpty() {
     return (root==NULL);
 }
 
-// Balance methods
-void BST::setLocalBalance(Node<int>* a) {
-    // Maybe would be better to send it to every node like the height
-    int localBalance = getLocalBalance(a);
-    // TODO: missing conditionals for double rotations
-    if (localBalance < -1){
-        if (getLocalBalance(a->getLeft()) == -1) {
-            simpleRightRotation(a);
-        } else if (getLocalBalance(a->getLeft()) == 1) {
-            doubleRightRotation(a);
-        }
-    }
-    if (localBalance >  1) {
-        if (getLocalBalance(a->getRight()) == 1) {
-            simpleLeftRotation(a);
-        } else if (getLocalBalance(a->getRight()) == -1) {
-            doubleLeftRotation(a);
-        }
-    }
-}
-int BST::getLocalBalance(Node<int>* a) {
-    return getHeight(a->getRight()) - getHeight(a->getLeft());
-}
-void BST::simpleRightRotation(Node<int>* a) {
-    Node<int>* P = a;
-    Node<int>* Q = a->getRight();
-// Step 1
-    Q->getRight()->setParent(P);
-    P->setLeft(Q->getRight());
-// Step 2
-    Q->setRight(P);
-    Q->setParent(P->getParent()); // For Step 3
-    P->setParent(Q);
-// Step 3
-    if (Q->getParent() == NULL){
-        root = Q;
-    } else if (Q->getParent()->getRight() == P) {
-        Q->getParent()->setRight(Q);
-    } else {
-        Q->getParent()->setLeft(Q);
-    }
-}
-void BST::simpleLeftRotation(Node<int>* a) {
-    Node<int>* P = a;
-    Node<int>* Q = a->getLeft();
-    // Step 1
-    Q->getLeft()->setParent(P);
-    P->setRight(Q->getLeft());
-    // Step 2
-    Q->setLeft(P);
-    Q->setParent(P->getParent()); // For Step 3
-    P->setParent(Q);
-    // Step 3
-    if (Q->getParent() == NULL){
-        root = Q;
-    } else if (Q->getParent()->getRight() == P) {
-        Q->getParent()->setRight(Q);
-    } else {
-        Q->getParent()->setLeft(Q);
-    }
-}
-void BST::doubleRightRotation(Node<int>* a) {
-
-}
-void BST::doubleLeftRotation(Node<int>* a) {
-
-}
-
 // getter functions:
 Node<int>* BST::getRoot() {
     return root;
-}
-int BST::getTreeBalance() {
-    return balance;
 }
 int BST::getHeight(Node<int>* a) {
     if (a->getHeight() == -1) a->setHeight(std::max(getHeight(a->getLeft()), getHeight(a->getRight())) + 1);
     return a->getHeight();
 }
-
-// setter functions:
-void BST::setTreeBalance() {
-    balance = getLocalBalance(root);
-}
-void BST::setTreeHeight() {
+int BST::getTreeHeight(Node<int>* a) {
     height = getHeight(root);
+    return height;
 }
 
 // output

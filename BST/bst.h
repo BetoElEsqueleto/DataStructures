@@ -32,7 +32,7 @@ public:
     // getter functions:
     Node<int>* getRoot();
     int        getHeight(Node<int>* a);
-    int        getTreeHeight(Node<int>* a)
+    int        getTreeHeight(Node<int>* a);
 
     // output
     void       print(Node<int>* a);
