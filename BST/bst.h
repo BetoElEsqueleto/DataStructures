@@ -10,7 +10,7 @@ Contains the following atributes:
 1. height  -> Height of the root node = Tree depth: longest path from the root to a leaf.
 
 */
-using namespace bst;
+using namespace bstn;
 class BST {
 private:
     Node<int> *root;
@@ -33,6 +33,9 @@ public:
     Node<int>* getRoot();
     int        getHeight(Node<int>* a);
     int        getTreeHeight(Node<int>* a);
+
+    // insert helpers
+    Node<int>* findLeaf(int data, Node<int>* a);
 
     // output
     void       print(Node<int>* a);

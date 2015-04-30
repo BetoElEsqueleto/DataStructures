@@ -48,11 +48,12 @@ namespace bstn {
             Node<T>* getLeft() { return left; }
             Node<T>* getRight() { return right; }
             Node<T>* getParent() { return parent; }
+            int      getHeight() { return height; }
 
             void     setLeft(Node<T>* ptr) { left = ptr; }
             void     setRight(Node<T>* ptr) { right = ptr; }
             void     setParent(Node<T>* ptr) { parent = ptr; }
-
+            void     setHeight(int h) { height = h; }
 
     };
 }

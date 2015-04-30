@@ -18,8 +18,17 @@ BST::~BST() {
 void BST::insert(int data) {
     if(!has(data, root)){
         // sweep down the tree until finding the right spot
-        // insert as son
-        // rebalance
+        Node<int>* p = findLeaf(data, root);
+        if(!p) {
+            root = new Node<int>(data, NULL);
+        } else {
+            Node<int>* n = new Node<int>(data, p);
+            if (p->getData() > data) {
+                p->setLeft(n);
+            } else {
+                p->setRight(n);
+            }
+        }
     }
 }
 void BST::remove(Node<int>* r) {
@@ -74,6 +83,16 @@ int BST::getHeight(Node<int>* a) {
 int BST::getTreeHeight(Node<int>* a) {
     height = getHeight(root);
     return height;
+}
+
+// insert helpers
+Node<int>* findLeaf(int data, Node<int>* a) {
+    if(!a->getData()) return a;
+    if(a->getData() > data) {
+        return findLeaf(data, a->getLeft());
+    } else {
+        return findLeaf(data, a->getRight());
+    }
 }
 
 // output

@@ -16,12 +16,21 @@ RBT::~RBT() {
 
 // These are the basic functions for a BBT
 void RBT::insert(int data) {
-    // TODO
     if(!has(data, root)){
         // sweep down the tree until finding the right spot
-        // insert as son
-        // rebalance
+        Node<int>* p = findLeaf(data, root);
+        if(!p) {
+            root = new Node<int>(data, NULL);
+        } else {
+            Node<int>* n = new Node<int>(data, p);
+            if (p->getData() > data) {
+                p->setLeft(n);
+            } else {
+                p->setRight(n);
+            }
+        }
     }
+    // rebalance
 }
 void RBT::remove(Node<int>* r) {
     if (r) {
@@ -75,6 +84,16 @@ int RBT::getHeight(Node<int>* a) {
 int RBT::getTreeHeight(Node<int>* a) {
     height = getHeight(root);
     return height;
+}
+
+// insert helpers
+Node<int>* findLeaf(int data, Node<int>* a) {
+    if(!a->getData()) return a;
+    if(a->getData() > data) {
+        return findLeaf(data, a->getLeft());
+    } else {
+        return findLeaf(data, a->getRight());
+    }
 }
 
 // output
