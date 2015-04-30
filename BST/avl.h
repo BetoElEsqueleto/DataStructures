@@ -7,11 +7,10 @@
 Adelson-Velskii & Landis Tree
 Contains the following atributes:
 1. root    -> Pointer to root node.
-2. leftWeight    -> Height of left side sub-tree.
-3. rightWeight   -> Height of right side sub-tree.
-4. balance -> Difference between left and right side height.
+2. balance -> Difference between left and right side height.
+3. height  -> Height of the root node = Tree depth: longest path from the root to a leaf.
 */
-using namespace bst;
+using namespace avln;
 class AVL {
 private:
     Node<int> *root;
