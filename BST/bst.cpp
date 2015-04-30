@@ -1,16 +1,15 @@
 #include "bst.h"
 
-// TODO: insert, remove, setRoot for double rotations
-// double rotations
+// TODO: insert, remove
 
 BST::BST() {
     // Initializing tree with null values.
     root = NULL;
-    balance = 0;
+    height = 0;
 }
 BST::~BST() {
     while (!isEmpty()) {
-        // TODO: delete all
+        remove(root);
     }
     root = NULL;
 }
@@ -23,8 +22,7 @@ void BST::insert(int data) {
         // rebalance
     }
 }
-void BST::remove(int data) {
-    Node<int>* r = seek(data, root);
+void BST::remove(Node<int>* r) {
     if (r) {
         // chek which son is bigger than father
         // that son takes it's place

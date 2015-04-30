@@ -14,7 +14,6 @@ using namespace rbtn;
 class RBT {
 private:
     Node<int> *root;
-    int balance;
     int height;
 public:
     RBT();
@@ -22,7 +21,7 @@ public:
 
     // These are the basic functions for a BST
     void       insert(int data);
-    void       remove(int data);
+    void       remove(Node<int>* r);
     bool       has(int data, Node<int>* startingNode);
     Node<int>* seek(int data, Node<int>* startingNode);
     void       sweep(Node<int>* a);

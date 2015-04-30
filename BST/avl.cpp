@@ -7,10 +7,11 @@ AVL::AVL() {
     // Initializing tree with null values.
     root = NULL;
     balance = 0;
+    height = 0;
 }
 AVL::~AVL() {
     while (!isEmpty()) {
-        // TODO: delete all
+        remove(root);
     }
     root = NULL;
 }
@@ -23,8 +24,7 @@ void AVL::insert(int data) {
         // rebalance
     }
 }
-void AVL::remove(int data) {
-    Node<int>* r = seek(data, root);
+void AVL::remove(Node<int>* r) {
     if (r) {
         // chek which son is bigger than father
         // that son takes it's place

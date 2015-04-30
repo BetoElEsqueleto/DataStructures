@@ -5,11 +5,11 @@
 RBT::RBT() {
     // Initializing tree with null values.
     root = NULL;
-    balance = 0;
+    height = 0;
 }
 RBT::~RBT() {
     while (!isEmpty()) {
-        // TODO: delete all
+        remove(root);
     }
     root = NULL;
 }
@@ -23,9 +23,7 @@ void RBT::insert(int data) {
         // rebalance
     }
 }
-void RBT::remove(int data) {
-    // TODO
-    Node<int>* r = seek(data, root);
+void RBT::remove(Node<int>* r) {
     if (r) {
         // chek which son is bigger than father
         // that son takes it's place
