@@ -34,6 +34,9 @@ void BST::insert(int data) {
 void BST::remove(Node<int>* r) {
     if (r) {
         // chek which son is bigger than father
+        if (r->getLeft()->getData() > r->getParent()->getData()) {
+            // TODO: Woa... now what?
+        }
         // that son takes it's place
     }
 
