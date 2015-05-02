@@ -1,0 +1,15 @@
+digraph "List::getSize"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="List::getSize",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="List\< Student \>::pop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list.html#a985cb6f2b506e9d30e8fa59b39d44efd"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="List\< Student \>::popHead",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list.html#ae216f7a997b0c9fc0e1d89f241b9f5b2"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="List\< Student \>::remove",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list.html#a104d8a6b2b3f64149acb31c2e3073bed"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Dijkstra::Dijkstra",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_dijkstra.html#a4801fe92d831b278afe52d4cf2737e11"];
+}

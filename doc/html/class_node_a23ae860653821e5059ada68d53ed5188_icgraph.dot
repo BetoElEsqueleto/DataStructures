@@ -1,0 +1,21 @@
+digraph "Node::setNext"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Node::setNext",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="List\< Student \>::List",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list.html#a054ab94d95915e2a3b8945cbdf51a42b"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="List\< Student \>::insertAt",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list.html#a62f806c2e345baff40798902f98722f3"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="List\< Student \>::insertBack",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list.html#ab6b782189c3b9d5bd184428e7089576f"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="List\< Student \>::insertFront",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list.html#ad1f90c530106d07bf59b80d5113e78cd"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="List\< Student \>::clearSides",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list.html#ae026c56757ce1a696274813c00033404"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="List\< Student \>::pop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list.html#a985cb6f2b506e9d30e8fa59b39d44efd"];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="List\< Student \>::remove",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_list.html#a104d8a6b2b3f64149acb31c2e3073bed"];
+}

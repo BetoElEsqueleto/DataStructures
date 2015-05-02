@@ -1,0 +1,18 @@
+digraph "bstn::Node::getData"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="bstn::Node::getData",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="BST::insert",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_b_s_t.html#a01c0bd5499a27315e59a101448cddfe2"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="BST::seek",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_b_s_t.html#af10050ecacfb81875af96130c83cb4b6"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="BST::has",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_b_s_t.html#a32aed3e0a68a1c3f57980fbe733b7b2c"];
+  Node4 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="findLeaf",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$bst_8cpp.html#adc569d5778cc307a96e545f0dcd4fa79"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="BST::print",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_b_s_t.html#aff85f39ac3094a07b9199a9845df3764"];
+}

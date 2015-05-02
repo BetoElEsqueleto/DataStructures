@@ -1,0 +1,15 @@
+digraph "BST::isEmpty"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="BST::isEmpty",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="BST::~BST",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_b_s_t.html#aff9c7948fbba37844d2893b920ddc238"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="BST::seek",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_b_s_t.html#af10050ecacfb81875af96130c83cb4b6"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="BST::has",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_b_s_t.html#a32aed3e0a68a1c3f57980fbe733b7b2c"];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="BST::insert",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_b_s_t.html#a01c0bd5499a27315e59a101448cddfe2"];
+}

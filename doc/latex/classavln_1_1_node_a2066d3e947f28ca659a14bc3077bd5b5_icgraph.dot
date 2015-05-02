@@ -1,0 +1,14 @@
+digraph "avln::Node::setParent"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="avln::Node::setParent",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="AVL::simpleRightRotation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_v_l.html#a56746bfd002102a3dcc86527e099c57a"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="AVL::setLocalBalance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_v_l.html#a5ab72445ccd63eab4e46f08fd15ec59c"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="AVL::simpleLeftRotation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_v_l.html#af395067f023435013b7fdf846de6ddef"];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+}
