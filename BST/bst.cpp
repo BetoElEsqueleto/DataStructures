@@ -33,11 +33,26 @@ void BST::insert(int data) {
 }
 void BST::remove(Node<int>* r) {
     if (r) {
-        // chek which son is bigger than father
-        if (r->getLeft()->getData() > r->getParent()->getData()) {
-            // TODO: Woa... now what?
+        bool right = r->getRight() != NULL;
+        bool left = r->getLeft() != NULL;
+        // Three cases:
+        // 1) node has no sons
+        if(!left && !right) {
+            // parent points to NULL
+            if (r->getParent()->getLeft() == r) r->getParent()->setLeft(NULL);
+            if (r->getParent()->getRight() == r) r->getParent()->setRight(NULL);
+            delete(r);
         }
-        // that son takes it's place
+        // 2) node has one son
+        else if (right && !left) {
+
+        } else if (left && !right) {
+            /* code */
+        }
+        // 3) node has two sons
+        else {
+            // find biggest from left tree or smallest from right tree
+        }
     }
 
 }
