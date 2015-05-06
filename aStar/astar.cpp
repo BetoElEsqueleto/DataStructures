@@ -1,6 +1,6 @@
 #include "astar.h"
 
-Astar(int argc, const char * argv[]) {
+Astar::Astar(int argc, const char * argv[]) {
     const char* path;
     path = argv[1];
     m = n = 0;
@@ -9,15 +9,17 @@ Astar(int argc, const char * argv[]) {
     FILE * fp;
     fp = fopen (path,"r");
     if (fp!=NULL) {
-        int buffer [255];
+        int dim;
         int count = 0;
 
         // Read number of rows
-        fscanf(fp,"%i",buffer);
-        m = buffer;
+        fscanf(fp,"%i",&dim);
+        m = dim;
         // Read number of columns
-        fscanf(fp,"%i",buffer);
-        n = buffer;
+        fscanf(fp,"%i",&dim);
+        n = dim;
+
+        unsigned long long int buffer =0;
 
         // Now we have the size of the graph, and can make some room in our RAM
         // Assign rows
@@ -25,18 +27,18 @@ Astar(int argc, const char * argv[]) {
         // Assign columns
         for(int i = m; i > 0; i--)
             g[i] = new Node[n];
-        for (int i = m; i > 0; i--) {
-            for (int j = 1; j<=n; j++) {
-                g[i][j] = 0;
-            }
-        }
+        // for (int i = m; i > 0; i--) {
+        //     for (int j = 1; j<=n; j++) {
+        //         g[i][j] = 0;
+        //     }
+        // }
 
         // while (fscanf(fp,"%i",buffer) != EOF) {
             // count ++;
         for (int i = m; i > 0; i--) {
             for (int j = 1; j<=n; j++) {
-                fscanf(fp,"%i",buffer)
-                g[i][j] = buffer;
+                fscanf(fp,"%i",&buffer);
+                g[i][j].setG(buffer);
             }
         }
         // }
@@ -45,32 +47,32 @@ Astar(int argc, const char * argv[]) {
     }
     delete path;
 }
-~Astar() {
+Astar::~Astar() {
     for(int i = 1; i <= n; i++)
         delete(g[i]);
     delete g;
 }
 
-void readFile() {
+void Astar::readFile() {
 
 }
 
-void calcH() {
+void Astar::calcH() {
 
 }
-void updateVertex() {
+void Astar::updateVertex() {
 
 }
-void getShortest(Node* start, Node* goal) {
+void Astar::getShortest(Node* start, Node* goal) {
 
 }
-void updateCostList(void) {
+void Astar::updateCostList(void) {
 
 }
 
-void print() {
+void Astar::print() {
 
 }
-void printCosts() {
+void Astar::printCosts() {
 
 }
