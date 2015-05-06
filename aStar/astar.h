@@ -21,7 +21,7 @@ private:
     int             n;             // Number of columns = width
     vector<Node>    openList;      // List of nodes that have not been visited
     vector<Node>    closedList;    // List of nodes that have been visited
-    Node**          g;             // Matrix
+    Node**          mat;             // Matrix
 
     // Node*           current;
 

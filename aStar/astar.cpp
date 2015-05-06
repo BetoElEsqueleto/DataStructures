@@ -22,34 +22,30 @@ Astar::Astar(int argc, const char * argv[]) {
 
         // Now we have the size of the graph, and can make some room in our RAM
         // Assign rows
-        g = new Node*[m];
+        mat = new Node*[m];
         // Assign columns
         for(int i = m; i > 0; i--)
-            g[i] = new Node[n];
-        // for (int i = m; i > 0; i--) {
-        //     for (int j = 1; j<=n; j++) {
-        //         g[i][j] = 0;
-        //     }
-        // }
+            mat[i] = new Node[n];
 
-        // while (fscanf(fp,"%i",buffer) != EOF) {
-            // count ++;
         for (int i = m; i > 0; i--) {
             for (int j = 1; j<=n; j++) {
                 fscanf(fp,"%i",&buffer);
-                g[i][j].setG(buffer);
+                mat[i][j].setG(buffer);
+                std::cout << mat[i][j].getG() << " ";
             }
+            std::cout << std::endl;
         }
-        // }
         // TODO: Read starts and goals
         fclose (fp);
+        // TODO: Call searchPath() for every trail
     }
-    delete path;
+    // delete path;
 }
 Astar::~Astar() {
-    for(int i = 1; i <= n; i++)
-        delete(g[i]);
-    delete g;
+    // for (int i = m; i > 0; i--) {
+    //     delete mat[i];
+    // }
+    // delete mat;
 }
 
 void Astar::readFile() {
