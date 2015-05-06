@@ -42,10 +42,9 @@ Astar::Astar(int argc, const char * argv[]) {
     // delete path;
 }
 Astar::~Astar() {
-    // for (int i = m; i > 0; i--) {
-    //     delete mat[i];
-    // }
-    // delete mat;
+    for(int i = m; i > 0; i--)
+        delete mat[i];
+    delete mat;
 }
 
 void Astar::readFile() {
