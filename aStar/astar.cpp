@@ -10,7 +10,6 @@ Astar::Astar(int argc, const char * argv[]) {
     fp = fopen (path,"r");
     if (fp!=NULL) {
         int dim;
-        int count = 0;
 
         // Read number of rows
         fscanf(fp,"%i",&dim);
@@ -19,7 +18,7 @@ Astar::Astar(int argc, const char * argv[]) {
         fscanf(fp,"%i",&dim);
         n = dim;
 
-        unsigned long long int buffer =0;
+        unsigned int buffer = 0;
 
         // Now we have the size of the graph, and can make some room in our RAM
         // Assign rows

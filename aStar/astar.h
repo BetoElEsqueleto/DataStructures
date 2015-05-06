@@ -23,7 +23,7 @@ private:
     vector<Node>    closedList;    // List of nodes that have been visited
     Node**          g;             // Matrix
 
-    Node*           current;
+    // Node*           current;
 
 
 public:
