@@ -3,68 +3,52 @@
 Astar(int argc, const char * argv[]) {
     const char* path;
     path = argv[1];
-    size = 0;
+    m = n = 0;
+
 
     FILE * fp;
-    // TODO: read correct values
     fp = fopen (path,"r");
     if (fp!=NULL) {
-        // TODO: only read int
-        char buffer [255];
+        int buffer [255];
         int count = 0;
-        // TODO: Read number of rows
-        // TODO: Read number of columns
-        while (fscanf(fp,"%s",buffer) != EOF) {
-            count ++;
-            if(!nodes.has(buffer) && (count%3)){
-                // Just push everything to the index of nodes
-                nodes.push(buffer);
-            }
 
-        }
+        // Read number of rows
+        fscanf(fp,"%i",buffer);
+        m = buffer;
+        // Read number of columns
+        fscanf(fp,"%i",buffer);
+        n = buffer;
+
         // Now we have the size of the graph, and can make some room in our RAM
-        size =  nodes.getSize();
-
         // Assign rows
         g = new Node*[m];
         // Assign columns
         for(int i = m; i > 0; i--)
             g[i] = new Node[n];
         for (int i = m; i > 0; i--) {
-            for (int j = 0; j<n; j++) {
+            for (int j = 1; j<=n; j++) {
                 g[i][j] = 0;
             }
         }
 
-        int i = 0 , j = 0;
-
-        rewind(fp);
-        count = 0;
-        while (fscanf(fp,"%s",buffer) != EOF) {
-            count ++;
-            switch (count%3) {
-                case 1:
-                    // cerr << "i node: " << buffer << std::endl;
-                    i = nodes.indexOf(buffer);
-                    break;
-                case 2:
-                    // cerr << "j node: " << buffer << std::endl;
-                    j = nodes.indexOf(buffer);
-                    break;
-                case 0:
-                    // cerr << "vertex weight: " << buffer << std::endl;
-                    g[i][j] = atoi(buffer);
-                    break;
-                default:
-                    break;
+        // while (fscanf(fp,"%i",buffer) != EOF) {
+            // count ++;
+        for (int i = m; i > 0; i--) {
+            for (int j = 1; j<=n; j++) {
+                fscanf(fp,"%i",buffer)
+                g[i][j] = buffer;
             }
         }
+        // }
+        // TODO: Read starts and goals
         fclose (fp);
     }
     delete path;
 }
 ~Astar() {
-
+    for(int i = 1; i <= n; i++)
+        delete(g[i]);
+    delete g;
 }
 
 void readFile() {

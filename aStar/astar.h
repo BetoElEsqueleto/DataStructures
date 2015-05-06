@@ -15,8 +15,8 @@ A* algorithm used to find shortest path in a matrix
 */
 class Astar {
 private:
-    int             height;        // Number of rows = m
-    int             width;         // Number of columns = n
+    int             m;             // Number of rows = height
+    int             n;             // Number of columns = width
     vector<Node>    openList;      // List of nodes that have not been visited
     vector<Node>    closedList;    // List of nodes that have been visited
     Node**          g;             // Matrix
