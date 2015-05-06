@@ -28,20 +28,20 @@ private:
     vector<Node>    closedList;    // List of nodes that have been visited
     Node**          mat;           // Matrix
 
+    int             trails;        // Number of paths to be searched
+
     pt              cur;
-    vector<pt>      start;
-    vector<pt>      goal;
+    vector<pt>      starts;
+    vector<pt>      goals;
 
 public:
 
     Astar(int argc, const char * argv[]);
     ~Astar();
 
-    void readFile();
-
     void calcH();
     void updateVertex();
-    void getShortest(Node* start, Node* goal);
+    void searchPath(Node* start, Node* goal);
     void updateCostList(void);
 
     void print();

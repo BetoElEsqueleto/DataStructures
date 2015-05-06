@@ -35,20 +35,54 @@ Astar::Astar(int argc, const char * argv[]) {
             }
             std::cout << std::endl;
         }
-        // TODO: Read starts and goals
+        cur.x = 0;
+        cur.y = 0;
+
+        pt temp;
+        trails = 0;
+        while (fscanf(fp,"%i",&buffer) != EOF) {
+            trails ++;
+            // read start x
+            temp.x = buffer;
+            // get a coma ,
+            fgetc(fp);
+            // read start y
+            fscanf(fp,"%i",&buffer);
+            temp.y = buffer;
+            // push start
+            starts.push_back(temp);
+            std::cout << temp.x << "," << temp.y << " ";
+
+            // get a space
+            fgetc(fp);
+            // read goal x
+            fscanf(fp,"%i",&buffer);
+            temp.x = buffer;
+            // get a coma ,
+            fgetc(fp);
+            // read goal y
+            fscanf(fp,"%i",&buffer);
+            temp.y = buffer;
+            // push goal
+            goals.push_back(temp);
+            std::cout << temp.x << "," << temp.y << " " << std::endl;
+        }
+        std::cout << trails << std::endl;
+        // Close file
         fclose (fp);
+        calcH();
         // TODO: Call searchPath() for every trail
+        for (std::vector<pt>::size_type i = 0; i != goals.size(); i++) {
+            searchPath(&mat[starts[i].x][starts[i].y], &mat[goals[i].x][goals[i].y]);
+        }
+
     }
-    // delete path;
+    if (path) delete path;
 }
 Astar::~Astar() {
     for(int i = m; i > 0; i--)
-        delete mat[i];
-    delete mat;
-}
-
-void Astar::readFile() {
-
+        if (mat[i]) delete mat[i];
+    if (mat) delete mat;
 }
 
 void Astar::calcH() {
@@ -57,7 +91,7 @@ void Astar::calcH() {
 void Astar::updateVertex() {
 
 }
-void Astar::getShortest(Node* start, Node* goal) {
+void Astar::searchPath(Node* start, Node* goal) {
 
 }
 void Astar::updateCostList(void) {
