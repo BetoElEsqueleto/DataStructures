@@ -99,19 +99,39 @@ void Astar::calcH(pt goal) {
 }
 void Astar::searchPath(pt start, pt goal) {
     // TODO: actually inplement A*
-    Node* current;
+    pt current;
     // StartNode to openList
-    openList.push_back(&mat[start.x][start.y]);
+    openList.push_back(start);
     // While there are items in the openList
     while (!openList.empty()) {
     	// Get the node off the open list with the lowest f and call it node_current
-        current = *std::min_element(openList.begin(),openList.end(),getMinF);
+        current = min_element(&openList);
         openList.remove(current);
 
     	// if node_current is the same state as node_goal we have found the solution; break from the while loop
-        if (current == &mat[goal.x][goal.y]) break; // Solution Found
+        if (current == goal) break; // Solution Found
     	//     Generate each state node_successor that can come after node_current
-    	//     for each node_successor of node_current
+        list<pt> nextNodes;
+        pt nextNode;
+        // Movements can be up, down left and right.
+        // UP
+        nextNode.x = current.x;
+        nextNode.y = current.y+1;
+        if(nextNode.x > 0 && nextNode.x < n && nextNode.y > 0 && nextNode.y < M && mat[nextNode.y][nextNode.x] != 4294967295) nextNodes.push_back(nextNode);
+        // DOWN
+        nextNode.x = current.x;
+        nextNode.y = current.y-1;
+        if(nextNode.x > 0 && nextNode.x < n && nextNode.y > 0 && nextNode.y < M && mat[nextNode.y][nextNode.x] != 4294967295) nextNodes.push_back(nextNode);
+        // LEFT
+        nextNode.x = current.x-1;
+        nextNode.y = current.y;
+        if(nextNode.x > 0 && nextNode.x < n && nextNode.y > 0 && nextNode.y < M && mat[nextNode.y][nextNode.x] != 4294967295) nextNodes.push_back(nextNode);
+        // RIGHT
+        nextNode.x = current.x+1;
+        nextNode.y = current.y;
+        if(nextNode.x > 0 && nextNode.x < n && nextNode.y > 0 && nextNode.y < M && mat[nextNode.y][nextNode.x] != 4294967295) nextNodes.push_back(nextNode);
+
+        //     for each node_successor of node_current
     	//     {
     	//         Set the cost of node_successor to be the cost of node_current plus the cost to get to node_successor from node_current
     	//         find node_successor on the OPEN list
@@ -134,8 +154,13 @@ void Astar::updateCostList(void) {
 int Astar::getDist(pt a, pt b) {
     return abs(a.x - b.x) + abs(a.y - b.y);
 }
-bool Astar::getMinF(Node* a, Node* b) {
-    return a->getF() < b->getF();
+pt Astar::min_element(list<pt>* l) {
+  if (l->first()==l->last()) return l->last();
+  pt smallest = l->first();
+  for (std::list<pt>::const_iterator it = goals.begin(); it != goals.end(); it++) {
+      if(*it<smallest) smallest = *it;
+  }
+  return smallest;
 }
 
 void Astar::print() {

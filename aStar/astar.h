@@ -25,8 +25,10 @@ class Astar {
 private:
     int             m;             // Number of rows = height
     int             n;             // Number of columns = width
-    list<Node*>      openList;      // List of nodes that have not been visited
-    list<Node*>      closedList;    // List of nodes that have been visited
+    // list<Node*>      openList;      // List of nodes that have not been visited
+    // list<Node*>      closedList;    // List of nodes that have been visited
+    list<pt>      openList;      // List of nodes that have not been visited
+    list<pt>      closedList;    // List of nodes that have been visited
     Node**          mat;           // Matrix
 
     int             trails;        // Number of paths to be searched
@@ -47,7 +49,7 @@ public:
     void updateCostList(void);
 
     int getDist(pt a, pt b);
-    static bool getMinF(Node* a, Node* b);
+    pt min_element(list<pt>* l);
 
     void print();
     void printCosts();
