@@ -109,7 +109,7 @@ void Astar::searchPath(pt start, pt goal) {
         openList.remove(current);
 
     	// if currentNode is the same state as node_goal we have found the solution; break from the while loop
-        if (current == goal) break; // Solution Found
+        if (current.x == goal.x && current.y == goal.y) break; // Solution Found
     	//     Generate each state nextNode that can come after currentNode
         list<pt> nextNodes;
         pt nextNode;
@@ -117,31 +117,35 @@ void Astar::searchPath(pt start, pt goal) {
         // UP
         nextNode.x = current.x;
         nextNode.y = current.y+1;
-        if(nextNode.x > 0 && nextNode.x < n && nextNode.y > 0 && nextNode.y < M && mat[nextNode.y][nextNode.x] != 4294967295) nextNodes.push_back(nextNode);
+        if(nextNode.x > 0 && nextNode.x < n && nextNode.y > 0 && nextNode.y < m && mat[nextNode.y][nextNode.x].getG() != 4294967295) nextNodes.push_back(nextNode);
         // DOWN
         nextNode.x = current.x;
         nextNode.y = current.y-1;
-        if(nextNode.x > 0 && nextNode.x < n && nextNode.y > 0 && nextNode.y < M && mat[nextNode.y][nextNode.x] != 4294967295) nextNodes.push_back(nextNode);
+        if(nextNode.x > 0 && nextNode.x < n && nextNode.y > 0 && nextNode.y < m && mat[nextNode.y][nextNode.x].getG() != 4294967295) nextNodes.push_back(nextNode);
         // LEFT
         nextNode.x = current.x-1;
         nextNode.y = current.y;
-        if(nextNode.x > 0 && nextNode.x < n && nextNode.y > 0 && nextNode.y < M && mat[nextNode.y][nextNode.x] != 4294967295) nextNodes.push_back(nextNode);
+        if(nextNode.x > 0 && nextNode.x < n && nextNode.y > 0 && nextNode.y < m && mat[nextNode.y][nextNode.x].getG() != 4294967295) nextNodes.push_back(nextNode);
         // RIGHT
         nextNode.x = current.x+1;
         nextNode.y = current.y;
-        if(nextNode.x > 0 && nextNode.x < n && nextNode.y > 0 && nextNode.y < M && mat[nextNode.y][nextNode.x] != 4294967295) nextNodes.push_back(nextNode);
+        if(nextNode.x > 0 && nextNode.x < n && nextNode.y > 0 && nextNode.y < m && mat[nextNode.y][nextNode.x].getG() != 4294967295) nextNodes.push_back(nextNode);
 
         //     for each nextNode of currentNode
         for (std::list<pt>::const_iterator it = nextNodes.begin(); it != nextNodes.end(); it++) {
             //         Set the cost of nextNode to be the cost of currentNode plus the cost to get to nextNode from currentNode
-            mat[*it->y][*it->x]->setG(mat[current->y][current->x]->getG() + mat[*it->y][*it->x]->getG());
+            mat[*it->y][*it->x]->setG(mat[current.y][current.x]->getG() + mat[*it->y][*it->x]->getG());
         	//         find nextNode on the OPEN list
+            std::list<pt>::const_iterator iter = find(openList.begin(), openList.end(), *it);
         	//         if nextNode is on the OPEN list but the existing one is as good or better then discard this successor and continue
         	//         if nextNode is on the CLOSED list but the existing one is as good or better then discard this successor and continue
         	//         Remove occurences of nextNode from OPEN and CLOSED
+            openList.remove(*it);
+            closedList.remove(*it);
         	//         Set the parent of nextNode to currentNode
-        	//         Set h to be the estimated distance to node_goal (Using the heuristic function)
+            mat[current.y][current.x]->setParent(&mat[*it->y][*it->x]);
         	//          Add nextNode to the OPEN list
+            openList.push_back(nextNode);
         }
 
     	//     Add currentNode to the CLOSED list

@@ -27,6 +27,9 @@ public:
     void setH(unsigned int c){ h = c; }
     void setF(){ f =  g + h; }
 
+    Node* getParent(){ return parent; }
+    Node* getChild(){ return child; }
+
     unsigned long long int getG(){ return g; }
     unsigned long long int getH(){ return h; }
     unsigned long long int getF(){ setF(); return f; }
