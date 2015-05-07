@@ -104,13 +104,13 @@ void Astar::searchPath(pt start, pt goal) {
     openList.push_back(start);
     // While there are items in the openList
     while (!openList.empty()) {
-    	// Get the node off the open list with the lowest f and call it node_current
+    	// Get the node off the open list with the lowest f and call it currentNode
         current = min_element(&openList);
         openList.remove(current);
 
-    	// if node_current is the same state as node_goal we have found the solution; break from the while loop
+    	// if currentNode is the same state as node_goal we have found the solution; break from the while loop
         if (current == goal) break; // Solution Found
-    	//     Generate each state node_successor that can come after node_current
+    	//     Generate each state nextNode that can come after currentNode
         list<pt> nextNodes;
         pt nextNode;
         // Movements can be up, down left and right.
@@ -131,18 +131,21 @@ void Astar::searchPath(pt start, pt goal) {
         nextNode.y = current.y;
         if(nextNode.x > 0 && nextNode.x < n && nextNode.y > 0 && nextNode.y < M && mat[nextNode.y][nextNode.x] != 4294967295) nextNodes.push_back(nextNode);
 
-        //     for each node_successor of node_current
-    	//     {
-    	//         Set the cost of node_successor to be the cost of node_current plus the cost to get to node_successor from node_current
-    	//         find node_successor on the OPEN list
-    	//         if node_successor is on the OPEN list but the existing one is as good or better then discard this successor and continue
-    	//         if node_successor is on the CLOSED list but the existing one is as good or better then discard this successor and continue
-    	//         Remove occurences of node_successor from OPEN and CLOSED
-    	//         Set the parent of node_successor to node_current
-    	//         Set h to be the estimated distance to node_goal (Using the heuristic function)
-    	//          Add node_successor to the OPEN list
-    	//     }
-    	//     Add node_current to the CLOSED list
+        //     for each nextNode of currentNode
+        for (std::list<pt>::const_iterator it = nextNodes.begin(); it != nextNodes.end(); it++) {
+            //         Set the cost of nextNode to be the cost of currentNode plus the cost to get to nextNode from currentNode
+            mat[*it->y][*it->x]->setG(mat[current->y][current->x]->getG() + mat[*it->y][*it->x]->getG());
+        	//         find nextNode on the OPEN list
+        	//         if nextNode is on the OPEN list but the existing one is as good or better then discard this successor and continue
+        	//         if nextNode is on the CLOSED list but the existing one is as good or better then discard this successor and continue
+        	//         Remove occurences of nextNode from OPEN and CLOSED
+        	//         Set the parent of nextNode to currentNode
+        	//         Set h to be the estimated distance to node_goal (Using the heuristic function)
+        	//          Add nextNode to the OPEN list
+        }
+
+    	//     Add currentNode to the CLOSED list
+        closedList.push_back(current);
     }
 }
 void Astar::updateVertex() {
