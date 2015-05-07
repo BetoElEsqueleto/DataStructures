@@ -25,18 +25,19 @@ Astar::Astar(int argc, const char * argv[]) {
         mat = new Node*[m];
         orig = new Node*[m];
         // Assign columns
-        for(int i = m; i > 0; i--)
+        for(int i = m; i > 0; i--) {
             mat[i] = new Node[n];
             orig[i] = new Node[n];
+        }
 
         for (int i = m; i > 0; i--) {
             for (int j = 1; j<=n; j++) {
                 fscanf(fp,"%i",&buffer);
                 mat[i][j].setG(buffer);
                 orig[i][j].setG(buffer);
-                // std::cout << mat[i][j].getG() << " ";
+                std::cout << mat[i][j].getG() << " ";
             }
-            // std::cout << std::endl;
+            std::cout << std::endl;
         }
         cur.x = 0;
         cur.y = 0;
@@ -54,7 +55,7 @@ Astar::Astar(int argc, const char * argv[]) {
             temp.y = buffer;
             // push start
             starts.push_back(temp);
-            std::cout << temp.x << "," << temp.y << " ";
+            // std::cout << temp.x << "," << temp.y << " ";
 
             // get a space
             fgetc(fp);
@@ -68,9 +69,9 @@ Astar::Astar(int argc, const char * argv[]) {
             temp.y = buffer;
             // push goal
             goals.push_back(temp);
-            std::cout << temp.x << "," << temp.y << " " << std::endl;
+            // std::cout << temp.x << "," << temp.y << " " << std::endl;
         }
-        std::cout << trails << std::endl;
+        // std::cout << trails << std::endl;
         // Close file
         fclose (fp);
         // Call searchPath() for every trail
@@ -85,9 +86,10 @@ Astar::Astar(int argc, const char * argv[]) {
     if (path) delete path;
 }
 Astar::~Astar() {
-    for(int i = m; i > 0; i--)
+    for(int i = m; i > 0; i--) {
         if (mat[i]) delete mat[i];
         if (orig[i]) delete orig[i];
+    }
     if (mat) delete mat;
     if (orig) delete orig;
 }
