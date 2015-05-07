@@ -48,6 +48,10 @@ public:
     void       setTreeBalance();
     void       setTreeHeight();
 
+    // insert helpers
+    Node<int>* findLeaf(int data, Node<int>* a);
+
+
     // output
     void       print(Node<int>* a);
 };

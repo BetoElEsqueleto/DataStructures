@@ -11,6 +11,7 @@
 **/*.dylib
 
 **/main
+Astar/Astar
 
 # Qt-es
 

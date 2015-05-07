@@ -18,14 +18,41 @@ BST::~BST() {
 void BST::insert(int data) {
     if(!has(data, root)){
         // sweep down the tree until finding the right spot
-        // insert as son
-        // rebalance
+        Node<int>* p = findLeaf(data, root);
+        if(!p) {
+            root = new Node<int>(data, NULL);
+        } else {
+            Node<int>* n = new Node<int>(data, p);
+            if (p->getData() > data) {
+                p->setLeft(n);
+            } else {
+                p->setRight(n);
+            }
+        }
     }
 }
 void BST::remove(Node<int>* r) {
     if (r) {
-        // chek which son is bigger than father
-        // that son takes it's place
+        bool right = r->getRight() != NULL;
+        bool left = r->getLeft() != NULL;
+        // Three cases:
+        // 1) node has no sons
+        if(!left && !right) {
+            // parent points to NULL
+            if (r->getParent()->getLeft() == r) r->getParent()->setLeft(NULL);
+            if (r->getParent()->getRight() == r) r->getParent()->setRight(NULL);
+            delete(r);
+        }
+        // 2) node has one son
+        else if (right && !left) {
+
+        } else if (left && !right) {
+            /* code */
+        }
+        // 3) node has two sons
+        else {
+            // find biggest from left tree or smallest from right tree
+        }
     }
 
 }
@@ -74,6 +101,16 @@ int BST::getHeight(Node<int>* a) {
 int BST::getTreeHeight(Node<int>* a) {
     height = getHeight(root);
     return height;
+}
+
+// insert helpers
+Node<int>* findLeaf(int data, Node<int>* a) {
+    if(!a->getData()) return a;
+    if(a->getData() > data) {
+        return findLeaf(data, a->getLeft());
+    } else {
+        return findLeaf(data, a->getRight());
+    }
 }
 
 // output

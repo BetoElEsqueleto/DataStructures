@@ -20,9 +20,19 @@ AVL::~AVL() {
 void AVL::insert(int data) {
     if(!has(data, root)){
         // sweep down the tree until finding the right spot
-        // insert as son
-        // rebalance
+        Node<int>* p = findLeaf(data, root);
+        if(!p) {
+            root = new Node<int>(data, NULL);
+        } else {
+            Node<int>* n = new Node<int>(data, p);
+            if (p->getData() > data) {
+                p->setLeft(n);
+            } else {
+                p->setRight(n);
+            }
+        }
     }
+    // rebalance(p);
 }
 void AVL::remove(Node<int>* r) {
     if (r) {
@@ -151,6 +161,16 @@ void AVL::setTreeBalance() {
 }
 void AVL::setTreeHeight() {
     height = getHeight(root);
+}
+
+// insert helpers
+Node<int>* findLeaf(int data, Node<int>* a) {
+    if(!a->getData()) return a;
+    if(a->getData() > data) {
+        return findLeaf(data, a->getLeft());
+    } else {
+        return findLeaf(data, a->getRight());
+    }
 }
 
 // output

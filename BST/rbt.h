@@ -34,6 +34,8 @@ public:
     int        getHeight(Node<int>* a);
     int        getTreeHeight(Node<int>* a);
 
+    // insert helpers
+    Node<int>* findLeaf(int data, Node<int>* a);
 
     // output
     void       print(Node<int>* a);
