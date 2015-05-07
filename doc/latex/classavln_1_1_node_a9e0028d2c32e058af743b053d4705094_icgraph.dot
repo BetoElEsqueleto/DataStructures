@@ -1,0 +1,18 @@
+digraph "avln::Node::setRight"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="avln::Node::setRight",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="AVL::insert",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_v_l.html#ade0573812c7e060aa84d0428f48a1ab6"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_b_s_t_2main_8cpp.html#abf9e6b7e6f15df4b525a2e7705ba3089"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="AVL::simpleRightRotation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_v_l.html#a56746bfd002102a3dcc86527e099c57a"];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="AVL::setLocalBalance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_v_l.html#a5ab72445ccd63eab4e46f08fd15ec59c"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="AVL::simpleLeftRotation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_v_l.html#af395067f023435013b7fdf846de6ddef"];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+}

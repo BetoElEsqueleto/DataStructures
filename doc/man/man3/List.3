@@ -1,0 +1,194 @@
+.TH "List< T >" 3 "Fri May 1 2015" "DataStructures" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+List< T > \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBList\fP (T data)"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBgetHead\fP ()"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBgetTail\fP ()"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBgetCurrent\fP ()"
+.br
+.ti -1c
+.RI "bool \fBisEmpty\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetSize\fP ()"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBsearch\fP (T data)"
+.br
+.ti -1c
+.RI "bool \fBinsertAt\fP (T data, int index)"
+.br
+.ti -1c
+.RI "void \fBinsertBack\fP (T data)"
+.br
+.ti -1c
+.RI "void \fBinsertFront\fP (T data)"
+.br
+.ti -1c
+.RI "void \fBclearSides\fP (\fBNode\fP< T > *dirty)"
+.br
+.ti -1c
+.RI "void \fBpush\fP (T data)"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBpop\fP ()"
+.br
+.ti -1c
+.RI "void \fBpushHead\fP (T data)"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBpopHead\fP ()"
+.br
+.ti -1c
+.RI "bool \fBhas\fP (T data)"
+.br
+.ti -1c
+.RI "bool \fBremove\fP (T data)"
+.br
+.ti -1c
+.RI "int \fBindexOf\fP (T data)"
+.br
+.ti -1c
+.RI "T \fBat\fP (int index)"
+.br
+.ti -1c
+.RI "void \fBempty\fP ()"
+.br
+.ti -1c
+.RI "\fBList\fP (T data)"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBgetHead\fP ()"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBgetTail\fP ()"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBgetCurrent\fP ()"
+.br
+.ti -1c
+.RI "bool \fBisEmpty\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetSize\fP ()"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBsearch\fP (T data)"
+.br
+.ti -1c
+.RI "bool \fBinsertAt\fP (T data, int index)"
+.br
+.ti -1c
+.RI "void \fBinsertBack\fP (T data)"
+.br
+.ti -1c
+.RI "void \fBinsertFront\fP (T data)"
+.br
+.ti -1c
+.RI "void \fBclearSides\fP (\fBNode\fP< T > *dirty)"
+.br
+.ti -1c
+.RI "void \fBpush\fP (T data)"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBpop\fP ()"
+.br
+.ti -1c
+.RI "void \fBpushHead\fP (T data)"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBpopHead\fP ()"
+.br
+.ti -1c
+.RI "bool \fBhas\fP (T data)"
+.br
+.ti -1c
+.RI "bool \fBremove\fP (T data)"
+.br
+.ti -1c
+.RI "int \fBindexOf\fP (T data)"
+.br
+.ti -1c
+.RI "T \fBat\fP (int index)"
+.br
+.ti -1c
+.RI "void \fBempty\fP ()"
+.br
+.ti -1c
+.RI "\fBList\fP (T data)"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBgetHead\fP ()"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBgetTail\fP ()"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBgetCurrent\fP ()"
+.br
+.ti -1c
+.RI "bool \fBisEmpty\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetSize\fP ()"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBsearch\fP (T data)"
+.br
+.ti -1c
+.RI "bool \fBinsertAt\fP (T data, int index)"
+.br
+.ti -1c
+.RI "void \fBinsertBack\fP (T data)"
+.br
+.ti -1c
+.RI "void \fBinsertFront\fP (T data)"
+.br
+.ti -1c
+.RI "void \fBclearSides\fP (\fBNode\fP< T > *dirty)"
+.br
+.ti -1c
+.RI "void \fBpush\fP (T data)"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBpop\fP ()"
+.br
+.ti -1c
+.RI "void \fBpushHead\fP (T data)"
+.br
+.ti -1c
+.RI "\fBNode\fP< T > * \fBpopHead\fP ()"
+.br
+.ti -1c
+.RI "bool \fBhas\fP (T data)"
+.br
+.ti -1c
+.RI "bool \fBremove\fP (T data)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class T>class List< T >"
+
+.PP
+Definition at line 15 of file List\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for DataStructures from the source code\&.

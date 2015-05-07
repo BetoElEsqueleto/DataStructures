@@ -1,0 +1,11 @@
+digraph "AVL::isLeaf"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="AVL::isLeaf",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="avln::Node::getLeft",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classavln_1_1_node.html#ad39cf45af29db3be415f812495c1c201"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="avln::Node::getRight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classavln_1_1_node.html#ae6e852e00c029d06ae34c0a415a13812"];
+}

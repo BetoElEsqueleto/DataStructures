@@ -1,0 +1,15 @@
+digraph "RBT::getHeight"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="RBT::getHeight",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="rbtn::Node::getHeight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrbtn_1_1_node.html#a697ea8feefdfc055f1f357fab6c32984"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="rbtn::Node::setHeight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrbtn_1_1_node.html#a2fdfb3c4cf783e4cbb2713e76ab43d98"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="rbtn::Node::getLeft",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrbtn_1_1_node.html#af844c782f87cda64776c458085768708"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="rbtn::Node::getRight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classrbtn_1_1_node.html#ae8a40794133898ef4cbd291910a8d501"];
+}

@@ -1,0 +1,494 @@
+\hypertarget{class_a_v_l}{}\section{A\+V\+L Class Reference}
+\label{class_a_v_l}\index{A\+V\+L@{A\+V\+L}}
+
+
+{\ttfamily \#include $<$avl.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_a_v_l_a38cb752b9aab7bd33b5d65c6a1130fc2}{A\+V\+L} ()
+\item 
+\hyperlink{class_a_v_l_ac119f7c61c6d7dd159a71ae08561596b}{$\sim$\+A\+V\+L} ()
+\item 
+void \hyperlink{class_a_v_l_ade0573812c7e060aa84d0428f48a1ab6}{insert} (int data)
+\item 
+void \hyperlink{class_a_v_l_aec6816028bad3449951ab6cb9c08586a}{remove} (\hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$r)
+\item 
+bool \hyperlink{class_a_v_l_a316ea4e315515c48a0e7ed86a6fccf4b}{has} (int data, \hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$starting\+Node)
+\item 
+\hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$ \hyperlink{class_a_v_l_adcf57d2bd7ee1977213ed9731ac20564}{seek} (int data, \hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$starting\+Node)
+\item 
+void \hyperlink{class_a_v_l_a1b81b6172f235080ade74e381c259976}{sweep} (\hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$a)
+\item 
+int \hyperlink{class_a_v_l_a00a98b1a3ad3d0af48c6b6b4fd3c1722}{count\+Nodes} (\hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$a)
+\item 
+bool \hyperlink{class_a_v_l_af541a73d8a22cde24b8fe8741b99346c}{is\+Leaf} (\hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$a)
+\item 
+bool \hyperlink{class_a_v_l_a35afbbeff81a2a58dc4a341ccc0f6ce2}{is\+Empty} ()
+\item 
+void \hyperlink{class_a_v_l_a5ab72445ccd63eab4e46f08fd15ec59c}{set\+Local\+Balance} (\hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$a)
+\item 
+int \hyperlink{class_a_v_l_a28558191a1239fd526cb7ce77e055ef0}{get\+Local\+Balance} (\hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$a)
+\item 
+void \hyperlink{class_a_v_l_a56746bfd002102a3dcc86527e099c57a}{simple\+Right\+Rotation} (\hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$a)
+\item 
+void \hyperlink{class_a_v_l_af395067f023435013b7fdf846de6ddef}{simple\+Left\+Rotation} (\hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$a)
+\item 
+void \hyperlink{class_a_v_l_a17c54154c677edda1738e35eb14d148b}{double\+Right\+Rotation} (\hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$a)
+\item 
+void \hyperlink{class_a_v_l_a480f9ddac8c561ee786a170fa7715a39}{double\+Left\+Rotation} (\hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$a)
+\item 
+\hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$ \hyperlink{class_a_v_l_ae6b6d899a62a88319a1d0d141bc26603}{get\+Root} ()
+\item 
+int \hyperlink{class_a_v_l_a067c66a2c839332a33440a341dd40d67}{get\+Tree\+Balance} ()
+\item 
+int \hyperlink{class_a_v_l_ae91633730e5398cf6a47e81b8f4c0df2}{get\+Height} (\hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$a)
+\item 
+void \hyperlink{class_a_v_l_ace2fe3e595b6c181cd24e0e57e8dbe78}{set\+Tree\+Balance} ()
+\item 
+void \hyperlink{class_a_v_l_a8cde886c04561d105b77109758bf2211}{set\+Tree\+Height} ()
+\item 
+\hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$ \hyperlink{class_a_v_l_aed4e21d04592cb453d162388ef0b9fdb}{find\+Leaf} (int data, \hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$a)
+\item 
+void \hyperlink{class_a_v_l_afe6e12f76a5f8f1f1e36b99a3f2c12d2}{print} (\hyperlink{classavln_1_1_node}{Node}$<$ int $>$ $\ast$a)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 14 of file avl.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_a_v_l_a38cb752b9aab7bd33b5d65c6a1130fc2}{}\index{A\+V\+L@{A\+V\+L}!A\+V\+L@{A\+V\+L}}
+\index{A\+V\+L@{A\+V\+L}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{A\+V\+L}]{\setlength{\rightskip}{0pt plus 5cm}A\+V\+L\+::\+A\+V\+L (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_a38cb752b9aab7bd33b5d65c6a1130fc2}
+
+
+Definition at line 6 of file avl.\+cpp.
+
+\hypertarget{class_a_v_l_ac119f7c61c6d7dd159a71ae08561596b}{}\index{A\+V\+L@{A\+V\+L}!````~A\+V\+L@{$\sim$\+A\+V\+L}}
+\index{````~A\+V\+L@{$\sim$\+A\+V\+L}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{$\sim$\+A\+V\+L}]{\setlength{\rightskip}{0pt plus 5cm}A\+V\+L\+::$\sim$\+A\+V\+L (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_ac119f7c61c6d7dd159a71ae08561596b}
+
+
+Definition at line 12 of file avl.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 0
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_a_v_l_a00a98b1a3ad3d0af48c6b6b4fd3c1722}{}\index{A\+V\+L@{A\+V\+L}!count\+Nodes@{count\+Nodes}}
+\index{count\+Nodes@{count\+Nodes}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{count\+Nodes}]{\setlength{\rightskip}{0pt plus 5cm}int A\+V\+L\+::count\+Nodes (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}$<$ int $>$ $\ast$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_a00a98b1a3ad3d0af48c6b6b4fd3c1722}
+
+
+Definition at line 64 of file avl.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 1
+
+
+\hypertarget{class_a_v_l_a480f9ddac8c561ee786a170fa7715a39}{}\index{A\+V\+L@{A\+V\+L}!double\+Left\+Rotation@{double\+Left\+Rotation}}
+\index{double\+Left\+Rotation@{double\+Left\+Rotation}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{double\+Left\+Rotation}]{\setlength{\rightskip}{0pt plus 5cm}void A\+V\+L\+::double\+Left\+Rotation (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}$<$ int $>$ $\ast$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_a480f9ddac8c561ee786a170fa7715a39}
+
+
+Definition at line 142 of file avl.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\hypertarget{class_a_v_l_a17c54154c677edda1738e35eb14d148b}{}\index{A\+V\+L@{A\+V\+L}!double\+Right\+Rotation@{double\+Right\+Rotation}}
+\index{double\+Right\+Rotation@{double\+Right\+Rotation}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{double\+Right\+Rotation}]{\setlength{\rightskip}{0pt plus 5cm}void A\+V\+L\+::double\+Right\+Rotation (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}$<$ int $>$ $\ast$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_a17c54154c677edda1738e35eb14d148b}
+
+
+Definition at line 139 of file avl.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_a_v_l_aed4e21d04592cb453d162388ef0b9fdb}{}\index{A\+V\+L@{A\+V\+L}!find\+Leaf@{find\+Leaf}}
+\index{find\+Leaf@{find\+Leaf}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{find\+Leaf}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$<$int$>$$\ast$ A\+V\+L\+::find\+Leaf (
+\begin{DoxyParamCaption}
+\item[{int}]{data, }
+\item[{{\bf Node}$<$ int $>$ $\ast$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_aed4e21d04592cb453d162388ef0b9fdb}
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{class_a_v_l_ae91633730e5398cf6a47e81b8f4c0df2}{}\index{A\+V\+L@{A\+V\+L}!get\+Height@{get\+Height}}
+\index{get\+Height@{get\+Height}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{get\+Height}]{\setlength{\rightskip}{0pt plus 5cm}int A\+V\+L\+::get\+Height (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}$<$ int $>$ $\ast$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_ae91633730e5398cf6a47e81b8f4c0df2}
+
+
+Definition at line 153 of file avl.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 5
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\hypertarget{class_a_v_l_a28558191a1239fd526cb7ce77e055ef0}{}\index{A\+V\+L@{A\+V\+L}!get\+Local\+Balance@{get\+Local\+Balance}}
+\index{get\+Local\+Balance@{get\+Local\+Balance}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{get\+Local\+Balance}]{\setlength{\rightskip}{0pt plus 5cm}int A\+V\+L\+::get\+Local\+Balance (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}$<$ int $>$ $\ast$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_a28558191a1239fd526cb7ce77e055ef0}
+
+
+Definition at line 98 of file avl.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 7
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{class_a_v_l_ae6b6d899a62a88319a1d0d141bc26603}{}\index{A\+V\+L@{A\+V\+L}!get\+Root@{get\+Root}}
+\index{get\+Root@{get\+Root}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{get\+Root}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$<$ int $>$ $\ast$ A\+V\+L\+::get\+Root (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_ae6b6d899a62a88319a1d0d141bc26603}
+
+
+Definition at line 147 of file avl.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 9
+
+
+\hypertarget{class_a_v_l_a067c66a2c839332a33440a341dd40d67}{}\index{A\+V\+L@{A\+V\+L}!get\+Tree\+Balance@{get\+Tree\+Balance}}
+\index{get\+Tree\+Balance@{get\+Tree\+Balance}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{get\+Tree\+Balance}]{\setlength{\rightskip}{0pt plus 5cm}int A\+V\+L\+::get\+Tree\+Balance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_a067c66a2c839332a33440a341dd40d67}
+
+
+Definition at line 150 of file avl.\+cpp.
+
+\hypertarget{class_a_v_l_a316ea4e315515c48a0e7ed86a6fccf4b}{}\index{A\+V\+L@{A\+V\+L}!has@{has}}
+\index{has@{has}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{has}]{\setlength{\rightskip}{0pt plus 5cm}bool A\+V\+L\+::has (
+\begin{DoxyParamCaption}
+\item[{int}]{data, }
+\item[{{\bf Node}$<$ int $>$ $\ast$}]{starting\+Node}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_a316ea4e315515c48a0e7ed86a6fccf4b}
+
+
+Definition at line 44 of file avl.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 10
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\hypertarget{class_a_v_l_ade0573812c7e060aa84d0428f48a1ab6}{}\index{A\+V\+L@{A\+V\+L}!insert@{insert}}
+\index{insert@{insert}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}void A\+V\+L\+::insert (
+\begin{DoxyParamCaption}
+\item[{int}]{data}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_ade0573812c7e060aa84d0428f48a1ab6}
+
+
+Definition at line 20 of file avl.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 12
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+
+\hypertarget{class_a_v_l_a35afbbeff81a2a58dc4a341ccc0f6ce2}{}\index{A\+V\+L@{A\+V\+L}!is\+Empty@{is\+Empty}}
+\index{is\+Empty@{is\+Empty}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{is\+Empty}]{\setlength{\rightskip}{0pt plus 5cm}bool A\+V\+L\+::is\+Empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_a35afbbeff81a2a58dc4a341ccc0f6ce2}
+
+
+Definition at line 74 of file avl.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+\hypertarget{class_a_v_l_af541a73d8a22cde24b8fe8741b99346c}{}\index{A\+V\+L@{A\+V\+L}!is\+Leaf@{is\+Leaf}}
+\index{is\+Leaf@{is\+Leaf}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{is\+Leaf}]{\setlength{\rightskip}{0pt plus 5cm}bool A\+V\+L\+::is\+Leaf (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}$<$ int $>$ $\ast$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_af541a73d8a22cde24b8fe8741b99346c}
+
+
+Definition at line 70 of file avl.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 15
+
+
+\hypertarget{class_a_v_l_afe6e12f76a5f8f1f1e36b99a3f2c12d2}{}\index{A\+V\+L@{A\+V\+L}!print@{print}}
+\index{print@{print}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}void A\+V\+L\+::print (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}$<$ int $>$ $\ast$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_afe6e12f76a5f8f1f1e36b99a3f2c12d2}
+
+
+Definition at line 177 of file avl.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 16
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 17
+
+
+\hypertarget{class_a_v_l_aec6816028bad3449951ab6cb9c08586a}{}\index{A\+V\+L@{A\+V\+L}!remove@{remove}}
+\index{remove@{remove}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}void A\+V\+L\+::remove (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}$<$ int $>$ $\ast$}]{r}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_aec6816028bad3449951ab6cb9c08586a}
+
+
+Definition at line 37 of file avl.\+cpp.
+
+\hypertarget{class_a_v_l_adcf57d2bd7ee1977213ed9731ac20564}{}\index{A\+V\+L@{A\+V\+L}!seek@{seek}}
+\index{seek@{seek}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{seek}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$<$ int $>$ $\ast$ A\+V\+L\+::seek (
+\begin{DoxyParamCaption}
+\item[{int}]{data, }
+\item[{{\bf Node}$<$ int $>$ $\ast$}]{starting\+Node}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_adcf57d2bd7ee1977213ed9731ac20564}
+
+
+Definition at line 47 of file avl.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 18
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 19
+
+
+\hypertarget{class_a_v_l_a5ab72445ccd63eab4e46f08fd15ec59c}{}\index{A\+V\+L@{A\+V\+L}!set\+Local\+Balance@{set\+Local\+Balance}}
+\index{set\+Local\+Balance@{set\+Local\+Balance}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{set\+Local\+Balance}]{\setlength{\rightskip}{0pt plus 5cm}void A\+V\+L\+::set\+Local\+Balance (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}$<$ int $>$ $\ast$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_a5ab72445ccd63eab4e46f08fd15ec59c}
+
+
+Definition at line 79 of file avl.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 20
+
+
+\hypertarget{class_a_v_l_ace2fe3e595b6c181cd24e0e57e8dbe78}{}\index{A\+V\+L@{A\+V\+L}!set\+Tree\+Balance@{set\+Tree\+Balance}}
+\index{set\+Tree\+Balance@{set\+Tree\+Balance}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{set\+Tree\+Balance}]{\setlength{\rightskip}{0pt plus 5cm}void A\+V\+L\+::set\+Tree\+Balance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_ace2fe3e595b6c181cd24e0e57e8dbe78}
+
+
+Definition at line 159 of file avl.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 21
+
+
+\hypertarget{class_a_v_l_a8cde886c04561d105b77109758bf2211}{}\index{A\+V\+L@{A\+V\+L}!set\+Tree\+Height@{set\+Tree\+Height}}
+\index{set\+Tree\+Height@{set\+Tree\+Height}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{set\+Tree\+Height}]{\setlength{\rightskip}{0pt plus 5cm}void A\+V\+L\+::set\+Tree\+Height (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_a8cde886c04561d105b77109758bf2211}
+
+
+Definition at line 162 of file avl.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 22
+
+
+\hypertarget{class_a_v_l_af395067f023435013b7fdf846de6ddef}{}\index{A\+V\+L@{A\+V\+L}!simple\+Left\+Rotation@{simple\+Left\+Rotation}}
+\index{simple\+Left\+Rotation@{simple\+Left\+Rotation}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{simple\+Left\+Rotation}]{\setlength{\rightskip}{0pt plus 5cm}void A\+V\+L\+::simple\+Left\+Rotation (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}$<$ int $>$ $\ast$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_af395067f023435013b7fdf846de6ddef}
+
+
+Definition at line 120 of file avl.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 23
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 24
+
+
+\hypertarget{class_a_v_l_a56746bfd002102a3dcc86527e099c57a}{}\index{A\+V\+L@{A\+V\+L}!simple\+Right\+Rotation@{simple\+Right\+Rotation}}
+\index{simple\+Right\+Rotation@{simple\+Right\+Rotation}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{simple\+Right\+Rotation}]{\setlength{\rightskip}{0pt plus 5cm}void A\+V\+L\+::simple\+Right\+Rotation (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}$<$ int $>$ $\ast$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_a56746bfd002102a3dcc86527e099c57a}
+
+
+Definition at line 101 of file avl.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 25
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 26
+
+
+\hypertarget{class_a_v_l_a1b81b6172f235080ade74e381c259976}{}\index{A\+V\+L@{A\+V\+L}!sweep@{sweep}}
+\index{sweep@{sweep}!A\+V\+L@{A\+V\+L}}
+\subsubsection[{sweep}]{\setlength{\rightskip}{0pt plus 5cm}void A\+V\+L\+::sweep (
+\begin{DoxyParamCaption}
+\item[{{\bf Node}$<$ int $>$ $\ast$}]{a}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_a1b81b6172f235080ade74e381c259976}
+
+
+Definition at line 58 of file avl.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 27
+
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+B\+S\+T/\hyperlink{avl_8h}{avl.\+h}\item 
+B\+S\+T/\hyperlink{avl_8cpp}{avl.\+cpp}\end{DoxyCompactItemize}
