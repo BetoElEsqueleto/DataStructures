@@ -40,7 +40,7 @@ public:
     ~Astar();
 
     void calcH(pt goal);
-    void searchPath(Node* start, Node* goal);
+    void searchPath(pt start, pt goal);
     void updateVertex();
     void updateCostList(void);
 

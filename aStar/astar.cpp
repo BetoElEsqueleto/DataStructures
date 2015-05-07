@@ -70,12 +70,12 @@ Astar::Astar(int argc, const char * argv[]) {
         std::cout << trails << std::endl;
         // Close file
         fclose (fp);
-        calcH();
+        // Call searchPath() for every trail
         for (std::vector<pt>::size_type i = 0; i != goals.size(); i++) {
-            // TODO: Call searchPath() for every trail
-            searchPath(&mat[starts[i].x][starts[i].y], &mat[goals[i].x][goals[i].y]);
+            // Could recalculate path
+            calcH(goals[i]);
+            searchPath(starts[i], goals[i]);
         }
-
     }
     if (path) delete path;
 }
@@ -95,8 +95,8 @@ void Astar::calcH(pt goal) {
         }
     }
 }
-void Astar::searchPath(Node* start, Node* goal) {
-
+void Astar::searchPath(pt start, pt goal) {
+    // TODO: actually inplement A*
 }
 void Astar::updateVertex() {
 
