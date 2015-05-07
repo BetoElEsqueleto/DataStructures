@@ -4,7 +4,7 @@
 #include <cstdio>
 
 #include <algorithm>
-#include <set>
+// #include <set>
 #include <vector>
 
 #include "node.h"
@@ -24,8 +24,8 @@ class Astar {
 private:
     int             m;             // Number of rows = height
     int             n;             // Number of columns = width
-    vector<Node>    openList;      // List of nodes that have not been visited
-    vector<Node>    closedList;    // List of nodes that have been visited
+    vector<pt>      openList;      // List of nodes that have not been visited
+    vector<pt>      closedList;    // List of nodes that have been visited
     Node**          mat;           // Matrix
 
     int             trails;        // Number of paths to be searched

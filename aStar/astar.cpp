@@ -97,6 +97,27 @@ void Astar::calcH(pt goal) {
 }
 void Astar::searchPath(pt start, pt goal) {
     // TODO: actually inplement A*
+    pt current;
+    // StartNode to openList
+    openList.push_back(start);
+    // While there are items in the openList
+    while (!openList.empty()) {
+    	// Get the node off the open list with the lowest f and call it node_current
+    	// if node_current is the same state as node_goal we have found the solution; break from the while loop
+    	//     Generate each state node_successor that can come after node_current
+    	//     for each node_successor of node_current
+    	//     {
+    	//         Set the cost of node_successor to be the cost of node_current plus the cost to get to node_successor from node_current
+    	//         find node_successor on the OPEN list
+    	//         if node_successor is on the OPEN list but the existing one is as good or better then discard this successor and continue
+    	//         if node_successor is on the CLOSED list but the existing one is as good or better then discard this successor and continue
+    	//         Remove occurences of node_successor from OPEN and CLOSED
+    	//         Set the parent of node_successor to node_current
+    	//         Set h to be the estimated distance to node_goal (Using the heuristic function)
+    	//          Add node_successor to the OPEN list
+    	//     }
+    	//     Add node_current to the CLOSED list
+    }
 }
 void Astar::updateVertex() {
 
