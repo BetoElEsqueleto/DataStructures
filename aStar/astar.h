@@ -39,10 +39,12 @@ public:
     Astar(int argc, const char * argv[]);
     ~Astar();
 
-    void calcH();
-    void updateVertex();
+    void calcH(pt goal);
     void searchPath(Node* start, Node* goal);
+    void updateVertex();
     void updateCostList(void);
+
+    int getDist(pt a, pt b);
 
     void print();
     void printCosts();

@@ -71,8 +71,8 @@ Astar::Astar(int argc, const char * argv[]) {
         // Close file
         fclose (fp);
         calcH();
-        // TODO: Call searchPath() for every trail
         for (std::vector<pt>::size_type i = 0; i != goals.size(); i++) {
+            // TODO: Call searchPath() for every trail
             searchPath(&mat[starts[i].x][starts[i].y], &mat[goals[i].x][goals[i].y]);
         }
 
@@ -85,18 +85,29 @@ Astar::~Astar() {
     if (mat) delete mat;
 }
 
-void Astar::calcH() {
+void Astar::calcH(pt goal) {
+    pt a;
+    for (int i = 1; i <= m; i++) {
+        for (int j = 1; j <= n; j++) {
+            a.x = j;
+            a.y = i;
+            mat[i][j].setH(getDist(a, goal));
+        }
+    }
+}
+void Astar::searchPath(Node* start, Node* goal) {
 
 }
 void Astar::updateVertex() {
 
 }
-void Astar::searchPath(Node* start, Node* goal) {
-
-}
 void Astar::updateCostList(void) {
 
 }
+int Astar::getDist(pt a, pt b) {
+    return abs(a.x - b.x) + abs(a.y - b.y);
+}
+
 
 void Astar::print() {
 
