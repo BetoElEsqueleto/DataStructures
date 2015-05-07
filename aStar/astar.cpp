@@ -71,8 +71,8 @@ Astar::Astar(int argc, const char * argv[]) {
         // Close file
         fclose (fp);
         // Call searchPath() for every trail
-        std::list<pt>::const_iterator iter = starts.begin();
-        for (std::list<pt>::const_iterator it = goals.begin(); it != goals.end(); it++) {
+        std::list<pt>::iterator iter = starts.begin();
+        for (std::list<pt>::iterator it = goals.begin(); it != goals.end(); it++) {
             // Could recalculate path
             calcH(*it);
             searchPath(*iter, *it);
@@ -132,18 +132,18 @@ void Astar::searchPath(pt start, pt goal) {
         if(nextNode.x > 0 && nextNode.x < n && nextNode.y > 0 && nextNode.y < m && mat[nextNode.y][nextNode.x].getG() != 4294967295) nextNodes.push_back(nextNode);
 
         //     for each nextNode of currentNode
-        for (std::list<pt>::const_iterator it = nextNodes.begin(); it != nextNodes.end(); it++) {
+        for (std::list<pt>::iterator it = nextNodes.begin(); it != nextNodes.end(); it++) {
             //         Set the cost of nextNode to be the cost of currentNode plus the cost to get to nextNode from currentNode
-            mat[*it->y][*it->x]->setG(mat[current.y][current.x]->getG() + mat[*it->y][*it->x]->getG());
+            mat[it->y][it->x].setG(mat[current.y][current.x].getG() + mat[it->y][it->x].getG());
         	//         find nextNode on the OPEN list
-            std::list<pt>::const_iterator iter = find(openList.begin(), openList.end(), *it);
+            // std::list<pt>::iterator iter = find(openList.begin(), openList.end(), *it);
         	//         if nextNode is on the OPEN list but the existing one is as good or better then discard this successor and continue
         	//         if nextNode is on the CLOSED list but the existing one is as good or better then discard this successor and continue
         	//         Remove occurences of nextNode from OPEN and CLOSED
             openList.remove(*it);
             closedList.remove(*it);
         	//         Set the parent of nextNode to currentNode
-            mat[current.y][current.x]->setParent(&mat[*it->y][*it->x]);
+            mat[current.y][current.x].setParent(&mat[it->y][it->x]);
         	//          Add nextNode to the OPEN list
             openList.push_back(nextNode);
         }
@@ -162,10 +162,10 @@ int Astar::getDist(pt a, pt b) {
     return abs(a.x - b.x) + abs(a.y - b.y);
 }
 pt Astar::min_element(list<pt>* l) {
-  if (l->first()==l->last()) return l->last();
-  pt smallest = l->first();
-  for (std::list<pt>::const_iterator it = goals.begin(); it != goals.end(); it++) {
-      if(*it<smallest) smallest = *it;
+  if (l->begin()==l->end()) return *(l->end());
+  pt smallest = *(l->end());
+  for (std::list<pt>::iterator it = goals.begin(); it != goals.end(); it++) {
+      if(it->x < smallest.x && it->y < smallest.y) smallest = *it;
   }
   return smallest;
 }
