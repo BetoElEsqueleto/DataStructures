@@ -5,7 +5,8 @@
 
 #include <algorithm>
 // #include <set>
-#include <vector>
+// #include <vector>
+#include <list>
 
 #include "node.h"
 
@@ -24,17 +25,18 @@ class Astar {
 private:
     int             m;             // Number of rows = height
     int             n;             // Number of columns = width
-    vector<pt>      openList;      // List of nodes that have not been visited
-    vector<pt>      closedList;    // List of nodes that have been visited
+    list<Node*>      openList;      // List of nodes that have not been visited
+    list<Node*>      closedList;    // List of nodes that have been visited
     Node**          mat;           // Matrix
 
     int             trails;        // Number of paths to be searched
 
     pt              cur;
-    vector<pt>      starts;
-    vector<pt>      goals;
+    list<pt>      starts;
+    list<pt>      goals;
 
 public:
+
 
     Astar(int argc, const char * argv[]);
     ~Astar();
@@ -45,7 +47,7 @@ public:
     void updateCostList(void);
 
     int getDist(pt a, pt b);
-    int getMinS(pt a, pt b);
+    static bool getMinF(Node* a, Node* b);
 
     void print();
     void printCosts();

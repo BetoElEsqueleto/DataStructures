@@ -10,7 +10,6 @@ private:
     // Costs of node
     unsigned int g;
     unsigned int h;
-    unsigned int s; // cummulative or current value for algorithm
     unsigned int f;
 public:
     Node(){
@@ -26,13 +25,11 @@ public:
 
     void setG(unsigned int c){ g = c; }
     void setH(unsigned int c){ h = c; }
-    void setS(unsigned int c){ s = c + getF(); }
     void setF(){ f =  g + h; }
 
     unsigned long long int getG(){ return g; }
     unsigned long long int getH(){ return h; }
     unsigned long long int getF(){ setF(); return f; }
-    unsigned long long int getS(){ return s; }
 };
 
 #endif // NODE_H
