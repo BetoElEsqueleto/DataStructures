@@ -45,6 +45,7 @@ public:
     void updateCostList(void);
 
     int getDist(pt a, pt b);
+    int getMinS(pt a, pt b);
 
     void print();
     void printCosts();

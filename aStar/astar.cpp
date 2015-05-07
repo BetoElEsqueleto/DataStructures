@@ -101,8 +101,10 @@ void Astar::searchPath(pt start, pt goal) {
     // StartNode to openList
     openList.push_back(start);
     // While there are items in the openList
-    while (!openList.empty()) {
+    // while (!openList.empty()) {
     	// Get the node off the open list with the lowest f and call it node_current
+        current = *std::min_element(openList.begin(),openList.end(),getMinS); // use for cycle
+        std::cout << current.x << " " << current.y << std::endl;
     	// if node_current is the same state as node_goal we have found the solution; break from the while loop
     	//     Generate each state node_successor that can come after node_current
     	//     for each node_successor of node_current
@@ -117,7 +119,7 @@ void Astar::searchPath(pt start, pt goal) {
     	//          Add node_successor to the OPEN list
     	//     }
     	//     Add node_current to the CLOSED list
-    }
+    // }
 }
 void Astar::updateVertex() {
 
@@ -128,7 +130,9 @@ void Astar::updateCostList(void) {
 int Astar::getDist(pt a, pt b) {
     return abs(a.x - b.x) + abs(a.y - b.y);
 }
-
+int getMinS(pt a, pt b) {
+    return min(mat[a.x][a.y].getS(), mat[b.x][b.y].getS());
+}
 
 void Astar::print() {
 

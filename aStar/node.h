@@ -26,13 +26,13 @@ public:
 
     void setG(unsigned int c){ g = c; }
     void setH(unsigned int c){ h = c; }
-    void setH(unsigned int c){ s = c; }
+    void setS(unsigned int c){ s = c + getF(); }
     void setF(){ f =  g + h; }
 
     unsigned long long int getG(){ return g; }
     unsigned long long int getH(){ return h; }
-    unsigned long long int getf(){ return f; }
-    unsigned long long int getf(){ return s; }
+    unsigned long long int getF(){ setF(); return f; }
+    unsigned long long int getS(){ return s; }
 };
 
 #endif // NODE_H
