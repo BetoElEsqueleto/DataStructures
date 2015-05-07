@@ -1,6 +1,8 @@
 #ifndef NODE_H
 #define NODE_H
 
+class pt;
+
 class Node
 {
 private:

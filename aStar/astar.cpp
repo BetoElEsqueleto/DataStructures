@@ -165,7 +165,7 @@ pt Astar::min_element(list<pt>* l) {
   if (l->begin()==l->end()) return *(l->end());
   pt smallest = *(l->end());
   for (std::list<pt>::iterator it = goals.begin(); it != goals.end(); it++) {
-      if(it->x < smallest.x && it->y < smallest.y) smallest = *it;
+      if(mat[it->y][it->x].getF() < mat[smallest.y][smallest.x].getF()) smallest = *it;
   }
   return smallest;
 }

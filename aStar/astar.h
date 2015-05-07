@@ -16,10 +16,13 @@ A* algorithm used to find shortest path in a matrix
 */
 using namespace std;
 
-// typedef struct pt_s {
-//     int x;
-//     int y;
-// } pt;
+class pt {
+public:
+    pt() { x = 0; y = 0;}
+    int x;
+    int y;
+    bool operator ==(const pt& p) { return (x==p.x&&y==p.y); }
+};
 
 class Astar {
 private:
@@ -38,13 +41,6 @@ private:
     list<pt>      goals;
 
 public:
-
-    class pt {
-    public:
-        int x;
-        int y;
-        bool operator ==(const pt& p) { return (x==p.x&&y==p.y); }
-    }
 
     Astar(int argc, const char * argv[]);
     ~Astar();
