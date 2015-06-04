@@ -47,7 +47,7 @@ void StringBreak::solve() {
     for (int j = 0; j < m; j++) {
         q = -1;
         for (int i = 0; i < j; i++) {
-            std::cout << q << ", "<< cost(i,j) << ", " << r[j-i] << std::endl;
+            // std::cout << q << ", "<< cost(i,j) << ", " << r[j-i] << std::endl;
             q = min(q,cost(i,j) + r[j-i]);
         }
         r[j]=q;
