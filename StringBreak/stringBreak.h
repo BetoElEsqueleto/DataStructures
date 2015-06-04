@@ -4,7 +4,7 @@
 
 /*
 ## StringBreak class
-Dynamic programming algorithm to break a string in several pieces
+Dynamic programming algorithm to break a string in several pieces.
 */
 using namespace std;
 
@@ -13,20 +13,16 @@ private:
     int             n;             // Number of characters in String
     int             m;             // Number breakpoints
     int*            L;             // List of breakpoints in String
+    unsigned int    s;             // Least cost for breaking (solution)
 
 public:
     StringBreak(int argc, const char * argv[]);
     ~StringBreak();
 
-    void qsort();
-    void buttomUp();
-    void swap();
-    // let rŒ0::n􏰀 be a new array rŒ0􏰀D0
-    // forjD1ton
-    // q D 􏰐1
-    // for i D 1 to j
-    // q D max.q;pŒi􏰀CrŒj 􏰐i􏰀/ rŒj􏰀 D q
-    // return rŒn􏰀
+    void solve();
+    void qsort(int*v, int left, int right);
+    void swap(int* i, int* j);
+    int cost(int i,int j);
 
     void print();
 };

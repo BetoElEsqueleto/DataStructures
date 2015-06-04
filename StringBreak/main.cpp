@@ -7,7 +7,9 @@ int main(int argc, char const *argv[]) {
         exit(0);
     } else { // if we got enough parameters...
 
-        StringBreak run(argc, argv);
+        StringBreak app(argc, argv);
+        app.solve();
+        app.print();
 
         return 0;
     }
